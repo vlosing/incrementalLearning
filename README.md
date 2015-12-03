@@ -1,5 +1,5 @@
 # Online-learning
-Datasets as well as software for incremental/on-line learning
+Datasets and algorithms for incremental/on-line learning
 
 Datasets:
 - Border  https://github.com/vlosing/Online-learning/tree/master/datasets/border

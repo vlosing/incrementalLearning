@@ -12,10 +12,10 @@ Stationary datasets:
 - [Isolet]    (https://archive.ics.uci.edu/ml/datasets/ISOLET)
 - [MNist]     (https://github.com/vlosing/Online-learning/tree/master/datasets/MNIST)
 - [Gisette]   (https://archive.ics.uci.edu/ml/datasets/Gisette)
-- [Satimage]
-- [Poker]
-- [Pendigits]
-- [Sector]
+- [Satimage]  (https://archive.ics.uci.edu/ml/machine-learning-databases/statlog/satimage/)
+- [Poker]     (https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html#poker)
+- [Pendigits] (https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html)
+- [Sector]    (https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html)
 
 Non-stationary datasets:
 - [SEA]       (http://www.liaad.up.pt/kdus/downloads/sea-concepts-dataset)

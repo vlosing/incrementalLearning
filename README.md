@@ -2,7 +2,7 @@
 Datasets and algorithms for incremental/on-line learning
 
 Stationary datasets:
-- Border    https://github.com/vlosing/Online-learning/tree/master/datasets/border
+- [Border](https://github.com/vlosing/Online-learning/tree/master/datasets/border)
 - Overlap   https://github.com/vlosing/Online-learning/tree/master/datasets/overlap
 - Letter    https://archive.ics.uci.edu/ml/datasets/Letter+Recognition
 - Outdoor   https://github.com/vlosing/Online-learning/tree/master/datasets/outdoor
@@ -18,7 +18,9 @@ Stationary datasets:
 - Sector
 
 Non-stationary datasets:
-- TODO
+- SEA       http://www.liaad.up.pt/kdus/downloads/sea-concepts-dataset
+- Weather   http://users.rowan.edu/~polikar/research/NSE/
+- Elec      https://github.com/vlosing/Online-learning/tree/master/datasets/elec2
 
 Algorithms:
 - Incremental Support Vector Machine (ISVM) https://github.com/diehl/Incremental-SVM-Learning-in-MATLAB

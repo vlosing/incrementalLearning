@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;grlvq_c/src/Network_c.cpp&apos; to &apos;Network_c.c&apos;" description="Rename resource &apos;Network_c.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Network_c.cpp" name="Network_c.c" stamp="1353940527053" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;grlvq_c/src/Prototype_c.cpp&apos; to &apos;Prototype_c.c&apos;" description="Rename resource &apos;Prototype_c.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/Prototype_c.cpp" name="Prototype_c.c" stamp="1353940532623" updateReferences="true"/>
+</session>

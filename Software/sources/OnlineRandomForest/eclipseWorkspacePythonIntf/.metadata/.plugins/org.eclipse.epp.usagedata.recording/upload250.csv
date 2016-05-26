@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+error,log,,,"Project facet jst.web has not been defined. It is used in plugin org.eclipse.wst.jsdt.web.core.",1324281367350
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281388894
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281390255
+error,log,,,"Connection timed out",1324281434221
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281457483
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281457594
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281466449
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1324281478467
+started,bundle,org.eclipse.cdt.debug.mi.ui,6.0.0.201002161416,"org.eclipse.cdt.debug.mi.ui",1324281518700
+started,bundle,org.eclipse.cdt.debug.mi.core,6.0.0.201002161416,"org.eclipse.cdt.debug.mi.core",1324281518793
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281535460
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281751993
+started,bundle,org.eclipse.wst.sse.core,1.1.402.v201001251516,"org.eclipse.wst.sse.core",1324281752566
+started,bundle,org.eclipse.php.ui,2.1.1.v20090921-1100,"org.eclipse.php.ui",1324281752570
+started,bundle,org.eclipse.wst.sse.ui,1.1.102.v200910200227,"org.eclipse.wst.sse.ui",1324281752611
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281753548
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281755027
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1324281762179
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281762182
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281762214
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281775686
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281837048
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281840945
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281848017
+activated,view,org.eclipse.ui.views,3.4.1.M20090826-0800,"org.eclipse.ui.views.ContentOutline",1324281862211

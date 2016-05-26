@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951198329
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.copy",1323951214960
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951217722
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951223153
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951223161
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323951223312
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323951223619
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951227429
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951258473
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.1.r352_v20100105,"org.eclipse.ui.edit.text.goto.lineStart",1323951262982
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.1.r352_v20100105,"org.eclipse.ui.edit.text.goto.lineEnd",1323951264374
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.copy",1323951302328
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951303687
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951306334
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951308761
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951410190
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.copy",1323951417437
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951420496
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.undo",1323951422329
+executed,command,org.eclipse.ui.workbench.texteditor,3.5.1.r352_v20100105,"org.eclipse.ui.edit.text.goto.lineEnd",1323951423084
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951423808
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.copy",1323951439756
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323951448297
+error,log,,,"No message gotten.",1323951459350
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323951462685

@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938335375
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938335378
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323938335435
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938336412
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938434726
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938453607
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938453616
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323938453639
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938454427
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938525307
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938539808
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938539816
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323938539847
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938540646
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938595230
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938606001
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938606011
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323938606064
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938606663
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938716763
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938728719
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938728727
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323938728753
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323938729822
+error,log,,,"Connection timed out",1323938856602

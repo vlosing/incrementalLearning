@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,com.python.pydev.codecompletion,2.0.0.2011040403,"com.python.pydev.codecompletion",1323961754543
+started,bundle,com.python.pydev.refactoring,2.0.0.2011040403,"com.python.pydev.refactoring",1323961754543
+started,bundle,org.python.pydev,2.0.0.2011040403,"org.python.pydev",1323961754543
+started,bundle,org.python.pydev.core,2.0.0.2011040403,"org.python.pydev.core",1323961754543
+started,bundle,org.python.pydev.debug,2.0.0.2011040403,"org.python.pydev.debug",1323961754543
+started,bundle,org.python.pydev.django,2.0.0.2011040403,"org.python.pydev.django",1323961754543
+started,bundle,org.python.pydev.jython,2.0.0.2011040403,"org.python.pydev.jython",1323961754543
+started,bundle,org.python.pydev.parser,2.0.0.2011040403,"org.python.pydev.parser",1323961754543
+started,bundle,org.python.pydev.red_core,2.0.0.2011040403,"org.python.pydev.red_core",1323961754543
+started,bundle,org.python.pydev.refactoring,2.0.0.2011040403,"org.python.pydev.refactoring",1323961754543
+started,bundle,org.eclipse.epp.usagedata.gathering,1.1.0.R200906100410,"org.eclipse.epp.usagedata.gathering",1323961754543
+started,bundle,org.eclipse.epp.usagedata.recording,1.1.0.R200906100410,"org.eclipse.epp.usagedata.recording",1323961754543
+started,bundle,org.eclipse.wb.core,0.9.0.r35x201105061148,"org.eclipse.wb.core",1323961754543
+started,bundle,org.eclipse.wb.core.lib,0.9.0.r35x201105061148,"org.eclipse.wb.core.lib",1323961754543
+started,bundle,org.eclipse.wb.os.linux,0.9.0.r35x201105061148,"org.eclipse.wb.os.linux",1323961754543
+started,bundle,org.eclipse.wb.swing,0.9.0.r35x201105061217,"org.eclipse.wb.swing",1323961754543
+os,sysinfo,,,"linux",1323961754547
+arch,sysinfo,,,"x86",1323961754547
+ws,sysinfo,,,"gtk",1323961754547
+locale,sysinfo,,,"en_US",1323961754547
+processors,sysinfo,,,"2",1323961754547
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1323961754547
+java.runtime.version,sysinfo,,,"1.6.0_23-b05",1323961754547
+java.specification.name,sysinfo,,,"Java Platform API Specification",1323961754547
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1323961754547

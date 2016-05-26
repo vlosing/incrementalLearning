@@ -1,0 +1,4 @@
+function clearWorkspace()
+clear;
+end
+

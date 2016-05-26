@@ -1,0 +1,1308 @@
+/*
+ * Network.h
+ *
+ *  Created on: Jan 25, 2012
+ *      Author: jqueisse
+ */
+
+#ifndef NETWORK_H_
+#define NETWORK_H_
+
+
+#include "Prototype.h"
+#include "Serializer.h"
+#include <vector>
+#include <map>
+#include <utility>
+#include <algorithm>
+#include <math.h>
+#include <fstream>
+#include <string.h>
+
+
+#define NETMODE_WEIGHTS_DEF 0
+#define NETMODE_BOTH_DEF 1
+#define NETMODE_LAMBDA_DEF 2
+
+
+
+
+class Network: public Serializer
+{
+
+
+public:
+
+	enum Mode
+	{
+		RLVQ,
+		GRLVQ,
+		GMLVQ,
+		LGRLVQ,
+		LGMLVQ
+	};
+
+	Network(Mode mode, unsigned int dimensionality, bool learnrate_per_node=false, unsigned int protocount=10, unsigned int maxsamples=10000, unsigned int maxthreads=1, unsigned int initialdimensions=0);
+	Network(std::string file)
+	{
+		lamdas=NULL;
+		loadFile(file);
+	}
+	virtual ~Network();
+
+	void setMaxThreads(unsigned int threads)
+	{
+		max_threads=threads;
+	}
+
+	void setEpsilonLambdaStart(PROTOFRMT val)
+	{
+		epsilon_lamda_start=val;
+		if (datasamples==0)
+		{
+			this->epsilon_lambda=val;
+		}
+	}
+	void setEpsilonStart(PROTOFRMT val)
+	{
+		epsilon_start=val;
+		if (datasamples==0)
+		{
+			this->epsilon=val;
+		}
+	}
+
+	void printLamdas()
+	{
+		std::cout << "Lambdas:\n";
+		switch(mode)
+		{
+		case GRLVQ:
+			for (unsigned int d=0; d<dimensionality; d++)
+			{
+				std::cout << lamdas[d] << "\n";
+			}
+			break;
+		case GMLVQ:
+			for (unsigned int d=0; d<dimensionality; d++)
+			{
+				std::cout << lamdas[dimensionality*dimensionality+d*dimensionality+d] << "\n";
+			}
+			break;
+		default:
+			std::cout << "unknown type!!\n";
+		}
+	}
+
+	void printStatus()
+	{
+		std::cout << "Prototypes:" << prototype.size() << "\n";
+	}
+
+	PROTOFRMT trainStep(PROTOFRMT* data, int* label,int tmode=1, unsigned int data_rows=1, bool random_selection=false)
+	{
+
+		PROTOFRMT delta_sum=0;
+
+		for (unsigned int i_nr=0; i_nr<data_rows; i_nr++)
+		{
+			unsigned int i;
+			if (random_selection)
+			{
+				i = rand()%data_rows;
+			}
+			else
+			{
+				i = i_nr;
+			}
+
+			PROTOFRMT* sampledata = data+dimensionality*i;
+			int samplelabel = label[i];
+
+			if (min_proto_count>prototype.size())
+			{
+				std::cout << "fill proto !\n";
+				addPrototype(samplelabel, sampledata);
+			}
+			else
+			{
+				PROTOFRMT winner_dist;
+				unsigned int winner_index = findCorrectPrototype(sampledata, samplelabel, &winner_dist);
+
+				PROTOFRMT fail_dist;
+				unsigned int fail_index = findFailedPrototype(sampledata, samplelabel, &fail_dist);
+
+				//std::cout << samplelabel << " l1:" << lamdas[0] << " l2:" << lamdas[1] << "\n";
+				//std::cout << "winner " << winner_index << " failind " << fail_index << "\n";
+
+
+				if ((winner_dist==PROTOMAX)||(fail_dist==PROTOMAX))
+				{
+					std::cout << "Ignore !\n";
+					return -1;
+				}
+
+				Prototype* winner = prototype[winner_index];
+				Prototype* failed = prototype[fail_index];
+
+				switch(mode)
+				{
+				case RLVQ:
+					//no metric adaptation
+					tmode=0;
+				case GRLVQ:
+				case LGRLVQ:
+					delta_sum += adoptGrlvq(sampledata, winner, winner_dist, failed, fail_dist, tmode);
+					break;
+				case GMLVQ:
+				case LGMLVQ:
+					delta_sum += adoptGmlvq(sampledata, winner, winner_dist, failed, fail_dist, tmode);
+					break;
+				}
+
+
+				if (learnrate_per_node)
+				{
+					refreshEpsilon(winner);
+					refreshEpsilon(failed);
+				}
+				else
+				{
+					refreshEpsilon();
+				}
+			}
+		}
+		//std::cout << "trainend\n";
+
+		return delta_sum/data_rows;
+	}
+
+
+
+
+
+	PROTOFRMT trainStepIncremental(PROTOFRMT* data, int* label,int tmode=1, bool is_failure_increment=false, unsigned int g_max=10, unsigned int data_rows=1, bool random_selection=false, double* perftarget=NULL)
+	{
+
+		PROTOFRMT delta_sum=0;
+		unsigned int corr_count=0;
+		for (unsigned int i_nr=0; i_nr<data_rows; i_nr++)
+		{
+			unsigned int i;
+			if (random_selection)
+			{
+				i = rand()%data_rows;
+			}
+			else
+			{
+				i = i_nr;
+			}
+
+			PROTOFRMT* sampledata = data+dimensionality*i;
+			int samplelabel = label[i];
+
+
+			if (min_proto_count>prototype.size())
+			{
+				std::cout << "fill proto !\n";
+				addPrototype(samplelabel, sampledata);
+			}
+			else
+			{
+				PROTOFRMT winner_dist;
+				unsigned int winner_index = findCorrectPrototype(sampledata, samplelabel, &winner_dist);
+
+				PROTOFRMT fail_dist;
+				unsigned int fail_index = findFailedPrototype(sampledata, samplelabel, &fail_dist);
+
+				//std::cout << samplelabel << " l1:" << lamdas[0] << " l2:" << lamdas[1] << "\n";
+				//std::cout << "winner " << winner_index << " failind " << fail_index << "\n";
+
+
+				if ((winner_dist==PROTOMAX)||(fail_dist==PROTOMAX))
+				{
+					std::cout << "Ignore !\n";
+					return -1;
+				}
+
+				Prototype* winner = prototype[winner_index];
+				Prototype* failed = prototype[fail_index];
+
+				if ((winner_dist>fail_dist)&&is_failure_increment)
+				{
+					//std::cout << "fail: "<<samplelabel << " nr:" << i << "\n";
+					incremental_fail_count++;
+					if (incremental_failed_prototypes.find(samplelabel)==incremental_failed_prototypes.end())
+					{
+						incremental_failed_prototypes[samplelabel]=std::pair<PROTOFRMT, std::vector<PROTOFRMT> >(fail_dist, std::vector<PROTOFRMT>(sampledata, sampledata+dimensionality));
+					}
+					else
+					{
+						PROTOFRMT val = (incremental_failed_prototypes[samplelabel]).first;
+						if (val>fail_dist)
+						{
+							incremental_failed_prototypes[samplelabel]=std::pair<PROTOFRMT, std::vector<PROTOFRMT> >(fail_dist, std::vector<PROTOFRMT>(sampledata, sampledata+dimensionality));
+						}
+					}
+
+				}
+				else
+				{
+					corr_count++;
+					//std::cout << "corrext?!: "<<samplelabel << " nr:" << i << " faildist:" << fail_dist << " winnderdist:" << winner_dist << "\n";
+					//std::cout << "reslabel :" << prototype[findPrototype(sampledata, NULL)]->getLabel() << "\n";
+				}
+
+
+
+
+				switch(mode)
+				{
+				case RLVQ:
+					//no metric adaptation
+					tmode=0;
+				case GRLVQ:
+				case LGRLVQ:
+					delta_sum += adoptGrlvq(sampledata, winner, winner_dist, failed, fail_dist, tmode);
+					break;
+				case GMLVQ:
+				case LGMLVQ:
+					delta_sum += adoptGmlvq(sampledata, winner, winner_dist, failed, fail_dist, tmode);
+					break;
+				}
+
+
+				if (learnrate_per_node)
+				{
+					refreshEpsilon(winner);
+					refreshEpsilon(failed);
+				}
+				else
+				{
+					refreshEpsilon();
+				}
+
+
+
+
+				if ((is_failure_increment)&&(incremental_fail_count>=g_max))
+				{
+					incremental_fail_count=0;
+					//add Node:
+					std::map<int, std::pair<PROTOFRMT, std::vector<PROTOFRMT> > >::iterator it;
+					for (it=incremental_failed_prototypes.begin(); it!=incremental_failed_prototypes.end(); ++it)
+					{
+						int nlabel = it->first;
+						std::cout << "Incremental node insertion : " << nlabel << " curr esilon: " << epsilon << " "<< epsilon_lambda << "\n";
+						PROTOFRMT* data = &(((it->second).second)[0]);
+						addPrototype(nlabel, data);
+					}
+					incremental_failed_prototypes.clear();
+
+
+				}
+
+			}
+		}
+
+		if (perftarget)
+		{
+			*perftarget = ((double)corr_count)/((double)data_rows);
+		}
+		else if (data_rows>10)
+		{
+			std::cout << "iteration train end : " << corr_count*100.0/data_rows << " percent correct of"<< data_rows <<" samples\n";
+		}
+		//std::cout << "trainend\n";
+
+		return delta_sum/data_rows;
+	}
+
+
+	void addPrototype(int label, PROTOFRMT* initdata=NULL)
+	{
+		PROTOFRMT* lamdas_sub=lamdas;
+
+		if (mode==LGRLVQ)
+		{
+			lamdas_sub=new PROTOFRMT[dimensionality];
+			for (unsigned int i=0; i<dimensionality; i++)
+			{
+				lamdas_sub[i] = 1./dimensionality;
+			}
+		}
+		else if (mode==LGMLVQ)
+		{
+			PROTOFRMT targetval = sqrt(1.0/dimensionality);
+			lamdas_sub=new PROTOFRMT[dimensionality*dimensionality*2];
+			for (unsigned int i=0; i<dimensionality; i++)
+			{
+				for (unsigned int j=0; j<dimensionality; j++)
+				{
+					if (i==j)
+						lamdas_sub[i*dimensionality+j] = targetval;
+					else
+						lamdas_sub[i*dimensionality+j]=0;
+				}
+			}
+		}
+
+
+		Prototype* np=new Prototype(dimensionality, lamdas_sub, label, learnrate_per_node, initdata==NULL);
+		std::cout << "add node : " << label << "\n";
+		if (initdata!=NULL)
+		{
+			np->setWeights(initdata);
+		}
+		if (learnrate_per_node)
+		{
+			*(np->getEpsilon()) = epsilon_start;
+			*(np->getEpsilonLambda()) = epsilon_lamda_start;
+		}
+
+		if (mode==LGMLVQ)
+		{
+			refreshGmlvqLamdas(np);
+		}
+
+		prototype.push_back(np);
+
+	}
+
+	void processData(PROTOFRMT* data, int* result, unsigned int data_rows=1, unsigned int* indices=NULL)
+	{
+		for (unsigned int i=0; i<data_rows; i++)
+		{
+			PROTOFRMT* sampledata = data+dimensionality*i;
+			unsigned int index = findPrototype(sampledata, NULL);
+			result[i]=prototype[index]->getLabel();
+			if (indices) indices[i]=index;
+			//std::cout << "found ! " << result[i] << "\n";
+		}
+	}
+
+	void setMaxsamples(unsigned int maxsamples)
+	{
+		this->maxsamples=maxsamples;
+		refreshEpsilon();
+	}
+
+	void refreshEpsilon(Prototype* target=NULL)
+	{
+		//double fac = pow(0.1, 5*(datasamples/(double)maxsamples));
+		PROTOFRMT min = 0.001;
+		PROTOFRMT fac;
+
+
+
+		if (target)
+		{
+			PROTOFRMT counter = ++*(target->getSampleCounter());
+			if (counter<maxsamples)
+				fac = -(1-min)*counter/(PROTOFRMT)maxsamples + 1;
+			else
+				fac = min;
+			*(target->getEpsilon())=epsilon_start*fac;
+			*(target->getEpsilonLambda())=epsilon_lamda_start*fac;
+		}
+		else
+		{
+			datasamples++;
+			if (datasamples<maxsamples)
+				fac = -(1-min)*datasamples/(PROTOFRMT)maxsamples + 1;
+			else
+				fac = min;
+
+			epsilon = epsilon_start * fac;
+			epsilon_lambda = epsilon_lamda_start * fac;
+		}
+
+		//std::cout << epsilon << " " << fac << "  " << datasamples/(PROTOFRMT)maxsamples <<  "\n";
+	}
+
+	PROTOFRMT adoptGrlvq(PROTOFRMT* data, Prototype* winner, PROTOFRMT winner_dist, Prototype* looser, PROTOFRMT looser_dist, int tmode )
+	{
+		PROTOFRMT delta_pos_result=0;
+		PROTOFRMT delta_neg_result=0;
+
+		PROTOFRMT diff = (winner_dist+looser_dist)*(winner_dist+looser_dist);
+		if (diff<=0.001) return 0;
+		PROTOFRMT fac_pos = looser_dist/diff;
+		PROTOFRMT fac_neg = winner_dist/diff;
+
+		PROTOFRMT sum_pos=0;
+		PROTOFRMT sum_neg=0;
+		std::cout <<"---\nfac_pos" << fac_pos << " fac_neg" << fac_neg << "\n";
+		for (unsigned int d=0; d<dimensionality; d++)
+		{
+			PROTOFRMT delta_pos = data[d]-winner->weights[d];
+			PROTOFRMT delta_neg = data[d]-looser->weights[d];
+
+			std::cout << " dim"<<d<< " deltapos"<< delta_pos << "delta_neg" << delta_neg << "\n";
+			if (tmode<=1)
+			{
+				PROTOFRMT epsilon_pos;
+				PROTOFRMT epsilon_neg;
+
+				if (learnrate_per_node)
+				{
+					epsilon_pos=*(winner->getEpsilon());
+					epsilon_neg=*(looser->getEpsilon());
+				}
+				else
+				{
+					epsilon_pos=epsilon_neg=epsilon;
+				}
+
+				PROTOFRMT delta_pos_=epsilon_pos * fac_pos * delta_pos * winner->lamdas[d];
+				delta_pos_result+=delta_pos_*delta_pos_;
+				winner->weights[d]+=delta_pos_;
+
+				PROTOFRMT delta_neg_=epsilon_neg * fac_neg * delta_neg * looser->lamdas[d];
+				delta_neg_result+=delta_neg_*delta_neg_;
+				looser->weights[d]-=delta_neg_;
+
+
+				std::cout << " delta_pos_" << delta_pos_ << " delta_neg_" << -delta_neg_ << "\n";
+				std::cout << " winlambda" << winner->lamdas[d] << " epsilonpos" << epsilon_pos << "\n";
+
+			}
+			if (tmode>=1)
+			{
+
+				//TODO old or new lambda ??
+
+				if (mode==LGRLVQ)
+				{
+					PROTOFRMT epsilon_lamda_pos, epsilon_lamda_neg;
+					if (learnrate_per_node)
+					{
+						epsilon_lamda_pos=*(winner->getEpsilonLambda());
+						epsilon_lamda_neg=*(looser->getEpsilonLambda());
+					}
+					else
+					{
+						epsilon_lamda_pos=epsilon_lamda_neg=epsilon_lambda;
+					}
+
+					winner->lamdas[d]-= epsilon_lamda_pos * ( fac_pos * delta_pos * delta_pos -  fac_neg * delta_neg * delta_neg );
+					if (winner->lamdas[d]<=0) winner->lamdas[d]=0;
+					sum_pos +=winner->lamdas[d];
+
+					looser->lamdas[d]-= epsilon_lamda_neg * ( fac_pos * delta_pos * delta_pos -  fac_neg * delta_neg * delta_neg );
+					if (looser->lamdas[d]<=0)
+					{
+						std::cout << "Network::adoptGrlvq: lambda < 0 !\n";
+						looser->lamdas[d]=0;
+					}
+					sum_neg +=looser->lamdas[d];
+				}
+				else
+				{
+
+					PROTOFRMT epsilon_lamda_shared;
+					if (learnrate_per_node)
+					{
+						epsilon_lamda_shared = (*(winner->getEpsilonLambda())+*(looser->getEpsilonLambda()))/2;
+					}
+					else
+					{
+						epsilon_lamda_shared=epsilon_lambda;
+					}
+					lamdas[d]-= epsilon_lamda_shared * ( fac_pos * delta_pos * delta_pos -  fac_neg * delta_neg * delta_neg );
+					if (lamdas[d]<=0) lamdas[d]=0;
+					sum_pos +=lamdas[d];
+				}
+			}
+		}
+
+
+		if (tmode>=1)
+		{
+			//TODO negative values valid ?!
+			if ( (sum_pos<=0) || ( (sum_neg<=0) && ((mode==LGRLVQ) || (mode==LGMLVQ)) ) )
+				std::cout << "Network::adoptGrlvq: all dimensions -> 0 ... reset\n";
+
+
+			for (unsigned int d=0; d<dimensionality; d++)
+			{
+				if (sum_pos>0)
+				{
+					winner->lamdas[d]/=sum_pos;
+				}
+				else
+				{
+					winner->lamdas[d] = 1./dimensionality;
+				}
+
+				if (mode==LGRLVQ)
+				{
+					if (sum_neg>0)
+					{
+						looser->lamdas[d]/=sum_neg;
+					}
+					else
+					{
+						looser->lamdas[d] = 1./dimensionality;
+					}
+				}
+			}
+		}
+
+		return (delta_pos_result+delta_neg_result)/2;
+	}
+
+	PROTOFRMT adoptGmlvq(PROTOFRMT* data, Prototype* winner, PROTOFRMT winner_dist, Prototype* looser, PROTOFRMT looser_dist, int tmode )
+	{
+		PROTOFRMT delta_pos_result=0;
+		PROTOFRMT delta_neg_result=0;
+
+
+		PROTOFRMT diff = (winner_dist+looser_dist)*(winner_dist+looser_dist);
+		if (diff<=0.001) return 0;
+		PROTOFRMT fac_pos = looser_dist/diff;
+		PROTOFRMT fac_neg = winner_dist/diff;
+
+		PROTOFRMT delta_pos[dimensionality];
+		PROTOFRMT delta_neg[dimensionality];
+
+		PROTOFRMT omega_pos_pos[dimensionality];
+		PROTOFRMT omega_neg_pos[dimensionality];
+		PROTOFRMT lamda_pos[dimensionality];
+		PROTOFRMT lamda_neg[dimensionality];
+
+		PROTOFRMT omega_pos_neg[dimensionality];
+		PROTOFRMT omega_neg_neg[dimensionality];
+
+
+
+		for (unsigned int d=0; d<dimensionality; d++)
+		{
+			delta_pos[d] = data[d]-winner->weights[d];
+			delta_neg[d] = data[d]-looser->weights[d];
+		}
+
+		for (unsigned int row=0; row<dimensionality; row++)
+		{
+			omega_pos_pos[row]=0;
+			omega_neg_pos[row]=0;
+			lamda_pos[row]=0;
+			lamda_neg[row]=0;
+
+			omega_pos_neg[row]=0;
+			omega_neg_neg[row]=0;
+			for (unsigned int col=0; col<dimensionality; col++)
+			{
+				PROTOFRMT omegaval_pos = winner->lamdas[row*dimensionality+col];
+				PROTOFRMT lamdaval_pos = winner->lamdas[dimensionality*dimensionality+row*dimensionality+col];
+				PROTOFRMT lamdaval_neg = looser->lamdas[dimensionality*dimensionality+row*dimensionality+col];
+
+				omega_pos_pos[row]+=delta_pos[col]*omegaval_pos;
+				omega_neg_pos[row]+=delta_neg[col]*omegaval_pos;
+				lamda_pos[row]+=delta_pos[col]*lamdaval_pos;
+				lamda_neg[row]+=delta_neg[col]*lamdaval_neg;
+
+				if (mode==LGMLVQ)
+				{
+					PROTOFRMT omegaval_neg = looser->lamdas[row*dimensionality+col];
+					omega_pos_neg[row]+=delta_pos[col]*omegaval_neg;
+					omega_neg_neg[row]+=delta_neg[col]*omegaval_neg;
+				}
+			}
+		}
+
+
+
+		if (tmode<=1)
+		{
+			PROTOFRMT epsilon_pos, epsilon_neg;
+			if (learnrate_per_node)
+			{
+				epsilon_pos=*(winner->getEpsilon());
+				epsilon_neg=*(looser->getEpsilon());
+			}
+			else
+			{
+				epsilon_pos=epsilon_neg=epsilon;
+			}
+
+			//std::cout << "Adopt w\n";
+			for (unsigned int d=0; d<dimensionality; d++)
+			{
+				PROTOFRMT delta_pos_=epsilon_pos * fac_pos * lamda_pos[d];
+				delta_pos_result+=delta_pos_*delta_pos_;
+				winner->weights[d]+=delta_pos_;
+				//std::cout << " dim"<< d << " delta" << delta_pos_ << " fac"<< fac_pos << " lambda" << lamda_pos[d] <<"\n";
+
+				PROTOFRMT delta_neg_=epsilon_neg * fac_neg * lamda_neg[d];
+				delta_neg_result+=delta_neg_*delta_neg_;
+				looser->weights[d]-=delta_neg_;
+			}
+		}
+
+		if (tmode>=1)
+		{
+			PROTOFRMT sum_pos=0;
+			PROTOFRMT sum_neg=0;
+			for (unsigned int row=0; row<dimensionality; row++)
+			{
+				for (unsigned int col=0; col<dimensionality; col++)
+				{
+					int pos = row*dimensionality+col;
+
+					PROTOFRMT epsilon_lambda_pos, epsilon_lambda_neg;
+					if (learnrate_per_node)
+					{
+						epsilon_lambda_pos=*(winner->getEpsilonLambda());
+						epsilon_lambda_neg=*(looser->getEpsilonLambda());
+					}
+					else
+					{
+						epsilon_lambda_pos=epsilon_lambda_neg=epsilon_lambda;
+					}
+
+
+
+					PROTOFRMT part_pos_pos = omega_pos_pos[col]*delta_pos[row]+omega_pos_pos[row]*delta_pos[col];
+					PROTOFRMT part_neg_pos = omega_neg_pos[col]*delta_neg[row]+omega_neg_pos[row]*delta_neg[col];
+					winner->lamdas[pos] -= epsilon_lambda_pos *(fac_pos*part_pos_pos - fac_neg*part_neg_pos);
+
+					if (mode==LGMLVQ)
+					{
+						PROTOFRMT part_pos_neg = omega_pos_neg[col]*delta_pos[row]+omega_pos_neg[row]*delta_pos[col];
+						PROTOFRMT part_neg_neg = omega_neg_neg[col]*delta_neg[row]+omega_neg_neg[row]*delta_neg[col];
+						looser->lamdas[pos] -= epsilon_lambda_neg *(fac_pos*part_pos_neg - fac_neg*part_neg_neg);
+
+						sum_neg +=looser->lamdas[pos]*looser->lamdas[pos];
+					}
+
+					//if (lamdas[pos]<=0) lamdas[pos]=0;
+					sum_pos +=winner->lamdas[pos]*winner->lamdas[pos];
+				}
+			}
+
+			for (unsigned int row=0; row<dimensionality; row++)
+			{
+				for (unsigned int col=0; col<dimensionality; col++)
+				{
+					int pos = row*dimensionality+col;
+					winner->lamdas[pos]/=sum_pos;
+					if (mode==LGMLVQ)
+					{
+						looser->lamdas[pos]/=sum_neg;
+					}
+				}
+			}
+
+			refreshGmlvqLamdas(winner);
+			if (mode==LGMLVQ)
+			{
+				refreshGmlvqLamdas(looser);
+			}
+		}
+
+		return (delta_pos_result+delta_neg_result)/2;
+	}
+
+	void refreshGmlvqLamdas(Prototype* target=NULL)
+	{
+
+		PROTOFRMT* lambda_int=lamdas;
+
+		if (target)lambda_int = target->lamdas;
+
+
+		for (unsigned int i=0; i<dimensionality; i++) //cols
+		{
+			for (unsigned int j=0; j<dimensionality; j++) //rows
+			{
+				PROTOFRMT sum_k=0;
+				for (unsigned int k=0; k<dimensionality; k++) //sum over elements
+				{
+					sum_k+=lambda_int[j*dimensionality+k]*lambda_int[k*dimensionality+i];
+				}
+
+				lambda_int[dimensionality*dimensionality + j*dimensionality + i]=sum_k;
+			}
+		}
+	}
+
+
+
+	unsigned int findPrototype(PROTOFRMT* data, PROTOFRMT* dist)
+	{
+		unsigned int indices[max_threads];
+		PROTOFRMT distances[max_threads];
+
+		unsigned int protocount=prototype.size();
+		unsigned int threads=std::min(max_threads,protocount);
+		unsigned int length=ceil( prototype.size()/(float)threads);
+
+		if (threads==0) return -1;
+
+		pthread_t threadids[threads-1];
+		ThreadData tdata[threads-1];
+
+		for(unsigned int i=0; i<threads; i++)
+		{
+			unsigned int part_start=i*length;
+			unsigned int part_len=std::min(length, protocount-part_start);
+			//std::cout << "Thread " << part_start << " len " << part_len << "\n";
+			if (i==0)
+			{
+				indices[0]= findPrototypePart(data, part_start, part_len, &(distances[i]));
+			}
+			else
+			{
+				tdata[i-1].init(this, data, part_start, part_len, &(distances[i]), &(indices[i]));
+				pthread_create(&(threadids[i-1]), NULL, &Network::findPrototypePartThread, &(tdata[i-1]));
+			}
+		}
+
+		unsigned int index_res=indices[0];
+		PROTOFRMT distance_res=distances[0];
+		for(unsigned int i=1; i<threads; i++)
+		{
+			pthread_join(threadids[i-1], NULL);
+			if (distances[i]<distance_res)
+			{
+				distance_res=distances[i];
+				index_res=indices[i];
+			}
+		}
+
+		if (dist) *dist = distance_res;
+
+		return index_res;
+	}
+
+	class ThreadData
+	{
+	public:
+		PROTOFRMT* data;
+		unsigned int start;
+		unsigned int len;
+		PROTOFRMT* dist;
+		unsigned int *index;
+		unsigned int label;
+
+		Network* owner;
+
+		void init(Network* owner, PROTOFRMT* data, unsigned int start, unsigned int len, PROTOFRMT* dist, unsigned int* index, unsigned int label=0)
+		{
+			this->data=data;
+			this->start=start;
+			this->len=len;
+			this->dist=dist;
+			this->index=index;
+			this->owner=owner;
+			this->label=label;
+		}
+	};
+
+	static void *findPrototypePartThread(void *data)
+	{
+		ThreadData *tdata = (ThreadData*)data;
+		*(tdata->index)=tdata->owner->findPrototypePart(tdata->data, tdata->start, tdata->len, tdata->dist);
+		return 0;
+	}
+
+	unsigned int findPrototypePart(PROTOFRMT* data, unsigned int start, unsigned int len, PROTOFRMT* dist)
+	{
+		PROTOFRMT distance_res=PROTOMAX;
+		unsigned int index_res=0;
+		for (unsigned int i=start; i<start+len; i++)
+		{
+			//unsigned int curr_label=prototype[i]->getLabel();
+			PROTOFRMT curr_dist;
+			switch(mode)
+			{
+			case RLVQ:
+			case GRLVQ:
+			case LGRLVQ:
+				curr_dist= prototype[i]->dist(data);
+				break;
+			case GMLVQ:
+			case LGMLVQ:
+				curr_dist= prototype[i]->distmat(data);
+				break;
+			default:
+				std::cout << "Error: Network::findPrototypePart: unknown mode!";
+				*dist=PROTOMAX;
+				return 0;
+			}
+
+
+			if (curr_dist<distance_res)
+			{
+				distance_res=curr_dist;
+				index_res=i;
+			}
+		}
+
+		*dist=distance_res;
+		return index_res;
+	}
+
+
+
+
+
+	unsigned int findCorrectPrototype(PROTOFRMT* data, int label, PROTOFRMT* dist)
+	{
+		unsigned int indices[max_threads];
+		PROTOFRMT distances[max_threads];
+
+		unsigned int protocount=prototype.size();
+		unsigned int threads=std::min(max_threads,protocount);
+		unsigned int length=ceil( prototype.size()/(float)threads);
+
+		if (threads==0) return -1;
+
+		pthread_t threadids[threads-1];
+		ThreadData tdata[threads-1];
+
+		for(unsigned int i=0; i<threads; i++)
+		{
+			unsigned int part_start=i*length;
+			unsigned int part_len=std::min(length, protocount-part_start);
+
+			if (i==0)
+			{
+				indices[i]= findCorrectPrototypePart(data, label, part_start, part_len, &(distances[i]));
+			}
+			else
+			{
+				tdata[i-1].init(this, data, part_start, part_len, &(distances[i]), &(indices[i]), label);
+				pthread_create(&(threadids[i-1]), NULL, &Network::findCorrectPrototypePartThread, &(tdata[i-1]));
+			}
+		}
+
+		unsigned int index_res=indices[0];
+		PROTOFRMT distance_res=distances[0];
+		for(unsigned int i=1; i<threads; i++)
+		{
+			pthread_join(threadids[i-1], NULL);
+			if (distances[i]<distance_res)
+			{
+				distance_res=distances[i];
+				index_res=indices[i];
+			}
+		}
+
+		*dist = distance_res;
+		return index_res;
+	}
+
+
+	static void *findCorrectPrototypePartThread(void *data)
+	{
+		ThreadData *tdata = (ThreadData*)data;
+		*(tdata->index)=tdata->owner->findCorrectPrototypePart(tdata->data, tdata->label,  tdata->start, tdata->len, tdata->dist);
+		return 0;
+	}
+
+	unsigned int findCorrectPrototypePart(PROTOFRMT* data, int label, unsigned int start, unsigned int len, PROTOFRMT* dist)
+	{
+		PROTOFRMT distance_res=PROTOMAX;
+		unsigned int index_res=0;
+		for (unsigned int i=start; i<start+len; i++)
+		{
+			int curr_label=prototype[i]->getLabel();
+			if (curr_label==label)
+			{
+
+				PROTOFRMT curr_dist;
+				switch(mode)
+				{
+				case RLVQ:
+				case GRLVQ:
+				case LGRLVQ:
+					curr_dist= prototype[i]->dist(data);
+					break;
+				case GMLVQ:
+				case LGMLVQ:
+					curr_dist= prototype[i]->distmat(data);
+					break;
+				default:
+					std::cout << "Error: Network::findPrototypePart: unknown mode!";
+					*dist=PROTOMAX;
+					return 0;
+				}
+
+				if (curr_dist<distance_res)
+				{
+					distance_res=curr_dist;
+					index_res=i;
+				}
+			}
+		}
+
+		*dist=distance_res;
+		return index_res;
+	}
+
+	unsigned int findFailedPrototype(PROTOFRMT* data, int label, PROTOFRMT* dist)
+	{
+		unsigned int indices[max_threads];
+		PROTOFRMT distances[max_threads];
+
+		unsigned int protocount=prototype.size();
+		unsigned int threads=std::min(max_threads,protocount);
+		unsigned int length=ceil( prototype.size()/(float)threads);
+
+		if (threads==0) return -1;
+
+		pthread_t threadids[threads-1];
+		ThreadData tdata[threads-1];
+
+		for(unsigned int i=0; i<threads; i++)
+		{
+			unsigned int part_start=i*length;
+			unsigned int part_len=std::min(length, protocount-part_start);
+			indices[i]= findFailedPrototypePart(data, label, part_start, part_len, &(distances[i]));
+
+			if (i==0)
+			{
+				indices[i]= findFailedPrototypePart(data, label, part_start, part_len, &(distances[i]));
+			}
+			else
+			{
+				tdata[i-1].init(this, data, part_start, part_len, &(distances[i]), &(indices[i]), label);
+				pthread_create(&(threadids[i-1]), NULL, &Network::findFailedPrototypePartThread, &(tdata[i-1]));
+			}
+		}
+
+		unsigned int index_res=indices[0];
+		PROTOFRMT distance_res=distances[0];
+		for(unsigned int i=1; i<threads; i++)
+		{
+			pthread_join(threadids[i-1], NULL);
+			if (distances[i]<distance_res)
+			{
+				distance_res=distances[i];
+				index_res=indices[i];
+			}
+		}
+
+		*dist = distance_res;
+		return index_res;
+	}
+
+	static void *findFailedPrototypePartThread(void *data)
+	{
+		ThreadData *tdata = (ThreadData*)data;
+		*(tdata->index)=tdata->owner->findFailedPrototypePart(tdata->data, tdata->label, tdata->start, tdata->len, tdata->dist);
+		return 0;
+	}
+
+	unsigned int findFailedPrototypePart(PROTOFRMT* data, int label, unsigned int start, unsigned int len, PROTOFRMT* dist)
+	{
+		PROTOFRMT distance_res=PROTOMAX;
+		unsigned int index_res=0;
+		for (unsigned int i=start; i<start+len; i++)
+		{
+			int curr_label=prototype[i]->getLabel();
+			if (curr_label!=label)
+			{
+				PROTOFRMT curr_dist;
+				switch(mode)
+				{
+				case RLVQ:
+				case GRLVQ:
+				case LGRLVQ:
+					curr_dist= prototype[i]->dist(data);
+					break;
+				case GMLVQ:
+				case LGMLVQ:
+					curr_dist= prototype[i]->distmat(data);
+					break;
+				default:
+					std::cout << "Error: Network::findPrototypePart: unknown mode!";
+					*dist=PROTOMAX;
+					return 0;
+				}
+				if (curr_dist<distance_res)
+				{
+					distance_res=curr_dist;
+					index_res=i;
+				}
+			}
+		}
+
+		*dist=distance_res;
+		return index_res;
+	}
+
+	unsigned int getDimensionality()
+	{
+		return dimensionality;
+	}
+
+
+
+	std::ostream* serialize(std::ostream* s )
+	{
+
+		s = binary_write(s, dimensionality);
+		s = binary_write(s, max_threads);
+		s = binary_write(s, epsilon);
+		s = binary_write(s, epsilon_start);
+		s = binary_write(s, epsilon_lambda);
+		s = binary_write(s, epsilon_lamda_start);
+
+		s = binary_write(s, maxsamples);
+		s = binary_write(s, datasamples);
+		s = binary_write(s, min_proto_count);
+		s = binary_write(s, learnrate_per_node);
+
+		s = binary_write(s, mode);
+		s = binary_write(s, max_threads);
+
+		int num_protos=prototype.size();
+		s = binary_write(s, num_protos);
+
+		int lambda_len=0;
+		switch(mode)
+		{
+		case RLVQ:
+		case GRLVQ:
+			lambda_len  = dimensionality;
+			break;
+
+		case GMLVQ:
+			lambda_len  = dimensionality*dimensionality*2;
+			break;
+
+		default:
+			break;
+		}
+
+		if (lambda_len>0)
+		{
+			s->write((char*)lamdas, sizeof(PROTOFRMT)*lambda_len);
+		}
+
+
+		lambda_len=0;
+		if (mode==LGRLVQ)
+		{
+			lambda_len=dimensionality;
+		}
+		else if (mode==LGMLVQ)
+		{
+			lambda_len=dimensionality*dimensionality*2;
+		}
+
+		for (int n=0; n<num_protos; ++n)
+		{
+			s=prototype[n]->serialize(s, lambda_len, learnrate_per_node);
+		}
+
+		return s;
+	}
+
+	std::istream* deserialize(std::istream* s)
+	{
+		clear();
+
+
+
+		s = binary_read(s, dimensionality);
+		s = binary_read(s, max_threads);
+		s = binary_read(s, epsilon);
+		s = binary_read(s, epsilon_start);
+		s = binary_read(s, epsilon_lambda);
+		s = binary_read(s, epsilon_lamda_start);
+
+		s = binary_read(s, maxsamples);
+		s = binary_read(s, datasamples);
+		s = binary_read(s, min_proto_count);
+		s = binary_read(s, learnrate_per_node);
+
+
+
+		s = binary_read(s, mode);
+		s = binary_read(s, max_threads);
+		int num_protos;
+		s = binary_read(s, num_protos);
+
+
+		int lambda_len=0;
+		switch(mode)
+		{
+		case RLVQ:
+		case GRLVQ:
+			lambda_len  = dimensionality;
+			break;
+
+		case GMLVQ:
+			lambda_len  = dimensionality*dimensionality*2;
+			break;
+
+		default:
+			break;
+		}
+
+		if (lambda_len>0)
+		{
+			lamdas = new PROTOFRMT[lambda_len];
+			s->read((char*)lamdas, sizeof(PROTOFRMT)*lambda_len);
+		}
+
+
+		lambda_len=0;
+		if (mode==LGRLVQ)
+		{
+			lambda_len=dimensionality;
+		}
+		else if (mode==LGMLVQ)
+		{
+			lambda_len=dimensionality*dimensionality*2;
+		}
+
+		for (int n=0; n<num_protos; ++n)
+		{
+			Prototype* np = new Prototype(s, lambda_len, learnrate_per_node, lamdas);
+			prototype.push_back(np);
+		}
+
+		return s;
+	}
+
+
+	void loadFile(std::string file)
+	{
+		std::ifstream inStream(file.c_str(), std::ios::binary);
+		deserialize(&inStream);
+
+	}
+
+	void saveFile(std::string file)
+	{
+		std::ofstream outStream(file.c_str(), std::ios::binary);
+		serialize(&outStream);
+
+	}
+
+	void clear()
+	{
+		delete[] lamdas;
+
+		for (unsigned int i=0; i<prototype.size(); i++)
+		{
+			if ((mode==LGRLVQ)||(mode==LGMLVQ)) delete [] prototype[i]->lamdas;
+
+			delete prototype[i];
+		}
+
+		prototype.clear();
+
+		incremental_failed_prototypes.clear();
+
+		incremental_fail_count=0;
+	}
+
+
+	unsigned int getPrototypes()
+	{
+		return prototype.size();
+	}
+
+
+	int getPrototypeLabel(unsigned int protonr)
+	{
+		if (prototype.size()<=protonr) return -1;
+
+		return prototype[protonr]->label;
+	}
+
+	bool getPrototypeData(unsigned int protonr, PROTOFRMT* target)
+	{
+		if (prototype.size()<=protonr) return false;
+
+		memcpy(target, prototype[protonr]->weights, dimensionality*sizeof(PROTOFRMT));
+		return true;
+	}
+
+	bool getLambdas(unsigned int protonr, PROTOFRMT* target)
+	{
+		if (prototype.size()<=protonr) return false;
+		int offset = 0;
+		unsigned int length = getLambdaLen();
+		if (length != dimensionality)offset = dimensionality*dimensionality;
+		memcpy(target, &(prototype[protonr]->lamdas[offset]), length*sizeof(PROTOFRMT));
+		return true;
+	}
+
+
+	bool getEigenvectors(unsigned int protonr, PROTOFRMT* target)
+	{
+		if (prototype.size()<=protonr) return false;
+		unsigned int length = getLambdaLen();
+		if (length != dimensionality)
+		{
+			memcpy(target, prototype[protonr]->lamdas, length*sizeof(PROTOFRMT));
+		}
+		else
+		{
+			memset(target,0,length*length*sizeof(PROTOFRMT));
+			for (int d=0; d<dimensionality; d++)
+			{
+				target[d*dimensionality+d]=prototype[protonr]->lamdas[d];
+			}
+		}
+		return true;
+	}
+
+
+	unsigned int getLambdaLen()
+	{
+		int lambda_len=0;
+		switch(mode)
+		{
+		case RLVQ:
+		case GRLVQ:
+		case LGRLVQ:
+			lambda_len  = dimensionality;
+			break;
+
+		case GMLVQ:
+		case LGMLVQ:
+			lambda_len  = dimensionality*dimensionality;
+			break;
+
+		default:
+			break;
+		}
+		return lambda_len;
+	}
+
+
+private:
+	unsigned int dimensionality;
+	std::vector<Prototype*> prototype;
+	PROTOFRMT* lamdas;
+
+	unsigned int max_threads;
+
+	PROTOFRMT epsilon, epsilon_start;
+	PROTOFRMT epsilon_lambda, epsilon_lamda_start;
+	unsigned int maxsamples;
+	unsigned int datasamples;
+
+	unsigned int min_proto_count;
+
+	bool learnrate_per_node;
+
+	Mode mode;
+
+	unsigned int incremental_fail_count;
+	std::map<int, std::pair< PROTOFRMT, std::vector<PROTOFRMT> > > incremental_failed_prototypes;
+
+
+
+
+};
+
+#endif /* NETWORK_H_ */

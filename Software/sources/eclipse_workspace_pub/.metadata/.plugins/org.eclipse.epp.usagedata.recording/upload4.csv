@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,com.atlassian.connector.eclipse.jira.ui,2.2.0.v20100621,"com.atlassian.connector.eclipse.jira.ui",1323849921994
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.bugzilla.core",1323849922005
+started,bundle,org.eclipse.mylyn.commons.net,3.4.1.v20100625-2100-e3x,"org.eclipse.mylyn.commons.net",1323849922005
+started,bundle,org.eclipse.mylyn.context.core,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.core",1323849922007
+started,bundle,org.eclipse.mylyn.resources.ui,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.resources.ui",1323849922009
+started,bundle,org.eclipse.mylyn.wikitext.tasks.ui,1.3.1.v20100823-0100-e3x,"org.eclipse.mylyn.wikitext.tasks.ui",1323849922010
+started,bundle,org.eclipse.jet.ui,1.0.0.v200906120900,"org.eclipse.jet.ui",1323849922015
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.4.3.v20110131-0100-e3x,"org.eclipse.mylyn.bugzilla.ui",1323849922021
+started,bundle,org.eclipse.mylyn.context.ui,3.4.2.v20110131-0100-e3x,"org.eclipse.mylyn.context.ui",1323849922024
+started,bundle,org.eclipse.mylyn.monitor.ui,3.4.1.v20110131-0100-e3x,"org.eclipse.mylyn.monitor.ui",1323849922025
+started,bundle,org.eclipse.mylyn.tasks.ui,3.4.3.v20110131-0100-e3x,"org.eclipse.mylyn.tasks.ui",1323849922030
+started,bundle,org.eclipse.mylyn.team.ui,3.4.3.v20110131-0100-e3x,"org.eclipse.mylyn.team.ui",1323849922032
+started,bundle,org.eclipse.epp.usagedata.gathering,1.1.0.R200906100410,"org.eclipse.epp.usagedata.gathering",1323849922034
+started,bundle,org.eclipse.epp.usagedata.recording,1.1.0.R200906100410,"org.eclipse.epp.usagedata.recording",1323849922035
+started,bundle,org.eclipse.pde.ui,3.5.1.v201001121200,"org.eclipse.pde.ui",1323849922053
+started,bundle,org.eclipse.wb.core,0.9.0.r35x201105061148,"org.eclipse.wb.core",1323849922057
+started,bundle,org.eclipse.wb.core.lib,0.9.0.r35x201105061148,"org.eclipse.wb.core.lib",1323849922068
+started,bundle,org.eclipse.wb.os.linux,0.9.0.r35x201105061148,"org.eclipse.wb.os.linux",1323849922069
+started,bundle,org.eclipse.wb.swing,0.9.0.r35x201105061217,"org.eclipse.wb.swing",1323849922069
+os,sysinfo,,,"linux",1323849922073
+arch,sysinfo,,,"x86",1323849922073
+ws,sysinfo,,,"gtk",1323849922073
+locale,sysinfo,,,"en_US",1323849922073
+processors,sysinfo,,,"2",1323849922073
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1323849922073

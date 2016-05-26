@@ -1,0 +1,24 @@
+
+**** Build of configuration Debug for project pythoninterface ****
+
+make all 
+Building file: ../src/intf.cpp
+Invoking: GCC C++ Compiler
+g++ -I/home/jqueisse/.HRI/sit/latest/External/python/2.6.6/lucid32/include/python2.6 -I"/daten2/Dokumente/Honda/master/eclipse_workspace/eclipse_workspace/grlvq/src" -I/home/jqueisse/.HRI/sit/latest/External/pymodules2.6/numpy/1.5.1/lib/lucid32/numpy/core/include/numpy -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/intf.d" -MT"src/intf.d" -o "src/intf.o" "../src/intf.cpp"
+In file included from ../src/intf.cpp:6:0:
+/daten2/Dokumente/Honda/master/eclipse_workspace/eclipse_workspace/grlvq/src/Network.h: In member function ‘bool Network::getEigenvectors(unsigned int, double*)’:
+/daten2/Dokumente/Honda/master/eclipse_workspace/eclipse_workspace/grlvq/src/Network.h:1250:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../src/intf.cpp: In function ‘PyObject* py_process_network(PyObject*, PyObject*)’:
+../src/intf.cpp:493:121: warning: format ‘%i’ expects argument of type ‘int’, but argument 2 has type ‘npy_intp {aka long int}’ [-Wformat]
+../src/intf.cpp: In function ‘PyObject* py_test_mat(PyObject*, PyObject*)’:
+../src/intf.cpp:782:83: warning: format ‘%i’ expects argument of type ‘int’, but argument 3 has type ‘npy_intp {aka long int}’ [-Wformat]
+../src/intf.cpp:782:83: warning: format ‘%i’ expects argument of type ‘int’, but argument 5 has type ‘npy_intp {aka long int}’ [-Wformat]
+Finished building: ../src/intf.cpp
+ 
+Building target: libpythoninterface.so
+Invoking: GCC C++ Linker
+g++ -L"/daten2/Dokumente/Honda/master/eclipse_workspace/eclipse_workspace/grlvq/Debug" -shared -o "libpythoninterface.so"  ./src/intf.o   -lgrlvq -lpthread
+Finished building target: libpythoninterface.so
+ 
+
+**** Build Finished ****

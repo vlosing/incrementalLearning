@@ -1,0 +1,129 @@
+
+**** Build of configuration Build (GNU) for project online-multiclass-lpboost-master ****
+
+make all 
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/data.cpp -o src/data.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/data.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/booster.cpp -o src/booster.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/booster.h:17,
+                 from src/booster.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/ORF.cpp -o src/ORF.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/ORF.cpp:20:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+src/ORF.cpp: In function ‘int main(int, char**)’:
+src/ORF.cpp:37:9: warning: unused variable ‘classifier’ [-Wunused-variable]
+     int classifier = -1, doTraining = false, doTesting = false, doT2 = false, inputCounter = 1;
+         ^
+src/ORF.cpp:37:26: warning: unused variable ‘doTraining’ [-Wunused-variable]
+     int classifier = -1, doTraining = false, doTesting = false, doT2 = false, inputCounter = 1;
+                          ^
+src/ORF.cpp:37:46: warning: unused variable ‘doTesting’ [-Wunused-variable]
+     int classifier = -1, doTraining = false, doTesting = false, doT2 = false, inputCounter = 1;
+                                              ^
+src/ORF.cpp:37:65: warning: unused variable ‘doT2’ [-Wunused-variable]
+     int classifier = -1, doTraining = false, doTesting = false, doT2 = false, inputCounter = 1;
+                                                                 ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/utilities.cpp -o src/utilities.o
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/experimenter.cpp -o src/experimenter.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/experimenter.h:17,
+                 from src/experimenter.cpp:17:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+src/experimenter.cpp: In function ‘std::vector<Result> trainAndTest(Classifier*, DataSet&, DataSet&, Hyperparameters&)’:
+src/experimenter.cpp:252:25: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (int idx = 0; idx < results.size(); idx++) {
+                         ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/OMCBoost.cpp -o src/OMCBoost.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/OMCBoost.cpp:20:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/online_mclpboost.cpp -o src/online_mclpboost.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/online_mclpboost.h:17,
+                 from src/online_mclpboost.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/classifier.cpp -o src/classifier.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/classifier.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/online_rf.cpp -o src/online_rf.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/online_rf.h:17,
+                 from src/online_rf.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/online_mcboost.cpp -o src/online_mcboost.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/online_mcboost.h:19,
+                 from src/online_mcboost.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/hyperparameters.cpp -o src/hyperparameters.o
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include src/linear_larank.cpp -o src/linear_larank.o
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/data.h:22,
+                 from src/classifier.h:17,
+                 from src/linear_larank.h:17,
+                 from src/linear_larank.cpp:14:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include -o src/linear_larank/vectors.o src/linear_larank/vectors.cpp
+g++ -fPIC -c -O3 -Wall -march=native -DNDEBUG -mtune=native -Wno-deprecated -I/usr/local/include -I/home/viktor/local/include -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/include -o src/linear_larank/LaRank.o src/linear_larank/LaRank.cpp
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from src/linear_larank/../data.h:22,
+                 from src/linear_larank/LaRank.h:46,
+                 from src/linear_larank/LaRank.cpp:18:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+g++ src/data.o src/booster.o src/ORF.o src/utilities.o src/experimenter.o src/OMCBoost.o src/online_mclpboost.o src/classifier.o src/online_rf.o src/online_mcboost.o src/hyperparameters.o src/linear_larank.o  -L/usr/local/lib -L/home/viktor/local/lib -L/home/viktor/svn/storage/libs/libconfig/viktor-ThinkPad-T440s/lib -shared -lconfig++  src/linear_larank/LaRank.o src/linear_larank/vectors.o -o liborf.so
+
+**** Build Finished ****

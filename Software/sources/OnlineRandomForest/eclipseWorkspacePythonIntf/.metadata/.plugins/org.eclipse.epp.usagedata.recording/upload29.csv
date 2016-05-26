@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.mylyn.resources.ui,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.resources.ui",1323852286218
+started,bundle,org.eclipse.mylyn.wikitext.tasks.ui,1.3.1.v20100823-0100-e3x,"org.eclipse.mylyn.wikitext.tasks.ui",1323852286223
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323852286240
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323852286574
+error,log,,,"Connection timed out",1323852458093
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323853090525
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323853091815
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323853728769
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323853745394
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854350947
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323854353218
+started,bundle,org.python.pydev.customizations,2.0.0.2011040403,"org.python.pydev.customizations",1323854353446
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854355755
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323854364077
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323854364168
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854364396
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.selectAll",1323854365732
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323854366116
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323854368414
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854368532
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854368564
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854429376
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323854436268
+started,bundle,org.eclipse.mylyn.java.tasks,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.java.tasks",1323854439519
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323854439645

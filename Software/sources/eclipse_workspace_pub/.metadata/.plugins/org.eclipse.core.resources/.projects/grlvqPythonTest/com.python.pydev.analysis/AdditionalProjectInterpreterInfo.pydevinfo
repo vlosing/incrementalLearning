@@ -1,0 +1,72 @@
+-- VERSION_3
+-- START DISKCACHE
+/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/.metadata/.plugins/org.eclipse.core.resources/.projects/grlvqPythonTest/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+testLearning|0|/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/grlvqPythonTest/src/testLearning.py
+ArtificialDataExp|0|/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/grlvqPythonTest/src/ArtificialDataExp.py
+testDistribution|0|/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/grlvqPythonTest/src/testDistribution.py
+testCOIL|0|/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/grlvqPythonTest/src/testCOIL.py
+testLearnSystem|0|/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/grlvqPythonTest/src/testLearnSystem.py
+learnsystem|0|/hri/localdisk/vlosing/OnlineLearning/eclipse_workspace_pub/grlvqPythonTest/src/learnsystem.py
+-- END DISKCACHE
+-- START DICTIONARY
+6
+6=ArtificialDataExp
+1=testLearning
+5=testCOIL
+4=testDistribution
+3=learnsystem
+2=testLearnSystem
+-- END DICTIONARY
+-- START TREE 1
+46
+ax|4|ax!11@ax!19@ax!27@ax!35@
+coi|1|coilpath!43@
+col|4|colors!35@colors!19@colors!11@colors!27@
+cor|1|corr_counter!43@
+cov|4|cov!19@cov!11@cov!35@cov!27@
+cre|1|createNormDistData!50@
+cur|3|currobj!43@currview!43@curr_sample!43@
+dat|7|datasamples!11@datasamples!19@dataRange!35@dataRange!19@datasamples!27@dataRange!11@datasamples!35@
+dim|3|dimensionality!19@dimensionality!35@dimensionality!11@
+dis|1|dist!43@
+do_|4|do_node_random_init!19@do_node_random_init!11@do_node_random_init!43@do_node_random_init!35@
+est|1|estimatePerf!50@
+eva|1|evaldata!43@
+fai|2|failinc!11@failinc!35@
+fig|4|fig!19@fig!11@fig!35@fig!27@
+g_m|2|g_max!35@g_max!11@
+get|1|getRotationMatrix!50@
+i|3|i!35@i!11@i!19@
+img|10|imgmat2!43@imgsize!11@imgdata!43@imgmat!43@img!19@imgsize!35@img!11@imgsize!19@img!35@imgdata2!43@
+imr|2|imrange!35@imrange!11@
+lab|3|labelnr!35@label!43@labelnr!11@
+lam|6|lambda_node!19@lambda_node!11@lambdas!11@lambdas!35@lambda_node!35@lambdas!43@
+lea|4|learnrate_per_node!35@learnrate_per_node!43@learnrate_per_node!19@learnrate_per_node!11@
+mea|4|mean!11@mean!19@mean!27@mean!35@
+net|8|net1!35@nettype!43@nettype!19@nettype!35@nettype!11@net1!19@net1!11@net1!43@
+num|6|num_of_classes!11@num_of_classes!43@numofviews!43@num_of_classes!35@numofobjects!43@num_of_classes!19@
+obj|2|objstepsize!43@objnr!43@
+off|2|offset!11@offset!35@
+out|1|outfolder!51@
+ove|1|overallcounter!43@
+pat|2|path!43@path2!43@
+pos|3|pos!19@pos!35@pos!11@
+pro|8|prototype!43@protos!35@prototypes_per_class!43@protos!11@protocount!43@prototypes_per_class!35@prototypes_per_class!11@prototypes_per_class!19@
+sca|2|scaledimg!43@scaledimg2!43@
+sho|4|showEvalFullPerfII!50@showEvalFull!50@showEval!50@showEvalFullPerf!50@
+sin|1|singleperf!50@
+tda|3|tdata!11@tdata!19@tdata!35@
+thr|4|threads_per_nodes!35@threads_per_nodes!11@threads_per_nodes!43@threads_per_nodes!19@
+tra|5|traindata!43@trainsteps!43@trainsteps!19@trainsteps!35@trainsteps!11@
+vie|2|viewstepsize!43@viewnr!43@
+x1|4|x1!35@x1!27@x1!19@x1!11@
+x2|4|x2!27@x2!19@x2!11@x2!35@
+x3|3|x3!11@x3!27@x3!35@
+x4|3|x4!27@x4!35@x4!11@
+xva|3|xVals!35@xVals!19@xVals!11@
+yva|3|yVals!11@yVals!19@yVals!35@
+-- END TREE
+-- START TREE 2
+0
+-- END TREE

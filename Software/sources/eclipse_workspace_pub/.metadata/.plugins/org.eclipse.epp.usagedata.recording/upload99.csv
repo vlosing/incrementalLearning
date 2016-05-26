@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.copy",1323955475744
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955491180
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955520104
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955542838
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955556833
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955629677
+opened,view,org.eclipse.ui.ide,3.5.2.M20100113-0800,"org.eclipse.ui.views.ProblemView",1323955639059
+activated,view,org.eclipse.ui.ide,3.5.2.M20100113-0800,"org.eclipse.ui.views.ProblemView",1323955639097
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1323955641113
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955641815
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955891214
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955897218
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955906382
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323955908268
+error,log,,,"Unable to find interpreter named: python. Available: py26  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python2.6)",1323956307197
+error,log,,,"Unable to find interpreter named: python. Available: py26  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python2.6)",1323956307199
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323956331571
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323956333659
+error,log,,,"Unable to find interpreter named: python. Available: py26  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python2.6)",1323956334528
+error,log,,,"Unable to find interpreter named: python. Available: py26  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python2.6)",1323956334530
+error,log,,,"Unable to find interpreter named: python. Available: py26  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python2.6)",1323956334978
+error,log,,,"Unable to find interpreter named: python. Available: py26  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python2.6)",1323956334979
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323956335142
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323956341395
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323956343247

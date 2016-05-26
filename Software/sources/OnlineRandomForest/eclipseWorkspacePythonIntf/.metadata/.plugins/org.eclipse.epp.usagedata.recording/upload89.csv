@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945791915
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323945796980
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945822755
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945822770
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323945822811
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945834727
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945834736
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323945834777
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945835456
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945902525
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323945908367
+error,log,,,"Unhandled: ExtSlice[dims=[Slice[lower=null, upper=null, step=null], Index[value=Name[id=newaxis, ctx=Load, reserved=false]]]]",1323945916185
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323945943767
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945943769
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945943835
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323945946874
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323948552305
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323948560111
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323949153798
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323949158522
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323949203439
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323949205970
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323949208269
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323949208277
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.saveAll",1323949208329

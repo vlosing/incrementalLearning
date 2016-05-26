@@ -1,0 +1,15 @@
+what,kind,bundleId,bundleVersion,description,time
+stopped,bundle,org.eclipse.ui.net,1.2.1.r35x_20090812-1200,"org.eclipse.ui.net",1323961953296
+stopped,bundle,org.eclipse.ui.views,3.4.1.M20090826-0800,"org.eclipse.ui.views",1323961953296
+stopped,bundle,org.eclipse.wst.dtd.core,1.1.300.v200904181727,"org.eclipse.wst.dtd.core",1323961953296
+stopped,bundle,org.eclipse.wst.internet.cache,1.0.301.v200805140020,"org.eclipse.wst.internet.cache",1323961953296
+stopped,bundle,org.eclipse.cdt.managedbuilder.gnu.ui,5.0.100.201002161416,"org.eclipse.cdt.managedbuilder.gnu.ui",1323961953296
+stopped,bundle,org.eclipse.cdt.managedbuilder.core,6.0.0.201002161416,"org.eclipse.cdt.managedbuilder.core",1323961953296
+stopped,bundle,org.eclipse.jsch.ui,1.1.200.r35x_20100210-1114,"org.eclipse.jsch.ui",1323961953296
+stopped,bundle,com.atlassian.connector.eclipse.jira.core,2.2.0.v20100621,"com.atlassian.connector.eclipse.jira.core",1323961953300
+stopped,bundle,org.eclipse.mylyn.monitor.ui,3.4.1.v20110131-0100-e3x,"org.eclipse.mylyn.monitor.ui",1323961953302
+stopped,bundle,org.eclipse.ui.browser,3.2.301.v20091215_35x,"org.eclipse.ui.browser",1323961953302
+stopped,bundle,org.eclipse.ui.navigator,3.4.2.M20100120-0800,"org.eclipse.ui.navigator",1323961953302
+stopped,bundle,org.eclipse.ui.presentations.r21,3.2.100.M20091015-0930,"org.eclipse.ui.presentations.r21",1323961953302
+stopped,bundle,org.eclipse.jet,1.0.2.v201001281539,"org.eclipse.jet",1323961953302
+stopped,bundle,org.modelica.mdt.debug.core,0.7.7,"org.modelica.mdt.debug.core",1323961953302

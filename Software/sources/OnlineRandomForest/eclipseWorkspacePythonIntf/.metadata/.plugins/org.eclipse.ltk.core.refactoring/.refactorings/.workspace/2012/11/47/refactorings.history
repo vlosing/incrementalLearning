@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;grlvq_c/Debug/libgrlvq.so&apos;" deleteContents="false" description="Delete resource &apos;grlvq_c/Debug/libgrlvq.so&apos;" element1="/grlvq_c/Debug/libgrlvq.so" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1353873229571"/>
+</session>

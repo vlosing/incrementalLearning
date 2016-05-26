@@ -1,0 +1,45 @@
+
+**** Build of configuration Debug for project orfPythonIntf ****
+
+make all 
+Building file: ../src/intf.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/python2.7 -I/usr/include/python2.7/numpy -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2 -I/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eclipseWorkspacePythonIntf/orfAdaptedToPythonIntf/src -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/intf.d" -MT"src/intf.d" -o "src/intf.o" "../src/intf.cpp"
+In file included from /usr/include/python2.7/numpy/ndarraytypes.h:1761:0,
+                 from /usr/include/python2.7/numpy/ndarrayobject.h:17,
+                 from /usr/include/python2.7/numpy/arrayobject.h:4,
+                 from ../src/intf.cpp:5:
+/usr/include/python2.7/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+ #warning "Using deprecated NumPy API, disable it by " \
+  ^
+In file included from /home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/Core:96:0,
+                 from ../src/intf.cpp:10:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h: In function ‘Integer Eigen::ei_alignmentOffset(const Scalar*, Integer)’:
+/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eigen/install/include/eigen2/Eigen/src/Core/util/Memory.h:231:51: warning: typedef ‘Packet’ locally defined but not used [-Wunused-local-typedefs]
+   typedef typename ei_packet_traits<Scalar>::type Packet;
+                                                   ^
+../src/intf.cpp: In function ‘void fitORF(OnlineRF*, double*, int*, int*, const int&, const int&, const int&)’:
+../src/intf.cpp:44:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i=0; i< predictedTrainLabels.size(); i++){
+                 ^
+../src/intf.cpp: In function ‘std::vector<int> predictORF_intern(OnlineRF*, std::vector<Sample>&, const int&)’:
+../src/intf.cpp:51:28: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int nSamp = 0; nSamp < samples.size(); nSamp++) {
+                            ^
+../src/intf.cpp: In function ‘void predictORF(OnlineRF*, const double*, int*, const int&, const int&, const int&)’:
+../src/intf.cpp:73:17: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (int i=0; i< labelsVec.size(); i++){
+                 ^
+../src/intf.cpp: In function ‘void initliborfPythonIntf()’:
+../src/intf.cpp:302:12: warning: unused variable ‘myclass’ [-Wunused-variable]
+  PyObject* myclass = Py_InitModule3("liborfPythonIntf", ORF_methods,
+            ^
+Finished building: ../src/intf.cpp
+ 
+Building target: liborfPythonIntf.so
+Invoking: GCC C++ Linker
+g++ -L/home/viktor/svn/viktlosi/Software/sources/OnlineRandomForest/eclipseWorkspacePythonIntf/orfAdaptedToPythonIntf -shared -o "liborfPythonIntf.so"  ./src/intf.o   -lorfAdaptedToPythonIntf
+Finished building target: liborfPythonIntf.so
+ 
+
+**** Build Finished ****

@@ -1,0 +1,14 @@
+/*
+ * test.c
+ *
+ *  Created on: 25.11.2012
+ *      Author: jfq
+ */
+
+
+#include "testlib.h"
+
+void test()
+{
+	printf("test");
+}

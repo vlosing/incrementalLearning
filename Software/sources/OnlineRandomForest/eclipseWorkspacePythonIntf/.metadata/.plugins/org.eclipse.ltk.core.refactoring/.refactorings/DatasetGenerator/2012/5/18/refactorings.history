@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;DatasetGenerator/src/OnlineTrainingNoSVM_trainiter150_nocontext_histeval.py&apos; to &apos;Dohisteval.py&apos;" description="Rename resource &apos;OnlineTrainingNoSVM_trainiter150_nocontext_histeval.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/OnlineTrainingNoSVM_trainiter150_nocontext_histeval.py" name="Dohisteval.py" stamp="1336137154090" updateReferences="true"/>
+</session>

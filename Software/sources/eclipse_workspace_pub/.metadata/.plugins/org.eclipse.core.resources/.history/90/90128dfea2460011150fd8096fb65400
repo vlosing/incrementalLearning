@@ -1,0 +1,261 @@
+'''
+Created on Dec 12, 2011
+
+@author: jqueisse
+'''
+
+import Simulator.DatasetGenerator, Simulator.SimulatorScene, time, os, numpy, scipy.misc, socket
+import cPickle as pickle
+import pylab
+import subprocess
+
+
+def createDataset(shadows, timesimulation, autumnActivation, isFactory=True, numberOfRuns=3000 ):
+
+    if isFactory==True:
+        scene = Simulator.SimulatorScene.FactoryScene1()
+    else:
+        scene = Simulator.SimulatorScene.HomeScene3()
+
+    random_init_file=""
+    no_img_in_pickle=True
+
+
+    '''
+    Determine output folder:
+    '''
+    outputfolderroot = "/hri/localdisk/jqueisse/datasets/"
+    strshadow="shadows"
+    if not shadows:strshadow="noShadows"
+    strtimesim="timesimulation"
+    if not timesimulation: strtimesim="noTimesimulation"
+    foldername = scene.getName()+"_"+strshadow+"_"+strtimesim+"_autumn"+str(numpy.int(autumnActivation*10))+"_run"
+
+
+    ready=False
+    counter=1
+    outputfolder=""
+    while(not ready):
+        outputfolder=outputfolderroot+foldername+str(numpy.int(counter))
+        if not os.path.exists(outputfolder):
+            os.mkdir(outputfolder)
+            ready=True
+
+        counter +=1
+
+
+
+
+
+    '''
+    Load random initialization:
+    '''
+    random_generator_startstate=[]
+    if len(random_init_file)>0:
+        ptr=open( random_init_file, "rb" )
+        random_generator_startstate = pickle.load( ptr )
+        ptr.close()
+
+
+    '''
+    Init Simulation:
+    '''
+    generator = Simulator.DatasetGenerator.SceneAnimator(scene, autumnActivation, shadows, random_generator_startstate)
+    time.sleep(1)
+    generator.saveTestImg()
+
+    '''
+    Save random initialization value:
+    '''
+    ptr = open( outputfolder + "/randominit.p", "wb" )
+    pickle.dump(generator.random_generator_startstate, ptr)
+    ptr.close()
+
+    '''
+    Start Simulation:
+    '''
+    lasttime=time.time()
+    for num in range(numberOfRuns):
+        generator.doStep(timesimulation)
+        #generator.getImage(num=num, depth=True, lookFromTop=False)
+        currcontext = generator.getContext()
+
+        '''
+        Save data:
+        '''
+
+        scipy.misc.toimage(currcontext.camImg).save(outputfolder + "/view_"+str(numpy.int(num))+".png")
+        currcontext.depthMap[currcontext.depthMap>80]=80
+        scipy.misc.toimage(currcontext.depthMap, cmin=0, cmax=80).save(outputfolder + "/depth_"+str(numpy.int(num))+".png", cmin=0, cmax=255)
+        scipy.misc.toimage(currcontext.idMap, cmin=0, cmax=255).save(outputfolder + "/ids_"+str(numpy.int(num))+".png", cmin=0, cmax=255)
+
+        #im = pylab.imshow(scipy.misc.toimage(currcontext.depthMap, cmin=0, cmax=255), origin='lower', vmin=0, vmax=255)
+        #pylab.gray()
+
+        #pylab.show()
+
+        if no_img_in_pickle==True:
+            currcontext.camImg=[]
+            currcontext.depthMap=[]
+            currcontext.idMap=[]
+        Simulator.DatasetGenerator.WriteContext(outputfolder + "/context_"+str(numpy.int(num))+".p", currcontext)
+
+
+        '''
+        FPS calculation:
+        '''
+        if (num%10)==0:
+            ntime = time.time()
+            print "%i Frames: %.2ffps - %.2f Percent"%(num,(10./(ntime-lasttime)),(float(num)/float(numberOfRuns))*100.)
+            lasttime = ntime
+
+
+    n=0
+
+    print "Finish !"
+
+    generator.controller.clearWorkspace()
+    generator.controller.closeConnection()
+    #del generator
+    #subprocess.call(["pkill", "hsimulator"])
+
+
+    return outputfolder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+
+
+    numberOfRuns=3000
+    shadows = True
+    timesimulation = True
+    autumnActivation = 0.7
+    #scene = Simulator.SimulatorScene.FactoryScene1()
+    scene = Simulator.SimulatorScene.HomeScene1()
+    random_init_file=""
+    no_img_in_pickle=True
+
+
+    '''
+    Determine output folder:
+    '''
+    outputfolderroot = "/hri/localdisk/jqueisse/datasets/"
+    strshadow="shadows"
+    if not shadows:strshadow="noShadows"
+    strtimesim="timesimulation"
+    if not timesimulation: strtimesim="noTimesimulation"
+    foldername = scene.getName()+"_"+strshadow+"_"+strtimesim+"_autumn"+str(numpy.int(autumnActivation*10))+"_run"
+
+
+    ready=False
+    counter=1
+    outputfolder=""
+    while(not ready):
+        outputfolder=outputfolderroot+foldername+str(numpy.int(counter))
+        if not os.path.exists(outputfolder):
+            os.mkdir(outputfolder)
+            ready=True
+
+        counter +=1
+
+
+
+
+
+    '''
+    Load random initialization:
+    '''
+    random_generator_startstate=[]
+    if len(random_init_file)>0:
+        ptr=open( random_init_file, "rb" )
+        random_generator_startstate = pickle.load( ptr )
+        ptr.close()
+
+
+    '''
+    Init Simulation:
+    '''
+    generator = Simulator.DatasetGenerator.SceneAnimator(scene, autumnActivation, shadows, random_generator_startstate)
+    time.sleep(1)
+    generator.saveTestImg()
+
+    '''
+    Save random initialization value:
+    '''
+    ptr = open( outputfolder + "/randominit.p", "wb" )
+    pickle.dump(generator.random_generator_startstate, ptr)
+    ptr.close()
+
+    '''
+    Start Simulation:
+    '''
+    lasttime=time.time()
+    for num in range(numberOfRuns):
+        generator.doStep(timesimulation)
+        #generator.getImage(num=num, depth=True, lookFromTop=False)
+        currcontext = generator.getContext()
+
+        '''
+        Save data:
+        '''
+
+        scipy.misc.toimage(currcontext.camImg).save(outputfolder + "/view_"+str(numpy.int(num))+".png")
+        currcontext.depthMap[currcontext.depthMap>80]=80
+        scipy.misc.toimage(currcontext.depthMap, cmin=0, cmax=80).save(outputfolder + "/depth_"+str(numpy.int(num))+".png", cmin=0, cmax=255)
+        scipy.misc.toimage(currcontext.idMap, cmin=0, cmax=255).save(outputfolder + "/ids_"+str(numpy.int(num))+".png", cmin=0, cmax=255)
+
+        #im = pylab.imshow(scipy.misc.toimage(currcontext.depthMap, cmin=0, cmax=255), origin='lower', vmin=0, vmax=255)
+        #pylab.gray()
+
+        #pylab.show()
+
+        if no_img_in_pickle==True:
+            currcontext.camImg=[]
+            currcontext.depthMap=[]
+            currcontext.idMap=[]
+        Simulator.DatasetGenerator.WriteContext(outputfolder + "/context_"+str(numpy.int(num))+".p", currcontext)
+
+
+        '''
+        FPS calculation:
+        '''
+        if (num%10)==0:
+            ntime = time.time()
+            print "%i Frames: %.2ffps - %.2f Percent"%(num,(10./(ntime-lasttime)),(float(num)/float(numberOfRuns))*100.)
+            lasttime = ntime
+
+
+    n=0
+
+    print "Finish !"
+
+
+    while False:
+        #print "waiting";
+        #time.sleep(0.3);
+        try:
+            generator.doStep(timesimulation)
+        except socket.error:
+            print "Abort !"
+            break
+
+
+    #del generator
+    #subprocess.call(["pkill", "hsimulator"])

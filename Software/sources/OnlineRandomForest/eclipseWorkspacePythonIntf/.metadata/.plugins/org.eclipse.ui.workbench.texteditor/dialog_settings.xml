@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item value="309" key="DIALOG_WIDTH"/>
+		<item value="565" key="DIALOG_Y_ORIGIN"/>
+		<item value="435" key="DIALOG_HEIGHT"/>
+		<item value="913" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Oxygen-Sans Sans-Book|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item value="true" key="wrap"/>
+		<item value="false" key="isRegEx"/>
+		<item value="false" key="casesensitive"/>
+		<item value="false" key="incremental"/>
+		<item value="false" key="wholeword"/>
+		<item value="Linear" key="selection"/>
+		<list key="findhistory">
+			<item value="linear"/>
+			<item value="linearWeightedLabels"/>
+			<item value="linearWeighted"/>
+			<item value="linearWe"/>
+			<item value="1/distances"/>
+			<item value="getNToNDistances"/>
+			<item value="distances2"/>
+			<item value="distances"/>
+		</list>
+		<list key="replacehistory">
+			<item value="NETMODE_LAMBDA"/>
+		</list>
+	</section>
+</section>

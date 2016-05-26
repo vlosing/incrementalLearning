@@ -1,0 +1,118 @@
+/*
+ * Network.cpp
+ *
+ *  Created on: Jan 25, 2012
+ *      Author: jqueisse
+ */
+
+#include "Network.h"
+
+Network::Network(Mode mode, unsigned int dimensionality,bool learnrate_per_node, unsigned int protocount, unsigned int maxsamples, unsigned int maxthreads, unsigned int initialdimensions): dimensionality(dimensionality), max_threads(maxthreads)
+{
+
+	epsilon_lambda = epsilon_lambda_start =0.001;
+	epsilon = epsilon_start =0.1;
+	lamdas=NULL;
+	this->mode=mode;
+	this->learnrate_per_node=learnrate_per_node;
+
+	incremental_fail_count=0;
+
+	this->maxsamples=maxsamples;
+	datasamples=0;
+
+	min_proto_count=protocount;
+
+	PROTOFRMT targetval;
+	if (initialdimensions<1)
+	{
+		targetval= sqrt(1.0/dimensionality);
+	}
+	else
+	{
+		targetval= sqrt(1.0/initialdimensions);
+	}
+	switch(mode)
+	{
+	case RLVQ:
+	case GRLVQ:
+		lamdas  = new PROTOFRMT[dimensionality];
+		for (unsigned int i=0; i<dimensionality; i++)
+		{
+			if (initialdimensions<1)
+			{
+				lamdas[i] = 1./dimensionality;
+			}
+			else
+			{
+				if (i<initialdimensions)
+				{
+					lamdas[i] = 1./initialdimensions;
+				}
+				else
+				{
+					lamdas[i] = 0;
+				}
+			}
+		}
+		break;
+
+	case GMLVQ:
+		lamdas  = new PROTOFRMT[dimensionality*dimensionality*2];
+		for (unsigned int i=0; i<dimensionality; i++)
+		{
+			for (unsigned int j=0; j<dimensionality; j++)
+			{
+				if (i==j)
+					if (initialdimensions<1)
+					{
+						lamdas[i*dimensionality+j] = targetval;
+					}
+					else
+					{
+						if (i<initialdimensions)
+						{
+							lamdas[i*dimensionality+j] = targetval;
+						}
+						else
+						{
+							lamdas[i*dimensionality+j] = 0;
+						}
+					}
+				else
+					lamdas[i*dimensionality+j]=0;
+			}
+		}
+		refreshGmlvqLamdas();
+		break;
+
+	case LGRLVQ:
+	case LGMLVQ:
+		lamdas=NULL;
+		break;
+	default:
+		std::cout << "Failure: Network::Network(): Unknown mode of operation!";
+
+
+	}
+
+
+
+	refreshEpsilon();
+}
+
+Network::~Network()
+{
+	if(lamdas)delete[] lamdas;
+
+	for (unsigned int i=0; i<prototype.size(); i++)
+	{
+		if ((mode==LGRLVQ)||(mode==LGMLVQ)) delete [] prototype[i]->lamdas;
+
+		delete prototype[i];
+	}
+
+	prototype.clear();
+
+	incremental_failed_prototypes.clear();
+}

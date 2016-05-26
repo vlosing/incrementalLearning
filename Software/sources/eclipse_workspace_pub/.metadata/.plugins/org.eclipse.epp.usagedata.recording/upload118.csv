@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323958970061
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323958975054
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323958977232
+error,log,,,"Unable to find interpreter named: test. Available: py266  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python)",1323958980943
+error,log,,,"Unable to find interpreter named: test. Available: py266  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python)",1323958981073
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323958981276
+error,log,,,"Unable to find interpreter named: test. Available: py266  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python)",1323958983453
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323958988145
+started,bundle,org.eclipse.cdt.debug.mi.ui,6.0.0.201002161416,"org.eclipse.cdt.debug.mi.ui",1323958988295
+started,bundle,org.eclipse.cdt.debug.mi.core,6.0.0.201002161416,"org.eclipse.cdt.debug.mi.core",1323958988334
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323959008408
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323959008432
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323959018470
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323959018494
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323959024310
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323959024334
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323959030065
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323959038954
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323959048757
+error,log,,,"Connection timed out",1323959072109
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323959074771
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1323959078499
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323959078600
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1323959092402
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323959092467

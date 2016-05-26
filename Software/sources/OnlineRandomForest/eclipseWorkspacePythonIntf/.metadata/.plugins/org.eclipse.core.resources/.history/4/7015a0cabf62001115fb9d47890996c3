@@ -1,0 +1,31 @@
+'''
+Created on Feb 29, 2012
+
+@author: jqueisse
+'''
+
+import numpy
+import matplotlib
+import matplotlib.pyplot as plt
+
+
+def createNormDistData(samples, mean=(0,0), var=(1,1), rotation=0):
+    mean = (1,2)
+    cov =   [[var[0],-0],
+             [-0,var[1]]]
+    return numpy.random.multivariate_normal(mean,cov,(samples))
+
+
+
+if __name__ == '__main__':
+
+
+    samples = createNormDistData(100)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, aspect='equal')
+    ax.hold(True)
+    ax.plot(samples[:,0], samples[:,1], '1b',)
+    ax.set_title('Data Input')
+
+    plt.show()

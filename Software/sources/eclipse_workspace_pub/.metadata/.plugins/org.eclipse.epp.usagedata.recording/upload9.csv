@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+closed,editor,org.eclipse.ui.editors,3.5.0.v20090527-2000,"org.eclipse.ui.DefaultTextEditor",1323850497060
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850500949
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850502057
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323850508233
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850509662
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850527549
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850531335
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850533219
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850534605
+error,log,,,"Usage Data wasn't uploaded because of an exception.",1323850686316
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850750098
+activated,view,org.eclipse.ui.ide,3.5.2.M20100113-0800,"org.eclipse.ui.views.ProblemView",1323850766317
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1323850767175
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323850771485
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323851111787
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323851117060
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323851117218
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323851117245
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323851133086
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323851133118
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323851149599
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.edit.paste",1323851237680
+error,log,,,"Unable to find interpreter named: python 2.6. Available: python  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python)",1323851256907
+error,log,,,"Unable to find interpreter named: python 2.6. Available: python  (/hri/sit/builds/2011-08-16_17-00-00/External/python/2.6.6/lucid32/bin/python)",1323851256909
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323851258017

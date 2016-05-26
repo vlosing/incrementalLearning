@@ -1,0 +1,122 @@
+
+**** Clean-only build of configuration Debug for project NNPythonIntf ****
+
+make clean 
+rm -rf  ./src/intf.o  ./src/intf.d  libNNPythonIntf.so
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project NNPythonIntf ****
+
+make all 
+Building file: ../src/intf.cpp
+Invoking: GCC C++ Compiler
+g++ -I/usr/include/python2.7 -I/usr/include/python2.7/numpy -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"src/intf.d" -MT"src/intf.d" -o "src/intf.o" "../src/intf.cpp"
+In file included from /usr/include/python2.7/numpy/ndarraytypes.h:1761:0,
+                 from /usr/include/python2.7/numpy/ndarrayobject.h:17,
+                 from /usr/include/python2.7/numpy/arrayobject.h:4,
+                 from ../src/intf.cpp:2:
+/usr/include/python2.7/numpy/npy_1_7_deprecated_api.h:15:2: warning: #warning "Using deprecated NumPy API, disable it by " "#defining NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION" [-Wcpp]
+ #warning "Using deprecated NumPy API, disable it by " \
+  ^
+../src/intf.cpp: In function ‘void nArgMin(const int&, const double*, int*, const int&)’:
+../src/intf.cpp:24:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<n; i++){
+                          ^
+../src/intf.cpp:26:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+   for (unsigned int j=0; j<numValues; j++){
+                           ^
+../src/intf.cpp:30:20: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+      if (indices[k]==j){
+                    ^
+../src/intf.cpp: In function ‘void nArgMinN(const int&, const double*, int*, const int&, const int&)’:
+../src/intf.cpp:43:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<nRows; i++)
+                          ^
+../src/intf.cpp: In function ‘void mostCommon(const int*, int*, const int&)’:
+../src/intf.cpp:51:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numValues; i++)
+                          ^
+../src/intf.cpp: In function ‘void mostCommonN(const int*, int*, const int&, const int&)’:
+../src/intf.cpp:73:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<nRows; i++)
+                          ^
+../src/intf.cpp: In function ‘void linearWeightedLabels(const int*, const double*, int*, const int&)’:
+../src/intf.cpp:81:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numValues; i++)
+                          ^
+../src/intf.cpp: In function ‘void linearWeightedLabelsN(const int*, const double*, int*, const int&, const int&)’:
+../src/intf.cpp:102:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<nRows; i++)
+                          ^
+../src/intf.cpp: In function ‘void argSort(const double*, int*, const int&)’:
+../src/intf.cpp:111:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numValues; i++)
+                          ^
+../src/intf.cpp:118:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numValues; i++)
+                          ^
+../src/intf.cpp: In function ‘void argSort2(const double*, int*, const int&)’:
+../src/intf.cpp:160:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numValues; i++){
+                          ^
+../src/intf.cpp:165:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numValues; i++){
+                          ^
+../src/intf.cpp: In function ‘void argSortN(const double*, int*, const int&, const int&)’:
+../src/intf.cpp:171:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numRows; i++)
+                          ^
+../src/intf.cpp: In function ‘double get1To1Distance2(const double*, const double*, const int&)’:
+../src/intf.cpp:181:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numFeatures; i++)
+                          ^
+../src/intf.cpp: In function ‘void get1ToNDistancesIntern2(const double*, const double*, double*, const int&, const int&)’:
+../src/intf.cpp:190:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numSamples; i++){
+                          ^
+../src/intf.cpp: In function ‘void getNToNDistancesIntern(const double*, const double*, double*, const int&, const int&, const int&)’:
+../src/intf.cpp:196:26: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+  for (unsigned int i=0; i<numSamples; i++){
+                          ^
+../src/intf.cpp: In function ‘PyObject* py_mostCommon(PyObject*, PyObject*)’:
+../src/intf.cpp:414:12: warning: unused variable ‘result’ [-Wunused-variable]
+  PyObject *result = Py_BuildValue("O", matIndices);
+            ^
+../src/intf.cpp: In function ‘PyObject* py_getLinearWeightedLabels(PyObject*, PyObject*)’:
+../src/intf.cpp:452:12: warning: unused variable ‘result’ [-Wunused-variable]
+  PyObject *result = Py_BuildValue("O", matResultLabels);
+            ^
+../src/intf.cpp: In function ‘void initlibNNPythonIntf()’:
+../src/intf.cpp:486:12: warning: unused variable ‘myclass’ [-Wunused-variable]
+  PyObject* myclass = Py_InitModule3("libNNPythonIntf", NN_methods,
+            ^
+../src/intf.cpp: In function ‘PyObject* py_mostCommon(PyObject*, PyObject*)’:
+../src/intf.cpp:417:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../src/intf.cpp: In function ‘PyObject* py_getLinearWeightedLabels(PyObject*, PyObject*)’:
+../src/intf.cpp:455:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+In file included from ../src/intf.cpp:1:0:
+../src/intf.cpp: At global scope:
+../src/intf.cpp:308:14: warning: ‘py_get1ToNDistances__doc__’ defined but not used [-Wunused-variable]
+ PyDoc_STRVAR(py_get1ToNDistances__doc__,
+              ^
+/usr/include/python2.7/Python.h:170:37: note: in definition of macro ‘PyDoc_VAR’
+ #define PyDoc_VAR(name) static char name[]
+                                     ^
+../src/intf.cpp:308:1: note: in expansion of macro ‘PyDoc_STRVAR’
+ PyDoc_STRVAR(py_get1ToNDistances__doc__,
+ ^
+Finished building: ../src/intf.cpp
+ 
+Building target: libNNPythonIntf.so
+Invoking: GCC C++ Linker
+g++ -shared -o "libNNPythonIntf.so"  ./src/intf.o   
+Finished building target: libNNPythonIntf.so
+ 
+
+**** Build Finished ****

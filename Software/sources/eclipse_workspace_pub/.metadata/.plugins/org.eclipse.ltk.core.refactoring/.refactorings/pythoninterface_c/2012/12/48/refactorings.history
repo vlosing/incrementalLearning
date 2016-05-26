@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;pythoninterface_c/src/intf.cpp&apos; to &apos;intf.c&apos;" description="Rename resource &apos;intf.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/intf.cpp" name="intf.c" stamp="1354464800571" updateReferences="true"/>
+</session>

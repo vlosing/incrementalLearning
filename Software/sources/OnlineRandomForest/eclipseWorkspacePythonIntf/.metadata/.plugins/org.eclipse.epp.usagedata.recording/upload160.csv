@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.emf.ecore.xmi,2.5.0.v200906151043,"org.eclipse.emf.ecore.xmi",1323962097922
+started,bundle,org.eclipse.wst.common.emfworkbench.integration,1.1.301.v200908101600,"org.eclipse.wst.common.emfworkbench.integration",1323962097927
+started,bundle,org.eclipse.wst.common.modulecore,1.1.301.v201001252130,"org.eclipse.wst.common.modulecore",1323962098009
+error,log,,,"Project facet jst.web has not been defined. It is used in plugin org.eclipse.wst.jsdt.web.core.",1323962098061
+started,bundle,org.eclipse.wst.ws.service.policy,1.0.103.v200905151848,"org.eclipse.wst.ws.service.policy",1323962098076
+started,bundle,org.eclipse.wst.command.env,1.0.408.v200903110045,"org.eclipse.wst.command.env",1323962098101
+started,bundle,org.eclipse.wst.ws,1.1.103.v200903111822,"org.eclipse.wst.ws",1323962098102
+started,bundle,org.eclipse.dltk.console.ui,1.0.0.v20090610-1638,"org.eclipse.dltk.console.ui",1323962098644
+started,bundle,org.eclipse.dltk.tcl.ui,1.0.0.v20090617-1157,"org.eclipse.dltk.tcl.ui",1323962098645
+started,bundle,org.eclipse.dltk.validators.ui,1.0.0.v20090610-1638,"org.eclipse.dltk.validators.ui",1323962098655
+executed,command,org.eclipse.ui,3.5.2.M20100120-0800,"org.eclipse.ui.file.refresh",1323962100244
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323962147909
+executed,command,,,"org.python.pydev.debug.ui.launchShortcut.python.run",1323962150488
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323962153256
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323962153480
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323962153836
+opened,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323962154022
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323962163316
+activated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323962184856
+activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1323962188704
+activated,view,org.python.pydev,2.0.0.2011040403,"org.python.pydev.navigator.view",1323962197137
+deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1323962210118
+started,bundle,org.eclipse.wst.jsdt.manipulation,1.0.100.v200809240707,"org.eclipse.wst.jsdt.manipulation",1323962211812
+started,bundle,org.eclipse.wst.jsdt.core,1.0.201.v2010012803,"org.eclipse.wst.jsdt.core",1323962212192
+started,bundle,org.eclipse.wst.jsdt.ui,1.0.201.v2010012803,"org.eclipse.wst.jsdt.ui",1323962212457

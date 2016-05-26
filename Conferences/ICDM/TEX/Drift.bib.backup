@@ -1,0 +1,827 @@
+
+IEEEexample.bib 
+V1.12 (2007/01/11)
+Copyright (c) 2002-2007 by Michael Shell
+See: http://www.michaelshell.org/
+for current contact information.
+
+This is an example BibTeX database for the official IEEEtran.bst
+BibTeX style file.
+
+Some entries call strings that are defined in the IEEEabrv.bib file.
+Therefore, IEEEabrv.bib should be loaded prior to this file. 
+Usage: 
+
+\bibliographystyle{./IEEEtran}
+\bibliography{./IEEEabrv,./IEEEexample}
+
+
+Support sites:
+http://www.michaelshell.org/tex/ieeetran/
+http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+and/or
+http://www.ieee.org/
+
+*************************************************************************
+Legal Notice:
+This code is offered as-is without any warranty either expressed or
+implied; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE! 
+User assumes all risk.
+In no event shall IEEE or any contributor to this code be liable for
+any damages or losses, including, but not limited to, incidental,
+consequential, or any other damages, resulting from the use or misuse
+of any information contained here.
+
+All comments are the opinions of their respective authors and are not
+necessarily endorsed by the IEEE.
+
+This work is distributed under the LaTeX Project Public License (LPPL)
+( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+distributed and modified. A copy of the LPPL, version 1.3, is included
+in the base LaTeX documentation of all distributions of LaTeX released
+2003/12/01 or later.
+Retain all contribution notices and credits.
+** Modified files should be clearly indicated as such, including  **
+** renaming them and changing author support contact information. **
+
+File list of work: IEEEabrv.bib, IEEEfull.bib, IEEEexample.bib,
+                   IEEEtran.bst, IEEEtranS.bst, IEEEtranSA.bst,
+                   IEEEtranN.bst, IEEEtranSN.bst, IEEEtran_bst_HOWTO.pdf
+*************************************************************************
+
+
+Note that, because the example references were taken from actual IEEE
+publications, these examples do not always contain the full amount
+of information that may be desirable (for use with other BibTeX styles).
+In particular, full names (not abbreviated with initials) should be
+entered whenever possible as some (non-IEEE) bibliography styles use
+full names. IEEEtran.bst will automatically abbreviate when it encounters
+full names.
+ 
+ 
+ 
+ 
+
+@inproceedings{Street:2001:SEA:502512.502568,
+ author = {Street, W. Nick and Kim, YongSeog},
+ title = {A Streaming Ensemble Algorithm (SEA) for Large-scale Classification},
+ booktitle = {Proceedings of the Seventh ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+ series = {KDD '01},
+ year = {2001},
+ isbn = {1-58113-391-X},
+ location = {San Francisco, California},
+ pages = {377--382},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/502512.502568},
+ doi = {10.1145/502512.502568},
+ acmid = {502568},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {ensemble classification, streaming data},
+}
+
+@inproceedings{Bifet:2013:EDS:2480362.2480516,
+ author = {Bifet, Albert and Pfahringer, Bernhard and Read, Jesse and Holmes, Geoff},
+ title = {Efficient Data Stream Classification via Probabilistic Adaptive Windows},
+ booktitle = {Proceedings of the 28th Annual ACM Symposium on Applied Computing},
+ series = {SAC '13},
+ year = {2013},
+ isbn = {978-1-4503-1656-9},
+ location = {Coimbra, Portugal},
+ pages = {801--806},
+ numpages = {6},
+ url = {http://doi.acm.org/10.1145/2480362.2480516},
+ doi = {10.1145/2480362.2480516},
+ acmid = {2480516},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@ARTICLE{5975223, 
+author={R. Elwell and R. Polikar}, 
+journal={IEEE Transactions on Neural Networks}, 
+title={Incremental Learning of Concept Drift in Nonstationary Environments}, 
+year={2011}, 
+volume={22}, 
+number={10}, 
+pages={1517-1531}, 
+keywords={learning (artificial intelligence);pattern classification;Learn++.NSE algorithm;classifier-based approach;concept drift learning;dynamically weighted majority voting;incremental learning;nonstationary environment characteristics;Algorithm design and analysis;Heuristic algorithms;Humans;Knowledge based systems;Machine learning;Training;Tuning;Concept drift;incremental learning;learning in nonstationary environments;multiple classifier systems;Algorithms;Artificial Intelligence;Automatic Data Processing;Environment;Humans;Learning;Models, Neurological;Neural Networks (Computer);Nonlinear Dynamics}, 
+doi={10.1109/TNN.2011.2160459}, 
+ISSN={1045-9227}, 
+month={Oct},}
+
+@article{harries1999splice,
+  title={Splice-2 comparative evaluation: Electricity pricing},
+  author={Harries, Michael and Wales, New South},
+  year={1999},
+  publisher={Citeseer}
+}
+@inproceedings{baena2006early,
+  title={Early drift detection method},
+  author={Baena-Garc{\i}a, Manuel and del Campo-{\'A}vila, Jos{\'e} and Fidalgo, Ra{\'u}l and Bifet, Albert and Gavalda, R and Morales-Bueno, R},
+  booktitle={Fourth international workshop on knowledge discovery from data streams},
+  volume={6},
+  pages={77--86},
+  year={2006}
+}
+@incollection{kuncheva2008adaptive,
+  title={Adaptive learning rate for online linear discriminant classifiers},
+  author={Kuncheva, Ludmila I and Plumpton, Catrin O},
+  booktitle={Structural, Syntactic, and Statistical Pattern Recognition},
+  pages={510--519},
+  year={2008},
+  publisher={Springer}
+}
+
+@incollection{gama2004learning,
+  title={Learning with drift detection},
+  author={Gama, Joao and Medas, Pedro and Castillo, Gladys and Rodrigues, Pedro},
+  booktitle={Advances in artificial intelligence--SBIA 2004},
+  pages={286--295},
+  year={2004},
+  publisher={Springer}
+}
+
+@article{zliobaite2013good,
+  title={How good is the electricity benchmark for evaluating concept drift adaptation},
+  author={Zliobaite, Indre},
+  journal={arXiv preprint arXiv:1301.3524},
+  year={2013}
+}
+@book{kohonen-self-organizing-maps-2001,
+  added-at = {2010-06-28T21:14:25.000+0200},
+  address = {Berlin},
+  author = {Kohonen, Teuvo},
+  biburl = {http://www.bibsonomy.org/bibtex/288cd8358c519cf9615363b69d91db66e/mhwombat},
+  citeulike-article-id = {190492},
+  citeulike-linkout-0 = {http://www.amazon.ca/exec/obidos/redirect?tag=citeulike09-20\&amp;path=ASIN/3540679219},
+  citeulike-linkout-1 = {http://www.amazon.de/exec/obidos/redirect?tag=citeulike01-21\&amp;path=ASIN/3540679219},
+  citeulike-linkout-10 = {http://www.worldcat.org/oclc/45284682},
+  citeulike-linkout-2 = {http://www.amazon.fr/exec/obidos/redirect?tag=citeulike06-21\&amp;path=ASIN/3540679219},
+  citeulike-linkout-3 = {http://www.amazon.jp/exec/obidos/ASIN/3540679219},
+  citeulike-linkout-4 = {http://www.amazon.co.uk/exec/obidos/ASIN/3540679219/citeulike00-21},
+  citeulike-linkout-5 = {http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/3540679219},
+  citeulike-linkout-6 = {http://www.worldcat.org/isbn/3540679219},
+  citeulike-linkout-7 = {http://books.google.com/books?vid=ISBN3540679219},
+  citeulike-linkout-8 = {http://www.amazon.com/gp/search?keywords=3540679219\&index=books\&linkCode=qs},
+  citeulike-linkout-9 = {http://www.librarything.com/isbn/3540679219},
+  day = 28,
+  edition = {3rd},
+  groups = {public},
+  howpublished = {Paperback},
+  interhash = {ccad3f96b0b87d57743319ef020caec9},
+  intrahash = {88cd8358c519cf9615363b69d91db66e},
+  isbn = {9783540679219},
+  keywords = {SOM kohonen},
+  month = {December},
+  posted-at = {2010-06-26 08:29:47},
+  priority = {2},
+  publisher = {Springer},
+  series = {Springer series in information sciences, 30},
+  timestamp = {2010-06-28T21:14:25.000+0200},
+  title = {Self-organizing maps},
+  username = {mhwombat},
+  year = 2001
+}
+
+@inproceedings{kmeans,
+  added-at = {2007-08-23T16:58:27.000+0200},
+  author = {MacQueen, J. B.},
+  biburl = {http://www.bibsonomy.org/bibtex/25dcdb8cd9fba78e0e791af619d61d66d/gromgull},
+  booktitle = {Proc. of the fifth Berkeley Symposium on Mathematical Statistics and Probability},
+  editor = {Cam, L. M. Le and Neyman, J.},
+  interhash = {8d7d4dfe7d3a06b8c9c3c2bb7aa91e28},
+  intrahash = {5dcdb8cd9fba78e0e791af619d61d66d},
+  keywords = {kmeans},
+  publisher = {University of California Press},
+  timestamp = {2007-08-23T16:58:27.000+0200},
+  title = {Some Methods for Classification and Analysis of MultiVariate Observations},
+  volume = 1,
+  year = 1967
+}
+@article{hierarchicalclustering,
+  added-at = {2007-03-19T12:27:24.000+0100},
+  author = {Johnson, S. C.},
+  biburl = {http://www.bibsonomy.org/bibtex/2f9f4354c92b4b9cf9006d07c8b39b127/gromgull},
+  interhash = {3f760d0a92a3fe386b3ad9139cfcd981},
+  intrahash = {f9f4354c92b4b9cf9006d07c8b39b127},
+  journal = {Psychometrika},
+  keywords = {classic clustering hierarchical},
+  timestamp = {2007-03-19T12:27:24.000+0100},
+  title = {Hierarchical Clustering Schemes},
+  volume = 2,
+  year = 1967
+}
+@article{DBLP:journals/neco/WitoelarGVHB10,
+  author    = {Aree Witoelar and
+               Anarta Ghosh and
+               J. J. G. de Vries and
+               Barbara Hammer and
+               Michael Biehl},
+  title     = {Window-Based Example Selection in Learning Vector Quantization},
+  journal   = {Neural Computation},
+  volume    = {22},
+  number    = {11},
+  year      = {2010},
+  doi       = {10.1162/NECO_a_00030},
+  timestamp = {Mon, 29 Nov 2010 00:00:00 +0100},
+  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/neco/WitoelarGVHB10},
+  bibsource = {dblp computer science bibliography, http://dblp.org}
+}
+@inproceedings{hamerly2002alternatives,
+  title={Alternatives to the k-means algorithm that find better clusterings},
+  author={Hamerly, Greg and Elkan, Charles},
+  booktitle={Proceedings of the eleventh international conference on Information and knowledge management},
+  year={2002},
+  organization={ACM}
+}
+@ARTICLE{Hammer02generalizedrelevance,
+    author = {Barbara Hammer and Thomas Villmann},
+    title = {Generalized Relevance Learning Vector Quantization},
+    journal = {Neural Networks},
+    year = {2002},
+    volume = {15},
+}
+
+@article{Schneider:2009:ARM:1737743.1737754,
+ author = {Schneider, Petra and Biehl, Michael and Hammer, Barbara},
+ title = {Adaptive Relevance Matrices in Learning Vector Quantization},
+ journal = {Neural Comput.},
+ issue_date = {December 2009},
+ volume = {21},
+ month = dec,
+ year = {2009},
+ issn = {0899-7667},
+ doi = {10.1162/neco.2009.11-08-908},
+ acmid = {1737754},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+} 
+
+@article{journals/tnn/AlahakoonHS00,
+  added-at = {2012-05-08T00:00:00.000+0200},
+  author = {Alahakoon, Damminda and Halgamuge, Saman K. and Srinivasan, Bala},
+  biburl = {http://www.bibsonomy.org/bibtex/268177c0259875ee357a20b7e223f168f/dblp},
+  ee = {http://dx.doi.org/10.1109/72.846732},
+  interhash = {17bfd02aa6a084c7c488d3d914e906b3},
+  intrahash = {68177c0259875ee357a20b7e223f168f},
+  journal = {IEEE Trans. Neural Netw. Learning Syst.},
+  keywords = {dblp},
+  number = 3,
+  timestamp = {2012-05-08T00:00:00.000+0200},
+  title = {Dynamic self-organizing maps with controlled growth for knowledge discovery.},
+  volume = 11,
+  year = 2000
+}
+
+@ARTICLE{Fritzke95growinggrid,
+    author = {Bernd Fritzke},
+    title = {Growing Grid - a self-organizing network with constant neighborhood range and adaptation strength},
+    journal = {Neural Processing Letters},
+    year = {1995},
+    volume = {2},
+}
+
+@inproceedings{Fritzke94a,
+  added-at = {2008-03-21T14:29:47.000+0100},
+  author = {Fritzke, Bernd},
+  biburl = {http://www.bibsonomy.org/bibtex/24e70fa6a2cb3b31fbcaa325ffa79edb9/danielt},
+  booktitle = {NIPS},
+  crossref = {ConfNips1994},
+  date = {2003-05-26},
+  description = {dblp},
+  interhash = {b757915e7c69cabab6e4d2457fec00e9},
+  intrahash = {4e70fa6a2cb3b31fbcaa325ffa79edb9},
+  keywords = {dipl_literatur gng related_work},
+  publisher = {MIT Press},
+  timestamp = {2008-03-21T14:29:47.000+0100},
+  title = {A Growing Neural Gas Network Learns Topologies.},
+  year = 1994
+}
+
+@article{journals/nca/XuSZ12,
+  added-at = {2012-08-16T00:00:00.000+0200},
+  author = {Xu, Ye and Shen, Furao and Zhao, Jinxi},
+  biburl = {http://www.bibsonomy.org/bibtex/2983cb49b8cd8e0c3a4ee5fdba1375918/dblp},
+  ee = {http://dx.doi.org/10.1007/s00521-010-0511-4},
+  interhash = {06450a19d6bd76df86fc04ceab6449e7},
+  intrahash = {983cb49b8cd8e0c3a4ee5fdba1375918},
+  journal = {Neural Computing and Applications},
+  keywords = {dblp},
+  number = 6,
+  timestamp = {2012-08-16T00:00:00.000+0200},
+  title = {An incremental learning vector quantization algorithm for pattern classification.},
+  volume = 21,
+  year = 2012
+}
+
+@book{chow1969optimum,
+  title={On Optimum Recognition Error and Reject Tradeoff},
+  author={Chow, C.K. and Massachusetts Institute of Technology. Artificial Intelligence Laboratory},
+  series={AI memo},
+  year={1969},
+  publisher={Massachusetts Institute of Technology, Project MAC}
+}
+
+@inproceedings{Platt:99,
+  author={J. Platt},
+  editor={A.J. Smola and P. Bartlett and B. Schoelkopf and D. Schuurmans},
+  title={Probabilistic outputs for support vector machines and comparison to regularize likelihood methods},
+  year=2000,
+  booktitle={Advances in Large Margin Classifiers},
+}
+
+@MISC{Papers_noncommercial-sharealike,
+    author = {Conference Papers and Rong Hu and Sarah Jane Delany and Brian Macnamee and Rong Hu and Sarah Jane Delany and Brian Mac Namee},
+    title = {Noncommercial-Share Alike 3.0 LicenseSampling with Confidence: Using k-NN Confidence Measures in Active Learning},
+    year = {}
+}
+
+@inproceedings{Lowe:1999:ORL:850924.851523,
+ author = {Lowe, David G.},
+ title = {Object Recognition from Local Scale-Invariant Features},
+ booktitle = {Proc. ICCV},
+ series = {ICCV '99},
+ year = {1999},
+ isbn = {0-7695-0164-8},
+ acmid = {851523},
+ publisher = {IEEE Computer Society},
+} 
+
+@article{journals/neco/WersingK03,
+  added-at = {2011-11-17T00:00:00.000+0100},
+  author = {Wersing, Heiko and Körner, Edgar},
+  biburl = {http://www.bibsonomy.org/bibtex/2cba0e91be9535562c4f161cfc4b0450c/dblp},
+  ee = {http://dx.doi.org/10.1162/089976603321891800},
+  interhash = {2cfcbea4862554034ac89ca7c70f0049},
+  intrahash = {cba0e91be9535562c4f161cfc4b0450c},
+  journal = {Neural Computation},
+  keywords = {dblp},
+  number = 7,
+  timestamp = {2011-11-17T00:00:00.000+0100},
+  title = {Learning Optimized Features for Hierarchical Models of Invariant Object Recognition.},
+  volume = 15,
+  year = 2003
+}
+@inproceedings{conf/iccv/SwainB90,
+  added-at = {2012-01-23T00:00:00.000+0100},
+  author = {Swain, Michael J. and Ballard, Dana H.},
+  biburl = {http://www.bibsonomy.org/bibtex/26f02e960f7d6d6dc336990020c41aeba/dblp},
+  booktitle = {ICCV},
+  crossref = {conf/iccv/1990},
+  ee = {http://dx.doi.org/10.1109/ICCV.1990.139558},
+  interhash = {198e23b7bacb1a47a47cdcd93ba33bd9},
+  intrahash = {6f02e960f7d6d6dc336990020c41aeba},
+  isbn = {0-8186-2057-9},
+  keywords = {dblp},
+  publisher = {IEEE},
+  timestamp = {2012-01-23T00:00:00.000+0100},
+  title = {Indexing via color histograms.},
+  year = 1990
+}
+@article{Chapelle:1999:SVM:2325769.2326470,
+ author = {Chapelle, O. and Haffner, P. and Vapnik, V. N.},
+ title = {Support Vector Machines for Histogram-based Image Classification},
+ journal = {Trans. Neur. Netw.},
+ issue_date = {September 1999},
+ volume = {10},
+ number = {5},
+ month = sep,
+ year = {1999},
+ issn = {1045-9227},
+ numpages = {10},
+ doi = {10.1109/72.788646},
+ acmid = {2326470},
+ publisher = {IEEE Press},
+ address = {Piscataway, NJ, USA},
+} 
+
+@inproceedings{Csurka04visualcategorization,
+    author = {Gabriella Csurka and Christopher R. Dance and Lixin Fan and Jutta Willamowski and Cédric Bray},
+    title = {Visual categorization with bags of keypoints},
+    booktitle = {In Workshop on Statistical Learning in Computer Vision, ECCV},
+    year = {2004},
+}
+@article {PN12509,
+  title = {A Life-Long Learning Vector Quantization Approach for Interactive Learning of Multiple Categories},
+  author = {Stephan Kirstein AND Heiko Wersing AND Horst-Michael Gro{\ss} AND Edgar K{\"o}rner},
+  year = {2012},
+  journal = {Neural Networks}
+}
+@inproceedings{conf/dagm/KirsteinWK05,
+  added-at = {2005-09-28T00:00:00.000+0200},
+  author = {Kirstein, Stephan and Wersing, Heiko and Körner, Edgar},
+  biburl = {http://www.bibsonomy.org/bibtex/20f88e4db7fb364fd42aa40f2f8ec9459/dblp},
+  booktitle = {DAGM-Symposium},
+  crossref = {conf/dagm/2005},
+  date = {2005-09-28},
+  description = {dblp},
+  editor = {Kropatsch, Walter G. and Sablatnig, Robert and Hanbury, Allan},
+  ee = {http://dx.doi.org/10.1007/11550518_38},
+  interhash = {be2cd538dc60ca54fc256da347ba62af},
+  intrahash = {0f88e4db7fb364fd42aa40f2f8ec9459},
+  isbn = {3-540-28703-5},
+  keywords = {dblp},
+}
+
+@Book{Bishop:2006,
+  author =       "Bishop, Christopher M.",
+  title =        "Pattern Recognition and Machine Learning",
+  publisher =    "Springer",
+  year =         "2006",
+  ISBN =         "978-0387-31073-2",
+  bib2html_rescat = "General ML",
+}
+
+@book{books/daglib/0018897,
+  added-at = {2011-03-21T00:00:00.000+0100},
+  author = {Gan, Guojun and Ma, Chaoqun and Wu, Jianhong},
+  biburl = {http://www.bibsonomy.org/bibtex/21a4e7be7932c458ee56a1871f71286f4/dblp},
+  ee = {http://www.ec-securehost.com/SIAM/SA20.html},
+  interhash = {9d6b4d6dcf11646d21a6909ef871db36},
+  intrahash = {1a4e7be7932c458ee56a1871f71286f4},
+  keywords = {dblp},
+  publisher = {SIAM},
+  timestamp = {2011-03-21T00:00:00.000+0100},
+  title = {Data clustering - theory, algorithms, and applications.},
+  year = 2007
+}
+@Book{GeversSIST2012,
+  author       = "Gevers, T. and Gijsenij, A. and van de Weijer, J. and Geusebroek, J. M.",
+  title        = "Color in Computer Vision : Fundamentals and Applications",
+  series       = "Series in Imaging Science and Technology",
+  year         = "2012",
+  publisher    = "The Wiley-IS\&T ",
+}
+
+@TechReport{CAVE_0189,
+author = {S. A. Nene and S. K. Nayar and H. Murase},
+title = {{C}olumbia {O}bject {I}mage {L}ibrary ({C}{O}{I}{L}-100)},
+booktitle = {Technical Report, Department of Computer Science, Columbia University CUCS-006-96},
+month = {Feb},
+year = {1996}
+}
+@inproceedings{conf/iccv/DrewWL98,
+  added-at = {2002-03-12T00:00:00.000+0100},
+  author = {Drew, Mark S. and Wei, Jie and Li, Ze-Nian},
+  biburl = {http://www.bibsonomy.org/bibtex/2d0c18eac1a9ec35bc473b12be6e61755/dblp},
+  booktitle = {ICCV},
+  date = {2002-03-12},
+  description = {dblp},
+  interhash = {337785e5e41437c733dc06519f13b21a},
+  intrahash = {d0c18eac1a9ec35bc473b12be6e61755},
+  keywords = {dblp},
+  timestamp = {2002-03-12T00:00:00.000+0100},
+  title = {Illumination-Invariant Color Object Recognition via Compressed Chromaticity Histograms of Color-Channel-Normalized Images.},
+  year = 1998
+}
+@inproceedings{conf/cvpr/TsinCRK01,
+  added-at = {2004-08-17T00:00:00.000+0200},
+  author = {Tsin, Yanghai and Collins, Robert T. and Ramesh, Visvanathan and Kanade, Takeo},
+  biburl = {http://www.bibsonomy.org/bibtex/28dad75360ef6191b555cedc09c1a09e6/dblp},
+  booktitle = {CVPR (1)},
+  crossref = {conf/cvpr/2001},
+  date = {2004-08-17},
+  description = {dblp},
+  ee = {http://doi.ieeecomputersociety.org/10.1109/CVPR.2001.990658},
+  interhash = {7e2ec44510d034e32e4348d0111f10a9},
+  intrahash = {8dad75360ef6191b555cedc09c1a09e6},
+  isbn = {0-7695-1272-0},
+  keywords = {dblp},
+  publisher = {IEEE Computer Society},
+  timestamp = {2004-08-17T00:00:00.000+0200},
+  title = {Bayesian Color Constancy for Outdoor Object Recognition.},
+  year = 2001
+}
+
+@inproceedings{conf/compgeom/InabaKI94,
+  added-at = {2002-12-13T00:00:00.000+0100},
+  author = {Inaba, Mary and Katoh, Naoki and Imai, Hiroshi},
+  biburl = {http://www.bibsonomy.org/bibtex/21cec485e1edc3565785633ce5261a190/dblp},
+  booktitle = {Symposium on Computational Geometry},
+  date = {2002-12-13},
+  description = {dblp},
+  ee = {http://doi.acm.org/10.1145/177424.178042},
+  interhash = {bd4d2fae1fb6d22ba0fde4dc8b02dc16},
+  intrahash = {1cec485e1edc3565785633ce5261a190},
+  keywords = {dblp},
+  timestamp = {2002-12-13T00:00:00.000+0100},
+  title = {Applications of Weighted Voronoi Diagrams and Randomization to Variance-Based k-Clustering (Extended Abstract).},
+  year = 1994
+}
+@inproceedings{martinetz:gas,
+  added-at = {2008-02-26T11:58:58.000+0100},
+  author = {Martinetz, Thomas M. and Schulten, Klaus J.},
+  biburl = {http://www.bibsonomy.org/bibtex/2fe4f2f10fc14e34fedcebb2af8009c0c/schaul},
+  booktitle = {Proc. ICANN 1991},
+  citeulike-article-id = {2377957},
+  description = {idsia},
+  interhash = {2793ae90165cda319cd161dcecfbd057},
+  intrahash = {fe4f2f10fc14e34fedcebb2af8009c0c},
+  keywords = {nn},
+  priority = {2},
+  timestamp = {2008-02-26T11:58:58.000+0100},
+  title = {A ``Neural Gas'' Network Learns Topologies},
+  year = 1991
+}
+@book{Szeliski:2010:CVA:1941882,
+ author = {Szeliski, Richard},
+ title = {Computer Vision: Algorithms and Applications},
+ year = {2010},
+ isbn = {1848829345, 9781848829343},
+ edition = {1st},
+ publisher = {Springer-Verlag New York, Inc.},
+ address = {New York, NY, USA},
+} 
+
+@article{journals/cviu/AndreopoulosT13,
+  added-at = {2013-06-10T00:00:00.000+0200},
+  author = {Andreopoulos, Alexander and Tsotsos, John K.},
+  biburl = {http://www.bibsonomy.org/bibtex/2e550dd8b1c4fabc8cbb8cae9998e567c/dblp},
+  ee = {http://dx.doi.org/10.1016/j.cviu.2013.04.005},
+  interhash = {15cc7305ddc90b0819e12c91a99be6fb},
+  intrahash = {e550dd8b1c4fabc8cbb8cae9998e567c},
+  journal = {Computer Vision and Image Understanding},
+  keywords = {dblp},
+  number = 8,
+  timestamp = {2013-06-10T00:00:00.000+0200},
+  title = {50 Years of object recognition: Directions forward.},
+  volume = 117,
+  year = 2013
+}
+@inproceedings{MaddernICRA2014,
+Address = {Hong Kong, China},
+Author = {Will Maddern and Alex Stewart and Colin McManus and Ben Upcroft and Winston Churchill and Paul Newman},
+Booktitle = {Proceedings of the Visual Place Recognition in Changing Environments Workshop, IEEE International Conference on Robotics and Automation (ICRA)},
+Date-Added = {2014-04-29 01:10:22 +0000},
+Date-Modified = {2014-04-29 01:12:06 +0000},
+Month = {May},
+Pdf = {http://www.robots.ox.ac.uk/~mobile/Papers/2014ICRA_maddern.pdf},
+Title = {Illumination Invariant Imaging: Applications in Robust Vision-based Localisation, Mapping and Classification for Autonomous Vehicles},
+Year = {2014}}
+@book{Jain:2005:HFR:1062383,
+ author = {Jain, Anil K. and Li, Stan Z.},
+ title = {Handbook of Face Recognition},
+ year = {2005},
+ isbn = {038740595X},
+ publisher = {Springer-Verlag New York, Inc.},
+ address = {Secaucus, NJ, USA},
+} 
+@inproceedings{Yang:2013:LLT:2493432.2493489,
+ author = {Yang, Rayoung and Newman, Mark W.},
+ title = {Learning from a Learning Thermostat: Lessons for Intelligent Systems for the Home},
+ booktitle = {International Joint Conference on Pervasive and Ubiquitous Computing 2013},
+ isbn = {978-1-4503-1770-2},
+ location = {Zurich, Switzerland},
+ doi = {10.1145/2493432.2493489},
+ acmid = {2493489},
+ publisher = {ACM},
+ keywords = {intelligent systems, smart home, sustainability},
+} 
+@ARTICLE{10.3389/fpsyg.2013.00504,
+ 
+ AUTHOR={Mermillod, Martial  and  Bugaiska, Aurélia  and  BONIN, Patrick},   
+ TITLE={The Stability-Plasticity Dilemma: Investigating the Continuum from Catastrophic Forgetting to Age-Limited Learning Effects},      
+JOURNAL={Frontiers in Psychology},      
+VOLUME={4},      
+YEAR={2013},      
+NUMBER={504},     
+DOI={10.3389/fpsyg.2013.00504},      
+ISSN={1664-1078} }
+@article{Laskov:2006:ISV:1248547.1248616,
+ author = {Laskov, Pavel and Gehl, Christian and Kr\"{u}ger, Stefan and M\"{u}ller, Klaus-Robert},
+ title = {Incremental Support Vector Learning: Analysis, Implementation and Applications},
+ journal = {J. Mach. Learn. Res.},
+ issue_date = {12/1/2006},
+ volume = {7},
+ month = dec,
+ year = {2006},
+ issn = {1532-4435},
+ acmid = {1248616},
+ publisher = {JMLR.org},
+} 
+@article{journals/tnn/FuHP96,
+  added-at = {2013-11-05T00:00:00.000+0100},
+  author = {Fu, LiMin and Hsu, Hui-Huang and Principe, Jose C.},
+  biburl = {http://www.bibsonomy.org/bibtex/280930a0f5776ea6227f61b53aeba2e3c/dblp},
+  ee = {http://dx.doi.org/10.1109/72.501732},
+  interhash = {e4b1bbf20c5428f387f47e9076161c69},
+  intrahash = {80930a0f5776ea6227f61b53aeba2e3c},
+  journal = {IEEE Transactions on Neural Networks},
+  keywords = {dblp},
+  number = 3,
+  timestamp = {2013-11-05T00:00:00.000+0100},
+  title = {Incremental backpropagation learning networks.},
+  volume = 7,
+  year = 1996
+}
+@ARTICLE{Dempster77maximumlikelihood,
+    author = {A. P. Dempster and N. M. Laird and D. B. Rubin},
+    title = {Maximum likelihood from incomplete data via the EM algorithm},
+    journal = {JOURNAL OF THE ROYAL STATISTICAL SOCIETY, SERIES B},
+    year = {1977},
+    volume = {39},
+    number = {1},
+}
+
+@article{Chang:2011:LLS:1961189.1961199,
+ author = {Chang, Chih-Chung and Lin, Chih-Jen},
+ title = {LIBSVM: A Library for Support Vector Machines},
+ journal = {ACM Trans. Intell. Syst. Technol.},
+ issue_date = {April 2011},
+ volume = {2},
+ month = may,
+ year = {2011},
+ issn = {2157-6904},
+ articleno = {27},
+ doi = {10.1145/1961189.1961199},
+ acmid = {1961199},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Classification LIBSVM optimization regression support vector machines SVM},
+} 
+
+
+@inproceedings{conf/iccv/WallravenCG03,
+  added-at = {2004-09-07T00:00:00.000+0200},
+  author = {Wallraven, Christian and Caputo, Barbara and Graf, Arnulf B. A.},
+  biburl = {http://www.bibsonomy.org/bibtex/2a9b1889497ba3646ade677e9711ab167/dblp},
+  booktitle = {ICCV},
+  crossref = {conf/iccv/2003},
+  date = {2004-09-07},
+  description = {dblp},
+  ee = {http://csdl.computer.org/comp/proceedings/iccv/2003/1950/01/195010257abs.htm},
+  interhash = {cc9a2957cd21d96c3d1c5f8047a1d302},
+  intrahash = {a9b1889497ba3646ade677e9711ab167},
+  isbn = {0-7695-1950-4},
+  keywords = {dblp},
+  publisher = {IEEE Computer Society},
+  timestamp = {2004-09-07T00:00:00.000+0200},
+  title = {Recognition with Local Features: the Kernel Recipe.},
+  year = 2003
+}
+
+@INPROCEEDINGS{Carlevarino00anincremental,
+    author = {A. Carlevarino and R. Martinotti and G. Metta},
+    title = {An Incremental Growing Neural Network and its Application to Robot Control},
+    booktitle = {in International Joint Conference on Neural Networks. 2000},
+    year = {2000},
+}
+
+@article{10.1371/journal.pone.0059401,
+    author = {Biehl, Michael AND Bunte, Kerstin AND Schneider, Petra},
+    journal = {PLoS ONE},
+    publisher = {Public Library of Science},
+    title = {Analysis of Flow Cytometry Data by Matrix Relevance Learning Vector Quantization},
+    year = {2013},
+    doi = {10.1371/journal.pone.0059401}
+}        
+
+@ARTICLE{6628010,
+author={Polikar, R. and Alippi, C.},
+journal={Neural Networks and Learning Systems, IEEE Transactions on},
+title={Guest Editorial Learning in Nonstationary and Evolving Environments},
+year={2014},
+month={Jan},
+volume={25},
+number={1},
+keywords={Data models;Feature extraction;Learning systems;Machine learning;Principal component analysis;Robot sensing systems;Special issues and sections},
+doi={10.1109/TNNLS.2013.2283547},
+ISSN={2162-237X},}
+
+
+@ARTICLE{6853440,
+author={Jin, Y. and Hammer, B.},
+journal={Computational Intelligence Magazine, IEEE},
+title={Computational Intelligence in Big Data},
+year={2014},
+month={Aug},
+volume={9},
+number={3},
+keywords={Big data;Computational intelligence;Special issues and sections},
+doi={10.1109/MCI.2014.2326098},
+ISSN={1556-603X},}
+
+@Article {export:238110,
+author       = {Saleema Amershi and Maya Cakmak},
+journal      = {AI Magazine},
+month        = {December},
+publisher    = {AAAI - Association for the Advancement of Artificial Intelligence},
+title        = {Power to the People: The Role of Humans in Interactive Machine Learning},
+year         = {2014},
+}
+@article{hoi2014libol,
+title={LIBOL: A Library for Online Learning Algorithms},
+author= {Steven C.H. Hoi and Jialei Wang and Peilin Zhao},
+journal={The Journal of Machine Learning Research},
+volume={15},
+year={2014},
+publisher={JMLR. org},
+}
+@article{citeulike:13294969,
+    author = {Zang, Wenyu and Zhang, Peng and Zhou, Chuan and Guo, Li},
+    citeulike-article-id = {13294969},
+    issn = {2196-1115},
+    journal = {Journal of Big Data},
+    keywords = {concept\_drift, data\_streams},
+    number = {5},
+    posted-at = {2014-07-23 18:38:13},
+    priority = {2},
+    title = {{Comparative study between incremental and ensemble learning on data streams: Case study}},
+    volume = {1},
+    year = {2014}
+}
+@inproceedings{Forlizzi:2006:SRD:1121241.1121286,
+ author = {Forlizzi, Jodi and DiSalvo, Carl},
+ title = {Service Robots in the Domestic Environment: A Study of the Roomba Vacuum},
+ booktitle = {1st ACM SIGCHI/SIGART Conference on Human-robot Interaction},
+ series = {HRI '06},
+  isbn = {1-59593-294-1},
+ location = {Salt Lake City, Utah, USA},
+ numpages = {8},
+  doi = {10.1145/1121241.1121286},
+ acmid = {1121286},
+ publisher = {ACM},
+ keywords = {design research, domestic robots, ethnography, human-robot interaction design},
+} 
+@INPROCEEDINGS{1682016, 
+author={Ozawa, S. and Shaoning Pang and Kasabov, N.}, 
+booktitle={Fuzzy Systems, 2006 IEEE International Conference on}, 
+title={An Incremental Principal Component Analysis for Chunk Data}, 
+year={2006}, 
+month={}, 
+keywords={eigenvalues and eigenfunctions;learning (artificial intelligence);pattern classification;principal component analysis;chunk data;dynamic feature selection;eigenproblem;eigenspace;eigenvectors;incremental principal component analysis;learning system;rotation matrix;Approximation error;Automatic testing;Computational intelligence;Eigenvalues and eigenfunctions;Heuristic algorithms;Learning systems;Linear discriminant analysis;Pattern recognition;Principal component analysis;System testing}, 
+doi={10.1109/FUZZY.2006.1682016},}
+
+@inproceedings{conf/iberamia/DiasC08,
+  added-at = {2008-10-20T00:00:00.000+0200},
+  author = {Dias, José G. and Cortinhal, Maria João},
+  biburl = {http://www.bibsonomy.org/bibtex/2074cf19b66e9a9ca85b1dbb81fa01175/dblp},
+  booktitle = {IBERAMIA},
+  crossref = {conf/iberamia/2008},
+  date = {2008-10-20},
+  description = {dblp},
+  ee = {http://dx.doi.org/10.1007/978-3-540-88309-8_18},
+  interhash = {c153ee449099c56aa21cd168fbe8e2f1},
+  intrahash = {074cf19b66e9a9ca85b1dbb81fa01175},
+  isbn = {978-3-540-88308-1},
+  keywords = {dblp},
+  publisher = {Springer},
+  series = {Lecture Notes in Computer Science},
+  timestamp = {2008-10-20T00:00:00.000+0200},
+  title = {The SKM Algorithm: A K-Means Algorithm for Clustering Sequential Data.},
+  volume = 5290,
+  year = 2008
+}
+@inproceedings{cauwenbergs01incrementaldecremental,
+  added-at = {2008-04-30T12:59:47.000+0200},
+  author = {Cauwenberghs, G. and Poggio, T.},
+  biburl = {http://www.bibsonomy.org/bibtex/2f85c96fc2bc9009b0ed632e00d58ae92/kdubiq},
+  booktitle = {Proc. NIPS},
+  description = {KDubiq Blueprint},
+  groupsearch = {0},
+  interhash = {9eaa2b8037ebbef1ae5a073097a2e423},
+  intrahash = {f85c96fc2bc9009b0ed632e00d58ae92},
+  keywords = {Blueprint KDubiq kdubiq},
+  timestamp = {2008-04-30T12:59:47.000+0200},
+  title = {Incremental and Decremental Support Vector Machine Learning},
+  year = 2001
+}
+
+
+@INPROCEEDINGS{Diehl03svmincremental,
+    author = {Christopher P. Diehl and Gert Cauwenberghs},
+    title = {SVM Incremental Learning, Adaptation and Optimization},
+    booktitle = {Proc. IJCNN 2003},
+    year = {},
+}
+@article{Laskov:2006:ISV:1248547.1248616,
+ author = {Laskov, Pavel and Gehl, Christian and Kr\"{u}ger, Stefan and M\"{u}ller, Klaus-Robert},
+ title = {Incremental Support Vector Learning: Analysis, Implementation and Applications},
+ journal = {J. Mach. Learn. Res.},
+ issue_date = {12/1/2006},
+ volume = {7},
+ month = dec,
+ year = {2006},
+ issn = {1532-4435},
+ numpages = {28},
+ url = {http://dl.acm.org/citation.cfm?id=1248547.1248616},
+ acmid = {1248616},
+ publisher = {JMLR.org},
+} 
+
+@INPROCEEDINGS{4398986, 
+author={Luo, J. and Pronobis, A. and Caputo, B. and Jensfelt, P.}, 
+booktitle={Proc. IROS 2007}, 
+title={Incremental learning for place recognition in dynamic environments}, 
+keywords={image recognition;learning (artificial intelligence);mobile robots;robot vision;support vector machines;autonomous mobile system;batch algorithm;discriminative incremental learning approach;dynamic environments;incremental SVM;vision-based place recognition;visual recognition algorithms;Databases;Intelligent robots;Lighting;Mobile robots;Notice of Violation;Robustness;Support vector machines;Testing;Training data;USA Councils}, 
+doi={10.1109/IROS.2007.4398986},
+}
+@INPROCEEDINGS{4650681, 
+author={Filliat, D.}, 
+booktitle={Proc. IROS 2008}, 
+title={Interactive learning of visual topological navigation}, 
+pages={248-254}, 
+keywords={learning (artificial intelligence);mobile robots;path planning;robot vision;INDECS image database;entertainment robots;interactive learning;navigation capabilities;visual topological navigation;Dictionaries;Distance measurement;Head;Lighting;Robot sensing systems;Robots;Visualization}, 
+doi={10.1109/IROS.2008.4650681},}

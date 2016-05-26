@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Drift.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: IEEEabrv.bib
+Database file #2: Drift.bib
+-- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in harries1999splice
+
+Done.
+You've used 14 entries,
+            4024 wiz_defined-function locations,
+            1421 strings with 20436 characters,
+and the built_in function-call counts, 11922 in all, are:
+= -- 928
+> -- 257
+< -- 109
++ -- 146
+- -- 38
+* -- 579
+:= -- 1701
+add.period$ -- 38
+call.type$ -- 14
+change.case$ -- 14
+chr.to.int$ -- 279
+cite$ -- 15
+duplicate$ -- 833
+empty$ -- 1044
+format.name$ -- 50
+if$ -- 2783
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 133
+newline$ -- 69
+num.names$ -- 14
+pop$ -- 333
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 916
+stack$ -- 0
+substring$ -- 665
+swap$ -- 677
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 14
+warning$ -- 1
+while$ -- 61
+width$ -- 16
+write$ -- 157
+(There was 1 warning)

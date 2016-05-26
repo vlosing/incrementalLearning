@@ -1,0 +1,31 @@
+
+		cost            accreg		accreg delAccReg&obs	accreg delChce&obs	cost delete obsolete	accreg delete obsolete		SGD	LVGB		LPPNSE	KNNPAW	HoeffAdwin	ILVQFinal
+weather 	77.9 168	77.2 43		77.3 8	 		77.3 23			78.1 147		78.0 51				77.1	78.1(78.9)	76.6	77.7	73.7		79.4 15
+elec		84.3 2100	83.9 2136	84.1 316		83.4 46			84.3 434		84.4 433			87.5	86.5(87.6)	75.1	75.8	77.8		81.2 16
+keystroke	92.2 20		92 13		92.6 15			92   4			92.7 19			92.2 9				91.7	92.7(93.3)	85.0	92.1	81.6		91.8 15
+covType		91.5 4506	91.1 2868				89.5 24			91.3 89			90.8 47				92.3	90.7		86.6	92.2	80.7
+spam									85.8 56			80.0 8							98.2	83.5		84.8
+	
+SEA		89.2 2							89.3 18						88.8 53				88.9	88.3(88.6)	87.1	87.2	86.7		89.4 39
+rbfSlow		80.6 824	79.7 558	80.1 112		76   22			80.6 262		80.0 139			50.9	55.0(74.6)	30.0	74.6	41.5		79.4 48
+CBConst		78.8 52		75.5 97		77.4 51			77.4 40			77.9 42			76.4 74				50.5	72.3(76.0)	74.9	50.6	53
+CBSinus		78.6 54		76.7 131	78.7 60			78.5 29			78.4 40			77.1 82				54.1	75.7(78.0)	77.0	69.22	61
+souza2CHT	89.4 10		89.2 6		89.6 5			88.2 24			89.4 9			89.8 6				86.7	87.1(87.3)	57.6	65.5	83.3		88 25
+souza4CREV1	97.4 118	97.0 193	97.2 18			97.3 21			97.5 19			97.2 19				98.2	97.5(97.5)	71.6	93.8	76.4		96.9 44
+souzaGears2C2D	98.9 1021	99.7 34		99.7 22			99.3 15			99.5 138		99.6 32				96.0	99.1(99.2)	96.7	96.8	97.7		99.7 25			
+
+*hyperplaneSlow	79.6 854	79.6 1790	79.2 479					79.0 320		79.5 612			92.2	79.7(84.7)	79.7
+
+rbfAbrupt																			96.4			97.4	77.3		94.8
+toyDataSets.rbfAbrupt(5, 2, 250, 10, 2)
+RectIncr																			91.1			52.5	80.0		95.2 13
+
+
+-checkout retraining after insertion, roulette sampling, improves accuracy slightly(1-2%)
+-adaptation of window size, weighting of samples like newer are more important, or somehow iterate over window size and choose "best".
+-deletion like in particle filter, check out on datascience newsletter how to treat prototypes with just few examples, there was some kind of statistical approach
+-Window mixture between last samples and reservoir maybe....
+-Window size adaption like in 
+-Design Dataset for gradual drift, abrupt drift, and different speeds of change, otherwise its too easy for LVQ
+-Maybe reset the metric after drift detection?
+-round accuracies to 5.th or something post commata position because of float preciscion

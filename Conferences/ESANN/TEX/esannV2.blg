@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: esannV2.aux
+The style file: unsrt.bst
+Database file #1: esannV2.bib
+I was expecting a `,' or a `}'---line 549 of file esannV2.bib
+ : 
+ : month={Sept},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 811 of file esannV2.bib
+ : 
+ : %month={Nov},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 1173 of file esannV2.bib
+ : @misc{Lichman:2013
+ :                   ,
+I'm skipping whatever remains of this entry
+Warning--empty booktitle in Yang:2013:LLT:2493432.2493489
+Warning--empty institution in Chan:1979:UFP:892239
+Warning--there's a number but no volume in bergstra2015
+You've used 22 entries,
+            1791 wiz_defined-function locations,
+            584 strings with 7171 characters,
+and the built_in function-call counts, 5430 in all, are:
+= -- 473
+> -- 266
+< -- 5
++ -- 97
+- -- 75
+* -- 369
+:= -- 857
+add.period$ -- 69
+call.type$ -- 22
+change.case$ -- 23
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 245
+empty$ -- 523
+format.name$ -- 75
+if$ -- 1224
+int.to.chr$ -- 0
+int.to.str$ -- 22
+missing$ -- 20
+newline$ -- 112
+num.names$ -- 22
+pop$ -- 69
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 121
+stack$ -- 0
+substring$ -- 329
+swap$ -- 65
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 48
+width$ -- 24
+write$ -- 241
+(There were 3 error messages)

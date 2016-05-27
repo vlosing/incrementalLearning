@@ -8,11 +8,20 @@ import numpy as np
 from auxiliaryFunctions import trainClassifier, updateClassifierEvaluations, getTrainSetCfg
 from DataGeneration.DataSetFactory import isStationary
 import json
-from comparisonPlot import doComparisonPlot
+from comparisonPlot import doComparisonPlot, dataToCSV
 from HyperParameter.hyperParameterTuning import determineHyperParams
 from Base.MatlabEngine import MatlabEngine
 
-def doComparison(dataSetName, classifierNames, iterations, criterionName, criteria, scaleData=True, hyperParamTuning=False, chunkSize = 100, LVQInsertionTimingThreshs=[], iELMNumHiddenNeurons=[]):
+def getBootstrapSample(samples, labels):
+    indices = np.random.randint(len(labels), size=len(labels))
+    indices = np.sort(indices)
+    return samples[indices, :], labels[indices]
+
+def permutateDataset(samples, labels):
+    indices = np.random.permutation(len(labels))
+    return samples[indices, :], labels[indices]
+
+def doComparison(dataSetName, classifierNames, iterations, criterionName, criteria, scaleData=True, hyperParamTuning=False, bootStrapSampling=False, permutate=False, chunkSize=100, LVQInsertionTimingThreshs=[], iELMNumHiddenNeurons=[]):
     trainSetCfg = getTrainSetCfg(dataSetName)
     dataSet = DataSetFactory.getDataSet(trainSetCfg['dsName'])
     dataSet.printDSInformation()
@@ -32,19 +41,27 @@ def doComparison(dataSetName, classifierNames, iterations, criterionName, criter
     for iteration in np.arange(iterations):
         logging.info('iteration %d/%d'% (iteration+1, iterations))
         trainTestSplitsManager.generateSplits()
-        numTrainSamples = len(trainTestSplitsManager.TrainSamplesLst[0])
-        logging.info('train-samples %d' % numTrainSamples)
-        logging.info('test-samples %d' % len(trainTestSplitsManager.TestSamplesLst[0]))
         if scaleData:
             trainTestSplitsManager.scaleData(maxSamples=1000)
+        if bootStrapSampling:
+            trainSamples, trainLabels = getBootstrapSample(trainTestSplitsManager.TrainSamplesLst[0], trainTestSplitsManager.TrainLabelsLst[0])
+        else:
+            trainSamples = trainTestSplitsManager.TrainSamplesLst[0]
+            trainLabels = trainTestSplitsManager.TrainLabelsLst[0]
+        if permutate:
+            trainSamples, trainLabels = permutateDataset(trainSamples, trainLabels)
+        numTrainSamples = len(trainLabels)
+        logging.info('train-samples %d' % numTrainSamples)
+        logging.info('test-samples %d' % len(trainTestSplitsManager.TestSamplesLst[0]))
         if iteration == 0:
-            classifierEvaluations['meta'] = {'dataSetName':dataSetName, 'numTrainSamples': len(trainTestSplitsManager.TrainSamplesLst[0])}
+            classifierEvaluations['meta'] = {'dataSetName':dataSetName, 'numTrainSamples': len(trainLabels)}
             classifierEvaluations['values'] = {}
             hyperParams = {}
             for classifierName in classifierNames:
                 hyperParams[classifierName] = getHyperParams(trainSetCfg['dsName'], classifierName, scaleData)
                 if hyperParamTuning:
-                    hyperParams[classifierName] = determineHyperParams(classifierName, trainTestSplitsManager.TrainSamplesLst[0][:50000, :], trainTestSplitsManager.TrainLabelsLst[0][:50000], evalDstDirectory + 'hyperParameter/', dataSetName, hyperParams[classifierName], streamSetting, scaleData)
+                    hyperParams[classifierName] = determineHyperParams(classifierName, trainSamples[:50000, :], trainLabels[:50000], evalDstDirectory + 'hyperParameter/', dataSetName, hyperParams[classifierName], streamSetting, scaleData)
+
 
         for critierion in criteria:
             if criterionName=='chunkSize':
@@ -56,6 +73,7 @@ def doComparison(dataSetName, classifierNames, iterations, criterionName, criter
                 classifierParams = hyperParams[classifierName]
                 if classifierName in ['ILVQ', 'ISVM', 'KNNPaw', 'KNNWindow']:
                     classifierParams['windowSize'] = 5000
+                    #classifierParams['windowSize'] = min(5000, int(0.1 * len(trainLabels)))
                     #classifierParams['insertionTimingThresh'] = 10
                 if criterionName == 'complexity':
                     if classifierName == 'LVQ':
@@ -63,11 +81,11 @@ def doComparison(dataSetName, classifierNames, iterations, criterionName, criter
                     elif classifierName == 'iELM':
                         classifierParams['numHiddenNeurons'] = iELMNumHiddenNeurons[critierion]
                 logging.info(classifierName + ' ' + str(classifierParams))
-                allPredictedTestLabels, allPredictedTrainLabels, complexities, complexityNumParameterMetric = trainClassifier(classifierName, classifierParams, trainTestSplitsManager.TrainSamplesLst[0], trainTestSplitsManager.TrainLabelsLst[0], trainTestSplitsManager.TestSamplesLst[0], trainTestSplitsManager.TestLabelsLst[0], chunkSize, streamSetting)
-                classifierEvaluations = updateClassifierEvaluations(classifierEvaluations, classifierName, trainTestSplitsManager.TrainLabelsLst[0], trainTestSplitsManager.TestLabelsLst[0], allPredictedTestLabels, allPredictedTrainLabels, complexities, complexityNumParameterMetric, chunkSize, critierion, streamSetting)
+                allPredictedTestLabels, allPredictedTrainLabels, complexities, complexityNumParameterMetric = trainClassifier(classifierName, classifierParams, trainSamples, trainLabels, trainTestSplitsManager.TestSamplesLst[0], trainTestSplitsManager.TestLabelsLst[0], chunkSize, streamSetting)
+                classifierEvaluations = updateClassifierEvaluations(classifierEvaluations, classifierName, trainLabels, trainTestSplitsManager.TestLabelsLst[0], allPredictedTestLabels, allPredictedTrainLabels, complexities, complexityNumParameterMetric, chunkSize, critierion, streamSetting)
     json.encoder.FLOAT_REPR = lambda o: format(o, '.5f')
     json.dump(classifierEvaluations, open(evalDstDirectory + evalFilePrefix + 'evaluations.json', 'w'))
-    #doComparisonPlot(dataSetName, criterionName, None)
+    dataToCSV(dataSetName)
 
 if __name__ == '__main__':
     logging.basicConfig(format='%(message)s', level=logging.INFO)
@@ -98,25 +116,26 @@ if __name__ == '__main__':
     #classifierNames = ['KNNPaw', 'HoeffAdwin', 'LVGB']
     #classifierNames = ['KNNPaw', 'HoeffAdwin', 'LVGB', 'DACC']
 
-    #classifierNames = ['KNNWindow']
     classifierNames = ['KNNWindow']
+    #classifierNames = ['KNNPaw', 'LVGB']
     iterations = 1
     scaleData = False
 
 
-    #doComparison('weather', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('elec', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    doComparison('covType', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('outdoorStream', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('rialto', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('weather', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
+    #doComparison('elec', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    #doComparison('covType', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    #doComparison('outdoorStream', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    #doComparison('rialto', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
 
     #doComparison('sea', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('rbfSlowXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('hypSlowXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('squaresIncrXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
 
 
     #doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)

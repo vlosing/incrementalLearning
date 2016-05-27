@@ -277,12 +277,14 @@ class Experiment:
                 #print np.sum(np.maximum(classifier.windowSizes - correctWindowSizes, 0))/float(len(correctWindowSizes))
                 import matplotlib.pyplot as plt
                 plt.ioff()
-                fig, ax = plt.subplots(5, 1)
+                fig, ax = plt.subplots(4, 1)
                 ax[0].plot(np.arange(len(classifier.windowSizes)), classifier.windowSizes, c='r')
                 ax[1].plot(np.arange(len(classifier.LTMSizes)), classifier.LTMSizes, c='r')
                 ax[2].plot(np.arange(0, len(predictedTrainLabels), detailedStep), scoresDetailed)
+                ax[3].plot(np.arange(len(classifier.classifierChoice)), classifier.classifierChoice)
+                ax[3].set_ylim([-0.5, 2.5])
                 print 'corr STM ', classifier.STMCorrectCount, 'ltm', classifier.LTMCorrectCount,'both ', classifier.BothCorrectCount
-                print 'delCount', classifier.allDeletedCount
+                print 'correct %d/%d' % (classifier.correctCount, classifier.possCorrect)
                 #ax[2].plot(range(len(DriftDetection.currentSizeAccs)), DriftDetection.currentSizeAccs, c='r')
                 #ax[2].plot(range(len(DriftDetection.smallestSizeAccs)), DriftDetection.smallestSizeAccs, c='b')
                 #ax[2].plot(range(len(DriftDetection.largestSizeAccs)), DriftDetection.largestSizeAccs, c='g')

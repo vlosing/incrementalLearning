@@ -11,7 +11,7 @@ import unicodedata
 
 
 def getColorIdxToClassifier(classifierName):
-    return ['ISVM', 'ILVQ', 'ORF', 'LPP', 'LPPNSE', 'IELM', 'SGD', 'GNB', 'LVGB'].index(unicodedata.normalize('NFKD', classifierName).encode('ascii','ignore'))
+    return ['ISVM', 'ILVQ', 'ORF', 'LPP', 'LPPNSE', 'IELM', 'SGD', 'GNB', 'LVGB', 'KNNWindow', 'KNNPaw'].index(unicodedata.normalize('NFKD', classifierName).encode('ascii','ignore'))
     #return 0
 
 def getLineStyleToClassifier(classifierName):
@@ -52,12 +52,9 @@ def plotSingleAccuracies(dataSetName, classifierEvaluations, criterionName, chun
                     accuracies = np.mean(accuracies, axis=0)
                     if criterionName == 'chunkSize':
                         chunkSize = int(criterion)
-                    if streamSetting:
-                        xValues = np.arange(chunkSize, numTrainSamples, chunkSize)
-                    else:
-                        xValues = np.arange(chunkSize, numTrainSamples + 1, chunkSize)
-                        if xValues[-1] != numTrainSamples:
-                            xValues = np.append(xValues, numTrainSamples)
+                    xValues = np.arange(chunkSize, numTrainSamples + 1, chunkSize)
+                    if xValues[-1] != numTrainSamples:
+                        xValues = np.append(xValues, numTrainSamples)
                     subPlots[j].plot(xValues, accuracies, label=classifierName, color=GLVQPlot.getDefColors()[getColorIdxToClassifier(classifierName)])
                     #print np.mean(accuracies)
                     #print accuracies[-1]
@@ -246,14 +243,13 @@ def getSingleRunValues(classifierEvaluations, classifierName, bestChunkSize):
     if classifierEvaluations['values'][classifierName][str(bestChunkSize)].has_key('testAccuracies'):
         for iteration in range(len(classifierEvaluations['values'][classifierName][str(bestChunkSize)]['testAccuracies'])):
             accuracies.append(classifierEvaluations['values'][classifierName][str(bestChunkSize)]['testAccuracies'][iteration])
-        xValues = np.arange(bestChunkSize, numTrainSamples + 1, bestChunkSize)
-        if xValues[-1] != numTrainSamples:
-            xValues = np.append(xValues, numTrainSamples)
     elif classifierEvaluations['values'][classifierName][str(bestChunkSize)].has_key('trainPredictionAccuracies'):
         for iteration in range(len(classifierEvaluations['values'][classifierName][str(bestChunkSize)]['trainPredictionAccuracies'])):
             accuracies.append(classifierEvaluations['values'][classifierName][str(bestChunkSize)]['trainPredictionAccuracies'][iteration])
             meanAccs.append(classifierEvaluations['values'][classifierName][str(bestChunkSize)]['meanAcc'][iteration])
-        xValues = np.arange(bestChunkSize, numTrainSamples, bestChunkSize)
+    xValues = np.arange(bestChunkSize, numTrainSamples + 1, bestChunkSize)
+    if xValues[-1] != numTrainSamples:
+        xValues = np.append(xValues, numTrainSamples)
     accuracies = np.array(accuracies)
     meanFirstTenthAcc = np.interp(0.1 * numTrainSamples, xValues, np.mean(accuracies, axis=0))
     stdFirstTenthAcc = np.interp(0.1 * numTrainSamples, xValues, np.std(accuracies, axis=0))
@@ -336,20 +332,21 @@ def dataToCSV(dataSetName):
     for i in range(len(values)):
         writer.writerow(
             [values[i][0], "%d" % (values[i][1]),
-             "%.1f(%.1f)" % (values[i][2] * 100, values[i][3] * 100),
-             "%.1f(%.1f)" % (values[i][4] * 100, values[i][5] * 100),
-             "%.1f(%.1f)" % (values[i][6] * 100, values[i][7] * 100),
-             "%.1f(%.1f)" % (values[i][8] * 100, values[i][9] * 100),
-             "%.1f(%.1f)" % (values[i][10] * 100, values[i][11] * 100),
-             "%.1f(%.1f)" % (values[i][12] * 100, values[i][13] * 100),
-             "%.1f" % (accRanks[i]),
-             "%.1f(%.1f)" % (values[i][14], values[i][15]),
-             "%.1f(%.1f)" % (values[i][16], values[i][17]),
-             "%.1f" % (complRanks[i]),
-             "%.1f(%.1f)" % (values[i][18] * 100, values[i][19] * 100),
-             "%.1f(%.1f)" % (values[i][20], values[i][21]),
-             "%.1f(%.1f)" % (values[i][22], values[i][23]),
-             "%.1f(%.1f)" % (values[i][24] * 100, values[i][25] * 100)])
+             "%.2f(%.2f)" % (values[i][2] * 100, values[i][3] * 100),
+             "%.2f(%.2f)" % (values[i][4] * 100, values[i][5] * 100),
+             "%.2f(%.2f)" % (values[i][6] * 100, values[i][7] * 100),
+             "%.2f(%.2f)" % (values[i][8] * 100, values[i][9] * 100),
+             "%.2f(%.2f)" % (values[i][10] * 100, values[i][11] * 100),
+             "%.2f(%.2f)" % (values[i][12] * 100, values[i][13] * 100),
+             "%.2f" % (accRanks[i]),
+             "%.2f(%.2f)" % (values[i][14], values[i][15]),
+             "%.2f(%.2f)" % (values[i][16], values[i][17]),
+             "%.2f" % (complRanks[i]),
+             "%.2f(%.2f)" % (values[i][18] * 100, values[i][19] * 100),
+             "%.2f(%.2f)" % (values[i][20], values[i][21]),
+             "%.2f(%.2f)" % (values[i][22], values[i][23]),
+             "%.2f(%.2f)" % (values[i][24] * 100, values[i][25] * 100)])
+        print "%.2f(%.2f)" % (values[i][12] * 100, values[i][13] * 100)
 
 if __name__ == '__main__':
     criterionName = 'chunkSize'

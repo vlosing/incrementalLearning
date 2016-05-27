@@ -20,12 +20,11 @@ rbfAbrupt																			96.4			97.4	77.3		94.8
 toyDataSets.rbfAbrupt(5, 2, 250, 10, 2)
 RectIncr																			91.1			52.5	80.0		95.2 13
 
+-profiler chessVirtual, check for simple speed ups (append etc)
+-test gradual abrupt with maxACC8
+-finish real dataset Drift evaluation 
+-Name for algorithm/memory model
+-Maybe add one more comparison algorithm
+-picture abrupt drift window behaviour, natural tradeoff, the more stable current concept the more samples needed to shrink window, also picture for squaresIncr and chessVirtual
+-responsibility analysis, squaresIncr, search in weather dataset for only samples of sun, there should be a change between STM to LTM/Both, same for ChessVirtual, maybe test for chessIID and see weather both are asked all time.
 
--checkout retraining after insertion, roulette sampling, improves accuracy slightly(1-2%)
--adaptation of window size, weighting of samples like newer are more important, or somehow iterate over window size and choose "best".
--deletion like in particle filter, check out on datascience newsletter how to treat prototypes with just few examples, there was some kind of statistical approach
--Window mixture between last samples and reservoir maybe....
--Window size adaption like in 
--Design Dataset for gradual drift, abrupt drift, and different speeds of change, otherwise its too easy for LVQ
--Maybe reset the metric after drift detection?
--round accuracies to 5.th or something post commata position because of float preciscion

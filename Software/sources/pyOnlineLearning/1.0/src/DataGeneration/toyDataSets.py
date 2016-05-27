@@ -62,6 +62,20 @@ def getChessVirtual(nSamplesPerField, numValidationSamples, nTiles=8, sampleRang
             allLabels = np.append(allLabels, labels)
     return allSamples, allLabels
 
+def getChessIID(nSamplesPerField, nTiles=8, sampleRangeX=[0, 1], sampleRangeY = [0, 1]):
+    allSamples = np.empty(shape=(0, 2))
+    allLabels = np.empty(shape=(0, 1))
+    edgeLength = (sampleRangeX[1] - sampleRangeX[0]) / float(nTiles)
+    for row in range(nTiles):
+        for col in range(nTiles):
+            samples, labels = getChessSquareSamplesMultiClass(row, col, edgeLength, nSamplesPerField, sampleRangeX, sampleRangeY)
+            allSamples = np.vstack([allSamples, samples])
+            allLabels = np.append(allLabels, labels)
+    permIndices = np.random.permutation(len(allLabels))
+    allSamples = allSamples[permIndices, :]
+    allLabels = allLabels[permIndices]
+    return allSamples, allLabels
+
 def getMixedDataset(samplesList, labelsList):
     maxLen = 0
     for samples in samplesList:

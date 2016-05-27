@@ -446,8 +446,8 @@ def getSquaresIncrXXL():
     return trainSamples, trainLabels
 
 def getChessVirtual():
-    trainSamples = np.loadtxt(Paths.chessVirtualTrainSamplesPath(), skiprows=1)
-    trainLabels = np.loadtxt(Paths.chessVirtualTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    trainSamples = np.loadtxt(Paths.chessVirtualTrainSamplesPath(), skiprows=1)[:10000, :]
+    trainLabels = np.loadtxt(Paths.chessVirtualTrainLabelsPath(), skiprows=1, dtype=np.uint8)[:10000]
     return trainSamples, trainLabels
 
 def getChessVirtualXXL():
@@ -455,9 +455,14 @@ def getChessVirtualXXL():
     trainLabels = np.loadtxt(Paths.chessVirtualXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)
     return trainSamples, trainLabels
 
+def getChessIIDXXL():
+    trainSamples = np.loadtxt(Paths.chessIIDXXLTrainSamplesPath(), skiprows=1)
+    trainLabels = np.loadtxt(Paths.chessIIDXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    return trainSamples, trainLabels
+
 def getAllDrift():
-    trainSamples = np.loadtxt(Paths.allDriftTrainSamplesPath(), skiprows=1)
-    trainLabels = np.loadtxt(Paths.allDriftTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    trainSamples = np.loadtxt(Paths.allDriftTrainSamplesPath(), skiprows=1)[:10000, :]
+    trainLabels = np.loadtxt(Paths.allDriftTrainLabelsPath(), skiprows=1, dtype=np.uint8)[:10000]
     return trainSamples, trainLabels
 
 def getAllDriftXXL():

@@ -20,9 +20,6 @@ def trainMOAAlgorithm(classifierName, classifierParams, trainFeatures, trainLabe
 
     generateARFFFile(trainFeatures, trainLabels, ARFFTrainFileName)
 
-
-
-
     if classifierName == 'LVGB':
         numClassifier = classifierParams['numClassifier']
         classifierStr = 'meta.LeveragingBag -l (trees.HoeffdingTree -g %d -c %.7f -t %f) -s %d' % (classifierParams['gracePeriod'],

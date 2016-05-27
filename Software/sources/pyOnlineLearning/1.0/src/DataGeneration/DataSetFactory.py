@@ -98,27 +98,24 @@ def getDataSet(name, streams=[]):
         #samples, labels = toyDataSets.getChessRandomVirtual(250, 1000, nTiles=8, repetitions=32)
         samples, labels = realDataSets.getChessVirtualXXL()
     elif name == 'chessVirtual':
-        samples, labels = toyDataSets.getChessRandomVirtual(300, 1000, nTiles=8)
+        #samples, labels = toyDataSets.getChessRandomVirtual(300, 1000, nTiles=8)
         #samples, labels = toyDataSets.getChessRandomVirtual(200, 500, nTiles=8)
-        #samples, labels = realDataSets.getChessVirtual()
-    #elif name == 'chessRandomVirt2':
-    #    samples, labels = toyDataSets.getChessRandomVirtual2(200, 5, nTiles=8)
+        samples, labels = realDataSets.getChessVirtual()
+    elif name == 'chessIIDXXL':
+        #samples, labels = toyDataSets.getChessIID(3125)
+        samples, labels = realDataSets.getChessIIDXXL()
     elif name == 'allDrift':
-        '''samples1, labels1 = realDataSets.getRBFAbruptSmall()
-        samples2, labels2 = realDataSets.getChessVirtual()
-        samples2[:,0] += 1.25
-        samples3, labels3 = realDataSets.getSquaresIncr()
-        samples3[:,0] += 2.5
-        samples, labels = toyDataSets.getMixedDataset([samples1, samples2, samples3], [labels1, labels2, labels3])'''
         samples, labels = realDataSets.getAllDrift()
     elif name == 'allDriftXXL':
-        samples1, labels1 = realDataSets.getRBFAbruptXXL()
+        '''samples1, labels1 = realDataSets.getRBFAbruptXXL()
         samples2, labels2 = realDataSets.getChessVirtualXXL()
         samples2[:,0] += 1.25
         samples3, labels3 = realDataSets.getSquaresIncrXXL()
         samples3[:,0] += 2.5
-        samples, labels = toyDataSets.getMixedDataset([samples1, samples2, samples3], [labels1, labels2, labels3])
-        #samples, labels = realDataSets.getAllDriftXXL()
+        samples4, labels4 = realDataSets.getChessIIDXXL()
+        samples4[:,0] += 3.75
+        samples, labels = toyDataSets.getMixedDataset([samples1, samples2, samples3, samples4], [labels1, labels2, labels3, labels4])'''
+        samples, labels = realDataSets.getAllDriftXXL()
     elif name == 'cbConst':
         samples, labels = realDataSets.getCBConstant()
     elif name == 'cbSinus':
@@ -203,7 +200,7 @@ def isStationary(dataSetName):
     elif dataSetName in ['weather', 'elec', 'spam', 'souza2CDT', 'souza4CREV1', 'souzaGears2C2D', 'souzaFG2C2D', 'souza2CHT', 'keystroke', 'covType', 'rbfFast',
                          'rbfSlow', 'rbfSlowXXL', 'sea', 'rbfSlow2D', 'rbfFast2D', 'hypSlow', 'hypSlowXXL', 'cbConst', 'cbSinus',
                          'rbfIncr', 'rbfAbruptSmall', 'rbfAbruptXXL', 'squaresIncr', 'squaresIncrXXL', 'rbfGradual', 'rectGradual',
-                         'chessVirtual', 'chessVirtualXXL', 'outdoorStream', 'rialto', 'allDrift', 'allDriftXXL']:
+                         'chessVirtual', 'chessVirtualXXL', 'chessIIDXXL', 'outdoorStream', 'rialto', 'allDrift', 'allDriftXXL']:
         return False
 
     else:

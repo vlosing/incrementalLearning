@@ -72,12 +72,12 @@ if __name__ == '__main__':
     KNNWindowCfg['classifierName'] = 'KNNWindow'
     KNNWindowCfg['indiv']['name'] = 'KNNWindow'
     KNNWindowCfg['indiv']['windowSize'] = 5000
-    KNNWindowCfg['indiv']['weights'] = 'uniform'
-    #KNNWindowCfg['indiv']['weights'] = 'distance'
+    #KNNWindowCfg['indiv']['weights'] = 'uniform'
+    KNNWindowCfg['indiv']['weights'] = 'distance'
     KNNWindowCfg['indiv']['driftStrategy'] = None
     #KNNWindowCfg['indiv']['driftStrategy'] = 'adwin'
     #KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC7'
-    KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC8'
+    #KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC8'
     #KNNWindowCfg['indiv']['driftStrategy'] = 'both'
 
     #WAVGCfg = copy.deepcopy(defaultCfg)
@@ -107,4 +107,6 @@ if __name__ == '__main__':
     #doExperiment({'dsName': 'outdoorStream', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'rialto', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
 
-    cProfile.run("doExperiment({'dsName': 'rialto', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)")
+    #doExperiment({'dsName': 'chessIIDXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
+
+    cProfile.run("doExperiment({'dsName': 'chessVirtualXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)")

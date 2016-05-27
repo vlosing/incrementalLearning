@@ -698,17 +698,22 @@ def squaresIncrXXLTrainLabelsPath():
     return nonStationaryFeaturesDirPrefix() + 'squaresIncr/squaresIncrXXL.labels'
 
 def chessVirtualTrainSamplesPath():
-    return nonStationaryFeaturesDirPrefix() + 'chessVirtual/chessVirtual.data'
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessVirtual.data'
 
 def chessVirtualTrainLabelsPath():
-    return nonStationaryFeaturesDirPrefix() + 'chessVirtual/chessVirtual.labels'
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessVirtual.labels'
 
 def chessVirtualXXLTrainSamplesPath():
-    return nonStationaryFeaturesDirPrefix() + 'chessVirtual/chessVirtualXXL.data'
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessVirtualXXL.data'
 
 def chessVirtualXXLTrainLabelsPath():
-    return nonStationaryFeaturesDirPrefix() + 'chessVirtual/chessVirtualXXL.labels'
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessVirtualXXL.labels'
 
+def chessIIDXXLTrainSamplesPath():
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessIIDXXL.data'
+
+def chessIIDXXLTrainLabelsPath():
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessIIDXXL.labels'
 def allDriftTrainSamplesPath():
     return nonStationaryFeaturesDirPrefix() + 'allDrift/allDrift.data'
 

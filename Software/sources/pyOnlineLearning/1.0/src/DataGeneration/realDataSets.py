@@ -441,8 +441,8 @@ def getSquaresIncr():
     return trainSamples, trainLabels
 
 def getSquaresIncrXXL():
-    trainSamples = np.loadtxt(Paths.squaresIncrXXLTrainSamplesPath(), skiprows=1)
-    trainLabels = np.loadtxt(Paths.squaresIncrXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    trainSamples = np.loadtxt(Paths.squaresIncrXXLTrainSamplesPath(), skiprows=1)[:10000, :]
+    trainLabels = np.loadtxt(Paths.squaresIncrXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)[:10000]
     return trainSamples, trainLabels
 
 def getChessVirtual():

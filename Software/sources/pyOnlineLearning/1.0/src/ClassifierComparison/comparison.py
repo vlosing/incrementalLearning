@@ -72,7 +72,7 @@ def doComparison(dataSetName, classifierNames, iterations, criterionName, criter
             for classifierName in classifierNames:
                 classifierParams = hyperParams[classifierName]
                 if classifierName in ['ILVQ', 'ISVM', 'KNNPaw', 'KNNWindow']:
-                    classifierParams['windowSize'] = 5000
+                    classifierParams['windowSize'] = 500
                     #classifierParams['windowSize'] = min(5000, int(0.1 * len(trainLabels)))
                     #classifierParams['insertionTimingThresh'] = 10
                 if criterionName == 'complexity':
@@ -118,13 +118,13 @@ if __name__ == '__main__':
 
     classifierNames = ['KNNWindow']
     #classifierNames = ['KNNPaw', 'LVGB']
-    iterations = 1
+    iterations = 10
     scaleData = False
 
 
     #doComparison('weather', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
     #doComparison('elec', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
-    #doComparison('covType', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    doComparison('covType', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
     #doComparison('outdoorStream', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
     #doComparison('rialto', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
 
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     #doComparison('squaresIncrXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
-    doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
 
 

@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2015.10.31)  5 NOV 2015 22:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.24)  29 MAY 2016 13:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **OnlineLearningIJCNN.tex
 (./OnlineLearningIJCNN.tex
-LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (./IEEEtran.cls
 Document Class: IEEEtran 2012/11/21 V1.8c by Harald Hanche-Olsen and Anders Chr
 istensen
@@ -93,22 +93,22 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \c@IEEEbiography=\count90
 \@IEEEtranrubishbin=\box26
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks15
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 95.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -125,40 +125,40 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@width=\dimen118
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2013/01/14 v2.14 AMS math features
+Package: amsmath 2016/03/03 v2.15a AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01
+Package: amstext 2000/06/29 v2.01 AMS text
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0
+File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
 \ex@=\dimen119
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen120
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count92
-LaTeX Info: Redefining \frac on input line 210.
+LaTeX Info: Redefining \frac on input line 199.
 \uproot@=\count93
 \leftroot@=\count94
-LaTeX Info: Redefining \overline on input line 306.
+LaTeX Info: Redefining \overline on input line 297.
 \classnum@=\count95
 \DOTSCASE@=\count96
-LaTeX Info: Redefining \ldots on input line 378.
-LaTeX Info: Redefining \dots on input line 381.
-LaTeX Info: Redefining \cdots on input line 466.
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box27
 \strutbox@=\box28
 \big@size=\dimen121
-LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \macc@depth=\count97
 \c@MaxMatrixCols=\count98
 \dotsspace@=\muskip10
@@ -179,8 +179,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \multlinegap=\skip45
 \multlinetaggap=\skip46
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2665.
-LaTeX Info: Redefining \] on input line 2666.
+LaTeX Info: Redefining \[ on input line 2735.
+LaTeX Info: Redefining \] on input line 2736.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -208,8 +208,8 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 57.
+Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen130
 \captionmargin@=\dimen131
 \captionwidth=\dimen132
@@ -378,145 +378,300 @@ l.177 \end{align*}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-<Images/Toy/Border_random_07_0_initial.png, id=19, 1031.855pt x 1062.97125pt>
-File: Images/Toy/Border_random_07_0_initial.png Graphic file (type png)
 
-<use Images/Toy/Border_random_07_0_initial.png>
-Package pdftex.def Info: Images/Toy/Border_random_07_0_initial.png used on inpu
-t line 245.
-(pdftex.def)             Requested size: 78.61176pt x 80.9683pt.
+LaTeX Warning: File `Images/Toy/Border_random_07_0_initial.png' not found on in
+put line 245.
 
-<Images/Toy/Overlap_random_07_0_initial.png, id=20, 1031.855pt x 1062.97125pt>
-File: Images/Toy/Overlap_random_07_0_initial.png Graphic file (type png)
 
-<use Images/Toy/Overlap_random_07_0_initial.png>
-Package pdftex.def Info: Images/Toy/Overlap_random_07_0_initial.png used on inp
-ut line 248.
-(pdftex.def)             Requested size: 78.61176pt x 80.9683pt.
+! Package pdftex.def Error: File `Images/Toy/Border_random_07_0_initial.png' no
+t found.
 
-<Images/Toy/Toy1_random_07_Closest_2_final.png, id=21, 1031.855pt x 1062.97125p
-t>
-File: Images/Toy/Toy1_random_07_Closest_2_final.png Graphic file (type png)
- <use Images/Toy/Toy1_random_07_Closest_2_final.png>
-Package pdftex.def Info: Images/Toy/Toy1_random_07_Closest_2_final.png used on 
-input line 262.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.245 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<Images/Toy/Toy1_random_07_Cluster_1_final.png, id=22, 1031.855pt x 1062.97125p
-t>
-File: Images/Toy/Toy1_random_07_Cluster_1_final.png Graphic file (type png)
- <use Images/Toy/Toy1_random_07_Cluster_1_final.png>
-Package pdftex.def Info: Images/Toy/Toy1_random_07_Cluster_1_final.png used on 
-input line 263.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 245.
 
-<Images/Toy/Toy1_random_07_Voronoi_0_final.png, id=23, 1031.855pt x 1062.97125p
-t>
-File: Images/Toy/Toy1_random_07_Voronoi_0_final.png Graphic file (type png)
- <use Images/Toy/Toy1_random_07_Voronoi_0_final.png>
-Package pdftex.def Info: Images/Toy/Toy1_random_07_Voronoi_0_final.png used on 
-input line 264.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
-
-<Images/Toy/Toy1_random_07_SamplingCost_2_final.png, id=24, 1031.855pt x 1062.9
-7125pt>
-File: Images/Toy/Toy1_random_07_SamplingCost_2_final.png Graphic file (type png
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
- <use Images/Toy/Toy1_random_07_SamplingCost_2_final.png>
-Package pdftex.def Info: Images/Toy/Toy1_random_07_SamplingCost_2_final.png use
-d on input line 265.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
 
-<Images/Toy/Toy3_random_07_Closest_2_final.png, id=25, 1031.855pt x 1062.97125p
-t>
-File: Images/Toy/Toy3_random_07_Closest_2_final.png Graphic file (type png)
- <use Images/Toy/Toy3_random_07_Closest_2_final.png>
-Package pdftex.def Info: Images/Toy/Toy3_random_07_Closest_2_final.png used on 
-input line 267.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
+LaTeX Warning: File `Images/Toy/Overlap_random_07_0_initial.png' not found on i
+nput line 248.
 
-<Images/Toy/Toy3_random_07_Cluster_2_final.png, id=26, 1031.855pt x 1062.97125p
-t>
-File: Images/Toy/Toy3_random_07_Cluster_2_final.png Graphic file (type png)
- <use Images/Toy/Toy3_random_07_Cluster_2_final.png>
-Package pdftex.def Info: Images/Toy/Toy3_random_07_Cluster_2_final.png used on 
-input line 268.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
 
-<Images/Toy/Toy3_random_07_Voronoi_2_final.png, id=27, 1031.855pt x 1062.97125p
-t>
-File: Images/Toy/Toy3_random_07_Voronoi_2_final.png Graphic file (type png)
- <use Images/Toy/Toy3_random_07_Voronoi_2_final.png>
-Package pdftex.def Info: Images/Toy/Toy3_random_07_Voronoi_2_final.png used on 
-input line 269.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
+! Package pdftex.def Error: File `Images/Toy/Overlap_random_07_0_initial.png' n
+ot found.
 
-<Images/Toy/Toy3_random_07_SamplingCost_9_final.png, id=28, 1031.855pt x 1062.9
-7125pt>
-File: Images/Toy/Toy3_random_07_SamplingCost_9_final.png Graphic file (type png
-)
- <use Images/Toy/Toy3_random_07_SamplingCost_9_final.png>
-Package pdftex.def Info: Images/Toy/Toy3_random_07_SamplingCost_9_final.png use
-d on input line 270.
-(pdftex.def)             Requested size: 62.8894pt x 64.78113pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.248 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<Images/Toy/Border_random_07_accuracy.pdf, id=29, 520.76117pt x 420.97902pt>
-File: Images/Toy/Border_random_07_accuracy.pdf Graphic file (type pdf)
 
-<use Images/Toy/Border_random_07_accuracy.pdf>
-Package pdftex.def Info: Images/Toy/Border_random_07_accuracy.pdf used on input
- line 334.
-(pdftex.def)             Requested size: 125.7868pt x 101.67938pt.
+LaTeX Warning: File `Images/Toy/Toy1_random_07_Closest_2_final.png' not found o
+n input line 262.
 
-<Images/Toy/Overlap_random_07_accuracy.pdf, id=30, 500.19998pt x 420.97902pt>
-File: Images/Toy/Overlap_random_07_accuracy.pdf Graphic file (type pdf)
 
-<use Images/Toy/Overlap_random_07_accuracy.pdf>
-Package pdftex.def Info: Images/Toy/Overlap_random_07_accuracy.pdf used on inpu
-t line 335.
-(pdftex.def)             Requested size: 120.5407pt x 101.44814pt.
- [2] [3 <./Images/Toy/Border_random_07_0_initial.png> <./Images/Toy/Overlap_ran
-dom_07_0_initial.png> <./Images/Toy/Toy1_random_07_Closest_2_final.png> <./Imag
-es/Toy/Toy1_random_07_Cluster_1_final.png> <./Images/Toy/Toy1_random_07_Voronoi
-_0_final.png> <./Images/Toy/Toy1_random_07_SamplingCost_2_final.png> <./Images/
-Toy/Toy3_random_07_Closest_2_final.png> <./Images/Toy/Toy3_random_07_Cluster_2_
-final.png> <./Images/Toy/Toy3_random_07_Voronoi_2_final.png> <./Images/Toy/Toy3
-_random_07_SamplingCost_9_final.png>] <Images/General/Scenario.jpg, id=48, 803.
-0pt x 529.98pt>
-File: Images/General/Scenario.jpg Graphic file (type jpg)
+! Package pdftex.def Error: File `Images/Toy/Toy1_random_07_Closest_2_final.png
+' not found.
 
-<use Images/General/Scenario.jpg>
-Package pdftex.def Info: Images/General/Scenario.jpg used on input line 346.
-(pdftex.def)             Requested size: 183.4381pt x 121.06796pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.262 .../Toy/Toy1_random_07_Closest_2_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<Images/General/VisualField.png, id=49, 401.5pt x 250.9375pt>
-File: Images/General/VisualField.png Graphic file (type png)
 
-<use Images/General/VisualField.png>
-Package pdftex.def Info: Images/General/VisualField.png used on input line 372.
+LaTeX Warning: File `Images/Toy/Toy1_random_07_Cluster_1_final.png' not found o
+n input line 263.
 
-(pdftex.def)             Requested size: 131.02493pt x 81.89066pt.
 
-<Images/General/TallObject.jpg, id=51, 277.89536pt x 210.71494pt>
-File: Images/General/TallObject.jpg Graphic file (type jpg)
+! Package pdftex.def Error: File `Images/Toy/Toy1_random_07_Cluster_1_final.png
+' not found.
 
-<use Images/General/TallObject.jpg>
-Package pdftex.def Info: Images/General/TallObject.jpg used on input line 373.
-(pdftex.def)             Requested size: 109.53665pt x 83.05624pt.
- [4 <./Images/Toy/Border_random_07_accuracy.pdf> <./Images/Toy/Overlap_random_0
-7_accuracy.pdf
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.263 .../Toy/Toy1_random_07_Cluster_1_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Images/Toy/Overlap_random_07_accuracy
-.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./Images/General/Scenario.jpg> <./Images/General/VisualField.png> <./Images/
-General/TallObject.jpg>]
-<Images/General/RgChromacityQuads.png, id=122, 600.5637pt x 561.5379pt>
-File: Images/General/RgChromacityQuads.png Graphic file (type png)
 
-<use Images/General/RgChromacityQuads.png>
-Package pdftex.def Info: Images/General/RgChromacityQuads.png used on input lin
-e 405.
-(pdftex.def)             Requested size: 94.3341pt x 88.20277pt.
+LaTeX Warning: File `Images/Toy/Toy1_random_07_Voronoi_0_final.png' not found o
+n input line 264.
+
+
+! Package pdftex.def Error: File `Images/Toy/Toy1_random_07_Voronoi_0_final.png
+' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.264 .../Toy/Toy1_random_07_Voronoi_0_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Toy1_random_07_SamplingCost_2_final.png' not fo
+und on input line 265.
+
+
+! Package pdftex.def Error: File `Images/Toy/Toy1_random_07_SamplingCost_2_fina
+l.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.265 ...Toy1_random_07_SamplingCost_2_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Toy3_random_07_Closest_2_final.png' not found o
+n input line 267.
+
+
+! Package pdftex.def Error: File `Images/Toy/Toy3_random_07_Closest_2_final.png
+' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.267 .../Toy/Toy3_random_07_Closest_2_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Toy3_random_07_Cluster_2_final.png' not found o
+n input line 268.
+
+
+! Package pdftex.def Error: File `Images/Toy/Toy3_random_07_Cluster_2_final.png
+' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 .../Toy/Toy3_random_07_Cluster_2_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Toy3_random_07_Voronoi_2_final.png' not found o
+n input line 269.
+
+
+! Package pdftex.def Error: File `Images/Toy/Toy3_random_07_Voronoi_2_final.png
+' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.269 .../Toy/Toy3_random_07_Voronoi_2_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Toy3_random_07_SamplingCost_9_final.png' not fo
+und on input line 270.
+
+
+! Package pdftex.def Error: File `Images/Toy/Toy3_random_07_SamplingCost_9_fina
+l.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.270 ...Toy3_random_07_SamplingCost_9_final.png}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Border_random_07_accuracy.pdf' not found on inp
+ut line 334.
+
+
+! Package pdftex.def Error: File `Images/Toy/Border_random_07_accuracy.pdf' not
+ found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.334 ...mages/Toy/Border_random_07_accuracy.pdf}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Toy/Overlap_random_07_accuracy.pdf' not found on in
+put line 335.
+
+
+! Package pdftex.def Error: File `Images/Toy/Overlap_random_07_accuracy.pdf' no
+t found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.335 ...ages/Toy/Overlap_random_07_accuracy.pdf}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[2] [3]
+
+LaTeX Warning: File `Images/General/Scenario.jpg' not found on input line 346.
+
+
+! Package pdftex.def Error: File `Images/General/Scenario.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.346 ...5\textwidth]{Images/General/Scenario.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/General/VisualField.png' not found on input line 37
+2.
+
+
+! Package pdftex.def Error: File `Images/General/VisualField.png' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.372 ...xtwidth]{Images/General/VisualField.png}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/General/TallObject.jpg' not found on input line 373
+.
+
+
+! Package pdftex.def Error: File `Images/General/TallObject.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.373 ...extwidth]{Images/General/TallObject.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \vbox (badness 2865) has occurred while \output is active []
+
+ [4]
+
+LaTeX Warning: File `Images/General/RgChromacityQuads.png' not found on input l
+ine 405.
+
+
+! Package pdftex.def Error: File `Images/General/RgChromacityQuads.png' not fou
+nd.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.405 ...th]{Images/General/RgChromacityQuads.png}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Underfull \hbox (badness 2158) in paragraph at lines 409--417
 [][]\OT1/ptm/m/n/10 Since vi-sual ob-jects in our
@@ -537,67 +692,143 @@ Underfull \hbox (badness 1371) in paragraph at lines 409--417
 \OT1/ptm/m/n/10 chromaticity color his-togram as
  []
 
-<Images/Outdoor/Runs.jpg, id=123, 643.40375pt x 630.355pt>
-File: Images/Outdoor/Runs.jpg Graphic file (type jpg)
 
-<use Images/Outdoor/Runs.jpg>
-Package pdftex.def Info: Images/Outdoor/Runs.jpg used on input line 452.
-(pdftex.def)             Requested size: 157.23152pt x 154.03915pt.
+LaTeX Warning: File `Images/Outdoor/Runs.jpg' not found on input line 452.
 
-<Images/Outdoor/Cases/Cases_a.jpg, id=124, 322.20375pt x 117.43875pt>
-File: Images/Outdoor/Cases/Cases_a.jpg Graphic file (type jpg)
 
-<use Images/Outdoor/Cases/Cases_a.jpg>
-Package pdftex.def Info: Images/Outdoor/Cases/Cases_a.jpg used on input line 46
-5.
-(pdftex.def)             Requested size: 104.81834pt x 38.20476pt.
+! Package pdftex.def Error: File `Images/Outdoor/Runs.jpg' not found.
 
-<Images/Outdoor/Cases/Cases_b.jpg, id=125, 323.2075pt x 117.43875pt>
-File: Images/Outdoor/Cases/Cases_b.jpg Graphic file (type jpg)
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.452 ...h=0.3\textwidth]{Images/Outdoor/Runs.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use Images/Outdoor/Cases/Cases_b.jpg>
-Package pdftex.def Info: Images/Outdoor/Cases/Cases_b.jpg used on input line 46
-9.
-(pdftex.def)             Requested size: 104.81834pt x 38.08649pt.
 
-<Images/Outdoor/Cases/Cases_c.jpg, id=126, 322.20375pt x 117.43875pt>
-File: Images/Outdoor/Cases/Cases_c.jpg Graphic file (type jpg)
+LaTeX Warning: File `Images/Outdoor/Cases/Cases_a.jpg' not found on input line 
+465.
 
-<use Images/Outdoor/Cases/Cases_c.jpg>
-Package pdftex.def Info: Images/Outdoor/Cases/Cases_c.jpg used on input line 47
-3.
-(pdftex.def)             Requested size: 104.81834pt x 38.20476pt.
 
-<Images/Outdoor/Cases/Cases_d.jpg, id=127, 323.2075pt x 117.43875pt>
-File: Images/Outdoor/Cases/Cases_d.jpg Graphic file (type jpg)
+! Package pdftex.def Error: File `Images/Outdoor/Cases/Cases_a.jpg' not found.
 
-<use Images/Outdoor/Cases/Cases_d.jpg>
-Package pdftex.def Info: Images/Outdoor/Cases/Cases_d.jpg used on input line 47
-6.
-(pdftex.def)             Requested size: 104.81834pt x 38.08649pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.465 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<Images/Outdoor/Cases/Cases_e.jpg, id=128, 654.445pt x 119.44624pt>
-File: Images/Outdoor/Cases/Cases_e.jpg Graphic file (type jpg)
 
-<use Images/Outdoor/Cases/Cases_e.jpg>
-Package pdftex.def Info: Images/Outdoor/Cases/Cases_e.jpg used on input line 48
-0.
-(pdftex.def)             Requested size: 212.25975pt x 38.73936pt.
+LaTeX Warning: File `Images/Outdoor/Cases/Cases_b.jpg' not found on input line 
+469.
 
-<Images/Outdoor/Cases/Cases_f.jpg, id=129, 654.445pt x 116.435pt>
-File: Images/Outdoor/Cases/Cases_f.jpg Graphic file (type jpg)
 
-<use Images/Outdoor/Cases/Cases_f.jpg>
-Package pdftex.def Info: Images/Outdoor/Cases/Cases_f.jpg used on input line 48
-4.
-(pdftex.def)             Requested size: 212.25975pt x 37.76274pt.
+! Package pdftex.def Error: File `Images/Outdoor/Cases/Cases_b.jpg' not found.
 
-<Images/Outdoor/Impacts.jpg, id=130, 552.0625pt x 854.19125pt>
-File: Images/Outdoor/Impacts.jpg Graphic file (type jpg)
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.469 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<use Images/Outdoor/Impacts.jpg>
-Package pdftex.def Info: Images/Outdoor/Impacts.jpg used on input line 500.
-(pdftex.def)             Requested size: 209.63669pt x 324.36143pt.
+
+LaTeX Warning: File `Images/Outdoor/Cases/Cases_c.jpg' not found on input line 
+473.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Cases/Cases_c.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.473 	}
+        \vspace{1 pt}
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Cases/Cases_d.jpg' not found on input line 
+476.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Cases/Cases_d.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.476 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Cases/Cases_e.jpg' not found on input line 
+480.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Cases/Cases_e.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.480 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Cases/Cases_f.jpg' not found on input line 
+484.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Cases/Cases_f.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.484 	}
+        
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: Float too large for page by 60.5307pt on input line 489.
+
+
+LaTeX Warning: File `Images/Outdoor/Impacts.jpg' not found on input line 500.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Impacts.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.500 ....4\textwidth]{Images/Outdoor/Impacts.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Underfull \hbox (badness 1448) in paragraph at lines 443--518
 \OT1/ptm/m/n/10 steps - namely seg-men-ta-tion, color space trans-for-ma-tion
@@ -608,22 +839,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 443--518
 
  []
 
-[5 <./Images/General/RgChromacityQuads.png> <./Images/Outdoor/Runs.jpg> <./Imag
-es/Outdoor/Cases/Cases_a.jpg> <./Images/Outdoor/Cases/Cases_b.jpg> <./Images/Ou
-tdoor/Cases/Cases_c.jpg> <./Images/Outdoor/Cases/Cases_d.jpg> <./Images/Outdoor
-/Cases/Cases_e.jpg> <./Images/Outdoor/Cases/Cases_f.jpg>]
-Underfull \vbox (badness 4899) has occurred while \output is active []
+[5]
+
+LaTeX Warning: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_
+07_accuracy.pdf' not found on input line 566.
 
 
-<Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_accuracy.pdf, id=
-135, 520.76117pt x 409.23985pt>
-File: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_accuracy.pdf
- Graphic file (type pdf)
+! Package pdftex.def Error: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualC
+ountPerLabel_07_accuracy.pdf' not found.
 
-<use Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_accuracy.pdf>
-Package pdftex.def Info: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLa
-bel_07_accuracy.pdf used on input line 566.
-(pdftex.def)             Requested size: 120.5407pt x 94.72266pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.566 ...ndomEqualCountPerLabel_07_accuracy.pdf}	}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 567--567
 \OT1/ptm/m/n/8 Fig. 11.   Test-accuracies for
@@ -634,193 +868,382 @@ Underfull \hbox (badness 10000) in paragraph at lines 567--567
 \OT1/ptm/m/n/8 sequence-wise train-ing on the
  []
 
-[6 <./Images/Outdoor/Impacts.jpg>]
-<Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Closest_hist.pdf,
- id=139, 514.6132pt x 298.12003pt>
-File: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Closest_hist
-.pdf Graphic file (type pdf)
+[6]
 
-<use Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Closest_hist.
-pdf>
-Package pdftex.def Info: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLa
-bel_07_Closest_hist.pdf used on input line 576.
-(pdftex.def)             Requested size: 120.5407pt x 69.82622pt.
-
-<Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Cluster_hist.pdf,
- id=140, 494.05202pt x 298.12003pt>
-File: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Cluster_hist
-.pdf Graphic file (type pdf)
-
-<use Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Cluster_hist.
-pdf>
-Package pdftex.def Info: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLa
-bel_07_Cluster_hist.pdf used on input line 578.
-(pdftex.def)             Requested size: 120.5407pt x 72.73299pt.
-
-<Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Voronoi_hist.pdf,
- id=141, 514.6132pt x 298.12003pt>
-File: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Voronoi_hist
-.pdf Graphic file (type pdf)
-
-<use Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Voronoi_hist.
-pdf>
-Package pdftex.def Info: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLa
-bel_07_Voronoi_hist.pdf used on input line 580.
-(pdftex.def)             Requested size: 120.5407pt x 69.82622pt.
-
-<Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_SamplingCost_hist
-.pdf, id=142, 494.05202pt x 298.12003pt>
-File: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_SamplingCost
-_hist.pdf Graphic file (type pdf)
-
-<use Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_SamplingCost_
-hist.pdf>
-Package pdftex.def Info: Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLa
-bel_07_SamplingCost_hist.pdf used on input line 582.
-(pdftex.def)             Requested size: 120.5407pt x 72.73299pt.
-
-<Images/Outdoor/Ranked/Hard/Philips_1_10.jpg, id=143, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Philips_1_10.jpg Graphic file (type jpg)
-
-<use Images/Outdoor/Ranked/Hard/Philips_1_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Philips_1_10.jpg used on in
-put line 601.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/Paddle_3_10.jpg, id=144, 321.2pt x 240.9pt
->
-File: Images/Outdoor/Ranked/Hard/Confused/Paddle_3_10.jpg Graphic file (type jp
-g)
- <use Images/Outdoor/Ranked/Hard/Confused/Paddle_3_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/Paddle_3_10.jpg us
-ed on input line 602.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/Nokia_8_10.jpg, id=145, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Confused/Nokia_8_10.jpg Graphic file (type jpg
-)
-<use Images/Outdoor/Ranked/Hard/Confused/Nokia_8_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/Nokia_8_10.jpg use
-d on input line 603.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/RedBull_7_10.jpg, id=146, 321.2pt x 240.9p
-t>
-File: Images/Outdoor/Ranked/Hard/Confused/RedBull_7_10.jpg Graphic file (type j
-pg)
- <use Images/Outdoor/Ranked/Hard/Confused/RedBull_7_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/RedBull_7_10.jpg u
-sed on input line 604.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Forceps_7_10.jpg, id=147, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Forceps_7_10.jpg Graphic file (type jpg)
-
-<use Images/Outdoor/Ranked/Hard/Forceps_7_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Forceps_7_10.jpg used on in
-put line 606.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/SmallDog_4_10.jpg, id=148, 321.2pt x 240.9
-pt>
-File: Images/Outdoor/Ranked/Hard/Confused/SmallDog_4_10.jpg Graphic file (type 
-jpg)
- <use Images/Outdoor/Ranked/Hard/Confused/SmallDog_4_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/SmallDog_4_10.jpg 
-used on input line 607.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/Coke_9_10.jpg, id=149, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Confused/Coke_9_10.jpg Graphic file (type jpg)
+LaTeX Warning: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_
+07_Closest_hist.pdf' not found on input line 576.
 
 
-<use Images/Outdoor/Ranked/Hard/Confused/Coke_9_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/Coke_9_10.jpg used
- on input line 608.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
+! Package pdftex.def Error: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualC
+ountPerLabel_07_Closest_hist.pdf' not found.
 
-<Images/Outdoor/Ranked/Hard/Confused/Stump_3_10.jpg, id=150, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Confused/Stump_3_10.jpg Graphic file (type jpg
-)
-<use Images/Outdoor/Ranked/Hard/Confused/Stump_3_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/Stump_3_10.jpg use
-d on input line 609.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Tomato_1_10.jpg, id=151, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Tomato_1_10.jpg Graphic file (type jpg)
-
-<use Images/Outdoor/Ranked/Hard/Tomato_1_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Tomato_1_10.jpg used on inp
-ut line 611.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/RedDuck_3_10.jpg, id=152, 321.2pt x 240.9p
-t>
-File: Images/Outdoor/Ranked/Hard/Confused/RedDuck_3_10.jpg Graphic file (type j
-pg)
- <use Images/Outdoor/Ranked/Hard/Confused/RedDuck_3_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/RedDuck_3_10.jpg u
-sed on input line 612.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/RedBall_3_10.jpg, id=153, 321.2pt x 240.9p
-t>
-File: Images/Outdoor/Ranked/Hard/Confused/RedBall_3_10.jpg Graphic file (type j
-pg)
- <use Images/Outdoor/Ranked/Hard/Confused/RedBall_3_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/RedBall_3_10.jpg u
-sed on input line 613.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Shoe_1_10.jpg, id=154, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Shoe_1_10.jpg Graphic file (type jpg)
-
-<use Images/Outdoor/Ranked/Hard/Shoe_1_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Shoe_1_10.jpg used on input
- line 615.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/SmallDog_6_10.jpg, id=155, 321.2pt x 240.9
-pt>
-File: Images/Outdoor/Ranked/Hard/Confused/SmallDog_6_10.jpg Graphic file (type 
-jpg)
- <use Images/Outdoor/Ranked/Hard/Confused/SmallDog_6_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/SmallDog_6_10.jpg 
-used on input line 616.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
-
-<Images/Outdoor/Ranked/Hard/Confused/Tube_1_10.jpg, id=156, 321.2pt x 240.9pt>
-File: Images/Outdoor/Ranked/Hard/Confused/Tube_1_10.jpg Graphic file (type jpg)
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.576 ...mEqualCountPerLabel_07_Closest_hist.pdf}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
 
-<use Images/Outdoor/Ranked/Hard/Confused/Tube_1_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/Tube_1_10.jpg used
- on input line 617.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
+LaTeX Warning: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_
+07_Cluster_hist.pdf' not found on input line 578.
 
-<Images/Outdoor/Ranked/Hard/Confused/Leaves_7_10.jpg, id=157, 321.2pt x 240.9pt
->
-File: Images/Outdoor/Ranked/Hard/Confused/Leaves_7_10.jpg Graphic file (type jp
-g)
- <use Images/Outdoor/Ranked/Hard/Confused/Leaves_7_10.jpg>
-Package pdftex.def Info: Images/Outdoor/Ranked/Hard/Confused/Leaves_7_10.jpg us
-ed on input line 618.
-(pdftex.def)             Requested size: 47.16705pt x 35.37253pt.
 
-<Images/Outdoor/Confusions.jpg, id=158, 823.075pt x 414.54875pt>
-File: Images/Outdoor/Confusions.jpg Graphic file (type jpg)
+! Package pdftex.def Error: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualC
+ountPerLabel_07_Cluster_hist.pdf' not found.
 
-<use Images/Outdoor/Confusions.jpg>
-Package pdftex.def Info: Images/Outdoor/Confusions.jpg used on input line 628.
-(pdftex.def)             Requested size: 157.23152pt x 79.18889pt.
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.578 ...mEqualCountPerLabel_07_Cluster_hist.pdf}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
 
-<Images/Outdoor/Easy.jpg, id=159, 844.15375pt x 120.45pt>
-File: Images/Outdoor/Easy.jpg Graphic file (type jpg)
 
-<use Images/Outdoor/Easy.jpg>
-Package pdftex.def Info: Images/Outdoor/Easy.jpg used on input line 635.
-(pdftex.def)             Requested size: 251.56563pt x 35.8945pt.
+LaTeX Warning: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_
+07_Voronoi_hist.pdf' not found on input line 580.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualC
+ountPerLabel_07_Voronoi_hist.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.580 ...mEqualCountPerLabel_07_Voronoi_hist.pdf}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_
+07_SamplingCost_hist.pdf' not found on input line 582.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/OutdoorEasy_chunksRandomEqualC
+ountPerLabel_07_SamplingCost_hist.pdf' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.582 ...lCountPerLabel_07_SamplingCost_hist.pdf}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Philips_1_10.jpg' not found on 
+input line 601.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Philips_1_10.jpg' 
+not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.601 ...es/Outdoor/Ranked/Hard/Philips_1_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/Paddle_3_10.jpg' not f
+ound on input line 602.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/Paddle_3_
+10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.602 ...or/Ranked/Hard/Confused/Paddle_3_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/Nokia_8_10.jpg' not fo
+und on input line 603.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/Nokia_8_1
+0.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.603 ...oor/Ranked/Hard/Confused/Nokia_8_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/RedBull_7_10.jpg' not 
+found on input line 604.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/RedBull_7
+_10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.604 ...r/Ranked/Hard/Confused/RedBull_7_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Forceps_7_10.jpg' not found on 
+input line 606.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Forceps_7_10.jpg' 
+not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.606 ...es/Outdoor/Ranked/Hard/Forceps_7_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/SmallDog_4_10.jpg' not
+ found on input line 607.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/SmallDog_
+4_10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.607 .../Ranked/Hard/Confused/SmallDog_4_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/Coke_9_10.jpg' not fou
+nd on input line 608.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/Coke_9_10
+.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.608 ...door/Ranked/Hard/Confused/Coke_9_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/Stump_3_10.jpg' not fo
+und on input line 609.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/Stump_3_1
+0.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.609 ...oor/Ranked/Hard/Confused/Stump_3_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Tomato_1_10.jpg' not found on i
+nput line 611.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Tomato_1_10.jpg' n
+ot found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.611 ...ges/Outdoor/Ranked/Hard/Tomato_1_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/RedDuck_3_10.jpg' not 
+found on input line 612.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/RedDuck_3
+_10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.612 ...r/Ranked/Hard/Confused/RedDuck_3_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/RedBall_3_10.jpg' not 
+found on input line 613.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/RedBall_3
+_10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.613 ...r/Ranked/Hard/Confused/RedBall_3_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Shoe_1_10.jpg' not found on inp
+ut line 615.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Shoe_1_10.jpg' not
+ found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.615 ...mages/Outdoor/Ranked/Hard/Shoe_1_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/SmallDog_6_10.jpg' not
+ found on input line 616.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/SmallDog_
+6_10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.616 .../Ranked/Hard/Confused/SmallDog_6_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/Tube_1_10.jpg' not fou
+nd on input line 617.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/Tube_1_10
+.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.617 ...door/Ranked/Hard/Confused/Tube_1_10.jpg}}
+                                                  ~
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Ranked/Hard/Confused/Leaves_7_10.jpg' not f
+ound on input line 618.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Ranked/Hard/Confused/Leaves_7_
+10.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.618 ...or/Ranked/Hard/Confused/Leaves_7_10.jpg}}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Confusions.jpg' not found on input line 628
+.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Confusions.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.628 ...textwidth]{Images/Outdoor/Confusions.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+LaTeX Warning: File `Images/Outdoor/Easy.jpg' not found on input line 635.
+
+
+! Package pdftex.def Error: File `Images/Outdoor/Easy.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.635 ...=0.48\textwidth]{Images/Outdoor/Easy.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 569--642
 []\OT1/ptm/m/n/10 Figure 11[] il-lus-trates
@@ -877,19 +1300,13 @@ Underfull \hbox (badness 2932) in paragraph at lines 569--642
  []
 
 
-Underfull \hbox (badness 1783) in paragraph at lines 569--642
-\OT1/ptm/m/n/10 sug-gests that it pro-vides
+Underfull \hbox (badness 10000) in paragraph at lines 569--642
+\OT1/ptm/m/n/10 classes. \OT1/ptm/m/it/10 Sam-pling-Cost
  []
 
 
-Underfull \hbox (badness 3590) in paragraph at lines 569--642
-\OT1/ptm/m/n/10 too many pro-to-types for cer-tain classes. \OT1/ptm/m/it/10 Sa
-m-pling-Cost
- []
-
-
-Underfull \hbox (badness 7415) in paragraph at lines 569--642
-\OT1/ptm/m/n/10 dis-tributes nodes very evenly since the cost-function
+Underfull \hbox (badness 10000) in paragraph at lines 569--642
+\OT1/ptm/m/n/10 dis-tributes nodes very
  []
 
 
@@ -897,41 +1314,13 @@ Underfull \hbox (badness 1584) in paragraph at lines 569--642
 \OT1/ptm/m/n/10 al-go-rithms are shown in Fig-ure 14[]. The wool re-quires
  []
 
-[7 <./Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Closest_hist
-.pdf> <./Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Cluster_h
-ist.pdf
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Images/Outdoor/OutdoorEasy_chunksRand
-omEqualCountPerLabel_07_Cluster_hist.pdf): PDF inclusion: multiple pdfs with pa
-ge group included in a single page
-> <./Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_Voronoi_hist.
-pdf
+Underfull \vbox (badness 3098) has occurred while \output is active []
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Images/Outdoor/OutdoorEasy_chunksRand
-omEqualCountPerLabel_07_Voronoi_hist.pdf): PDF inclusion: multiple pdfs with pa
-ge group included in a single page
-> <./Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_SamplingCost_
-hist.pdf
+ [7]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-pdfTeX warning: /usr/bin/pdflatex (file ./Images/Outdoor/OutdoorEasy_chunksRand
-omEqualCountPerLabel_07_SamplingCost_hist.pdf): PDF inclusion: multiple pdfs wi
-th page group included in a single page
-> <./Images/Outdoor/OutdoorEasy_chunksRandomEqualCountPerLabel_07_accuracy.pdf
-
-pdfTeX warning: /usr/bin/pdflatex (file ./Images/Outdoor/OutdoorEasy_chunksRand
-omEqualCountPerLabel_07_accuracy.pdf): PDF inclusion: multiple pdfs with page g
-roup included in a single page
-> <./Images/Outdoor/Ranked/Hard/Philips_1_10.jpg> <./Images/Outdoor/Ranked/Hard
-/Confused/Paddle_3_10.jpg> <./Images/Outdoor/Ranked/Hard/Confused/Nokia_8_10.jp
-g> <./Images/Outdoor/Ranked/Hard/Confused/RedBull_7_10.jpg> <./Images/Outdoor/R
-anked/Hard/Forceps_7_10.jpg> <./Images/Outdoor/Ranked/Hard/Confused/SmallDog_4_
-10.jpg> <./Images/Outdoor/Ranked/Hard/Confused/Coke_9_10.jpg> <./Images/Outdoor
-/Ranked/Hard/Confused/Stump_3_10.jpg> <./Images/Outdoor/Ranked/Hard/Tomato_1_10
-.jpg> <./Images/Outdoor/Ranked/Hard/Confused/RedDuck_3_10.jpg> <./Images/Outdoo
-r/Ranked/Hard/Confused/RedBall_3_10.jpg> <./Images/Outdoor/Ranked/Hard/Shoe_1_1
-0.jpg> <./Images/Outdoor/Ranked/Hard/Confused/SmallDog_6_10.jpg> <./Images/Outd
-oor/Ranked/Hard/Confused/Tube_1_10.jpg> <./Images/Outdoor/Ranked/Hard/Confused/
-Leaves_7_10.jpg> <./Images/Outdoor/Confusions.jpg> <./Images/Outdoor/Easy.jpg>]
+ [8]
 (./OnlineLearningIJCNN.bbl
 Missing character: There is no Ã in font ptmr7t!
 Missing character: There is no ¶ in font ptmr7t!
@@ -951,33 +1340,38 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[8] (./OnlineLearningIJCNN.aux) ) 
+[9] (./OnlineLearningIJCNN.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4813 strings out of 493105
- 79458 string characters out of 6137071
- 153001 words of memory out of 5000000
- 8147 multiletter control sequences out of 15000+600000
- 51569 words of font info for 109 fonts, out of 8000000 for 9000
+ 4683 strings out of 493029
+ 70917 string characters out of 6136234
+ 153875 words of memory out of 5000000
+ 8082 multiletter control sequences out of 15000+600000
+ 52599 words of font info for 113 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 38i,13n,47p,660b,414s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips
-/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
-imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on OnlineLearningIJCNN.pdf (8 pages, 3207133 bytes).
+ 38i,13n,49p,660b,422s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on OnlineLearningIJCNN.pdf (9 pages, 204212 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 95 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

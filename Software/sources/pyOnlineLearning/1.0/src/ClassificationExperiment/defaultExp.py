@@ -6,7 +6,7 @@ from doExperiment import doExperiment
 import matplotlib.pyplot as plt
 import cProfile
 import libNNPythonIntf
-
+import numpy as np
 if __name__ == '__main__':
     '''import numpy as np
     #a = np.array([[1.,2.], [3.,4.]])
@@ -29,13 +29,15 @@ if __name__ == '__main__':
 
     expCfg = {'iterations': 1, 'trainOfflineSVM': False, 'statisticsLevel': 0, 'statisticsRecordIntervall': 50,
               'saveDatasetFigure': False, 'saveFinalNet': False, 'saveInitialNet': False, 'saveNetIntervall': 0,
-              'saveProtoHistogram': False, 'visualizeTraining': False, 'dstDirectory': Paths.StatisticsClassificationDir(),
+              'saveProtoHistogram': False, 'visualizeTraining': True, 'dstDirectory': Paths.StatisticsClassificationDir(),
               'exportToOFRFormat': False, 'epochs': 1, 'expName': ''}
 
 
     netIndivDef = {}
 
     defaultCfg = {'classifierName': 'ILVQ', 'indiv': netIndivDef}
+    randomState = 0
+    np.random.seed(randomState)
 
     '''ILVQCfg = copy.deepcopy(defaultCfg)
     ILVQCfg['indiv']['name'] = 'standard'
@@ -77,7 +79,7 @@ if __name__ == '__main__':
     KNNWindowCfg['indiv']['driftStrategy'] = None
     #KNNWindowCfg['indiv']['driftStrategy'] = 'adwin'
     #KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC7'
-    #KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC8'
+    KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC8'
     #KNNWindowCfg['indiv']['driftStrategy'] = 'both'
 
     #WAVGCfg = copy.deepcopy(defaultCfg)
@@ -108,5 +110,6 @@ if __name__ == '__main__':
     #doExperiment({'dsName': 'rialto', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
 
     #doExperiment({'dsName': 'chessIIDXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
+    #doExperiment({'dsName': 'chessFields', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
 
-    cProfile.run("doExperiment({'dsName': 'chessVirtualXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)")
+    cProfile.run("doExperiment({'dsName': 'rbfAbruptXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)")

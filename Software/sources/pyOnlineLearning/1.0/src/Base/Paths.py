@@ -714,6 +714,13 @@ def chessIIDXXLTrainSamplesPath():
 
 def chessIIDXXLTrainLabelsPath():
     return nonStationaryFeaturesDirPrefix() + 'chess/chessIIDXXL.labels'
+
+def chessFieldsTrainSamplesPath():
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessFields.data'
+
+def chessFieldsTrainLabelsPath():
+    return nonStationaryFeaturesDirPrefix() + 'chess/chessFields.labels'
+
 def allDriftTrainSamplesPath():
     return nonStationaryFeaturesDirPrefix() + 'allDrift/allDrift.data'
 

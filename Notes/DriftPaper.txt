@@ -20,7 +20,6 @@ rbfAbrupt																			96.4			97.4	77.3		94.8
 toyDataSets.rbfAbrupt(5, 2, 250, 10, 2)
 RectIncr																			91.1			52.5	80.0		95.2 13
 
--profiler chessVirtual, check for simple speed ups (append etc)
 -test gradual abrupt with maxACC8
 -finish real dataset Drift evaluation 
 -Name for algorithm/memory model

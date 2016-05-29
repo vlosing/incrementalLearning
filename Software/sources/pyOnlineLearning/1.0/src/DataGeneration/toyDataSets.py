@@ -35,17 +35,12 @@ def getChessSquareSamplesMultiClass(row, col, edgeLength, nSamples, sampleRangeX
 
     return samples, labels
 
-def getChessVirtual(nSamplesPerField, numValidationSamples, nTiles=8, sampleRange=[0, 1]):
+'''def getChessVirtual(nSamplesPerField, numValidationSamples, nTiles=8, sampleRange=[0, 1]):
     allSamples = np.empty(shape=(0, 2))
     allLabels = np.empty(shape=(0, 1))
     edgeLength = (sampleRange[1] - sampleRange[0]) / float(nTiles)
     for row in range(nTiles):
         colRange = range(nTiles)
-        '''if (row%2 == 0):
-            colRange = range(cols)
-        else:
-            colRange = range(cols-1, -1, -1)'''
-
         for col in colRange:
             samples, labels = getChessSquareSamplesMultiClass(row, col, edgeLength, nSamplesPerField, sampleRange)
             allSamples = np.vstack([allSamples, samples])
@@ -58,6 +53,25 @@ def getChessVirtual(nSamplesPerField, numValidationSamples, nTiles=8, sampleRang
             else:
                 rndCol = np.random.randint(0, nTiles)
             samples, labels = getChessSquareSamplesMultiClass(rndRow, rndCol, edgeLength, 1, sampleRange)
+            allSamples = np.vstack([allSamples, samples])
+            allLabels = np.append(allLabels, labels)
+    return allSamples, allLabels'''
+
+def getChessRandomFieldOrder(nSamplesPerField, nTiles=8, repetitions=1, sampleRangeX=[0, 1], sampleRangeY = [0, 1]):
+    allSamples = np.empty(shape=(0, 2))
+    allLabels = np.empty(shape=(0, 1))
+    edgeLength = (sampleRangeX[1] - sampleRangeX[0]) / float(nTiles)
+    for i in range(repetitions):
+        fieldIndices =[]
+        for j in range(nTiles**2):
+            while True:
+                fieldIdx = np.random.randint(0, nTiles**2)
+                if fieldIdx not in fieldIndices:
+                    fieldIndices.append(fieldIdx)
+                    break
+            row = fieldIdx / nTiles
+            col = fieldIdx % nTiles
+            samples, labels = getChessSquareSamplesMultiClass(row, col, edgeLength, nSamplesPerField, sampleRangeX, sampleRangeY)
             allSamples = np.vstack([allSamples, samples])
             allLabels = np.append(allLabels, labels)
     return allSamples, allLabels
@@ -75,6 +89,22 @@ def getChessIID(nSamplesPerField, nTiles=8, sampleRangeX=[0, 1], sampleRangeY = 
     allSamples = allSamples[permIndices, :]
     allLabels = allLabels[permIndices]
     return allSamples, allLabels
+
+def getChessIID2(nSamples, nTiles=8, sampleRangeX=[0, 1], sampleRangeY = [0, 1]):
+    #allSamples = np.empty(shape=(0, 2))
+    allLabels = []
+    edgeLength = (sampleRangeX[1] - sampleRangeX[0]) / float(nTiles)
+
+    currentX = sampleRangeX[0]
+    currentY = sampleRangeY[0]
+    allSamples = getRectSamples(currentX, currentY, nTiles * edgeLength, nTiles * edgeLength, nSamples)
+
+    for i in range(nSamples):
+        col = int(allSamples[i, 0]/edgeLength)
+        row = int(allSamples[i, 1]/edgeLength)
+
+        allLabels.append(((col+2*row) % nTiles))
+    return allSamples, np.array(allLabels)
 
 def getMixedDataset(samplesList, labelsList):
     maxLen = 0

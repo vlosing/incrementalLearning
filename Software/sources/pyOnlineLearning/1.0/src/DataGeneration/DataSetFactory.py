@@ -101,9 +101,15 @@ def getDataSet(name, streams=[]):
         #samples, labels = toyDataSets.getChessRandomVirtual(300, 1000, nTiles=8)
         #samples, labels = toyDataSets.getChessRandomVirtual(200, 500, nTiles=8)
         samples, labels = realDataSets.getChessVirtual()
+
     elif name == 'chessIIDXXL':
         #samples, labels = toyDataSets.getChessIID(3125)
         samples, labels = realDataSets.getChessIIDXXL()
+        #samples, labels = toyDataSets.getChessIID2(200000)
+
+    elif name == 'chessFields':
+        #samples, labels = toyDataSets.getChessRandomFieldOrder(200, repetitions=5)
+        samples, labels = realDataSets.getChessFields()
     elif name == 'allDrift':
         samples, labels = realDataSets.getAllDrift()
     elif name == 'allDriftXXL':
@@ -200,7 +206,7 @@ def isStationary(dataSetName):
     elif dataSetName in ['weather', 'elec', 'spam', 'souza2CDT', 'souza4CREV1', 'souzaGears2C2D', 'souzaFG2C2D', 'souza2CHT', 'keystroke', 'covType', 'rbfFast',
                          'rbfSlow', 'rbfSlowXXL', 'sea', 'rbfSlow2D', 'rbfFast2D', 'hypSlow', 'hypSlowXXL', 'cbConst', 'cbSinus',
                          'rbfIncr', 'rbfAbruptSmall', 'rbfAbruptXXL', 'squaresIncr', 'squaresIncrXXL', 'rbfGradual', 'rectGradual',
-                         'chessVirtual', 'chessVirtualXXL', 'chessIIDXXL', 'outdoorStream', 'rialto', 'allDrift', 'allDriftXXL']:
+                         'chessVirtual', 'chessFields', 'chessVirtualXXL', 'chessIIDXXL', 'outdoorStream', 'rialto', 'allDrift', 'allDriftXXL']:
         return False
 
     else:

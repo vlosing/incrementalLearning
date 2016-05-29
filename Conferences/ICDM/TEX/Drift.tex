@@ -20,7 +20,7 @@
 \begin{document}
 
 
-\title{Interactive Online Learning for Obstacle Classification on a Mobile Robot}
+\title{KNN classifier with self adjusting memory for heterogenous concept drift }
 
 
 \author{\IEEEauthorblockN{Viktor Losing\IEEEauthorrefmark{1}\IEEEauthorrefmark{2},
@@ -195,42 +195,21 @@ The datasets interchanging RBF, moving squares and transient chessboard datasets
 Therefore, incremental, abrupt and virtual drift are taking place at the same time, requiring local adaptation to different drift types.\\
 
 Unfortunately, only a few real world drift benchmarks are available, of which we used the largest ones. Additionaly, we contributed two challenging new datasets obtained from visual data.
-While the drift is explicitly generated in artificial datasets, it is rather difficult to identify the drift type in real world data or whether drift is present at all.
-XXVL KNN experiment with different sizes compared to complete KNN to at least distinguish between virtual/abrupt drift!
-
-\begin{table}
-\def\arraystretch{0.9}
-\footnotesize
-\centering
-\caption{Considered real world datasets.}
-\label{tab:driftInRealDatasets}
-\begin{tabular}{l|ccccc}
-\textit{Dataset} & KNN\textsubscript{S-100}&KNN\textsubscript{S-500}&KNN\textsubscript{S-1000}&KNN\textsubscript{S-5000}&KNN\\\hline
-\rule{0pt}{8pt}
-Weather & 18159 & 8 & 2\\
-Elec & 27549 & 6 & 2\\
-CovType & 581012 & 54 & 784\\
-Outdoor & 4000 & 21 & 40\\
-Railto & 40000 & 27 & 10\\
-\end{tabular}
-\label{tab:datasets}
-\end{table}
-
 The main attributes of all considered real world datasets are given in Table \ref{tab:realDatasets}.
 \begin{table}
 \def\arraystretch{0.9}
 \footnotesize
 \centering
-\caption{Considered real world datasets.}
+\caption{Considered real world datasets. The given drift type was determined as described in \ref{}.}
 \label{tab:realDatasets}
 \begin{tabular}{l|cccc}
-\textit{Dataset} & \#Samples&\#Feat.&\#Class\\\hline
+\textit{Dataset} & \#Samples&\#Feat.&\#Class&Drift type\\\hline
 \rule{0pt}{8pt}
-Weather & 18159 & 8 & 2\\
-Elec & 27549 & 6 & 2\\
-CovType & 581012 & 54 & 784\\
-Outdoor & 4000 & 21 & 40\\
-Railto & 40000 & 27 & 10\\
+Weather & 18159 & 8 & 2 & virtual\\
+Elec & 27549 & 6 & 2 & real\\
+CovType & 581012 & 54 & 784 & real\\
+Outdoor & 4000 & 21 & 40 & real\\
+Railto & 40000 & 27 & 10 & real\\
 \end{tabular}
 \label{tab:datasets}
 \end{table}
@@ -251,12 +230,69 @@ It is often used as a benchmark for drift algorithms \cite{Bifet:2013:EDS:248036
 \textbf{Outdoor Objects}\\
 This visual dataset was obtained from images recorded by a mobile robot approaching 40 different objects in a garden environment \cite{losing2015interactive}. The lighting conditions between 
 the approaches are varying significantly caused by different weather conditions and/or cast shadows making the classification quite challenging. Each approach
-consists of 10 images and is represented in temporal order within the dataset. Even though the representation is quite stable during a single approach, there is abrupt drift of varying degree between
+consists of 10 images and is represented in temporal order within the dataset. Even though the representation is quite stable during a single approach, there is a change of varying degree between different
 approaches of the same object XXVL pictures. The objects are encoded in a normalized 21-dimensional rg-chromaticity histogram.\\
 \textbf{Railto Bridge Timelapse}\\
 Ten of the colorful buildings next to the famous rialto bridge in Venice are encoded in a normalized 27-dimensional rgb histogram. 
-The images were obtained from timelapse videos of 10 consecutive days recorded in may 2016 by a webcam of XXVL. Incremental drift is caused by continuously changing weather conditions and
-day times XXVL see figures. We excluded overnight recordings since they were too dark for being useful.
+The images were obtained from timelapse videos of 10 consecutive days recorded in may 2016 by a webcam of XXVL. Continuously changing weather and lighting conditions affect the representation  XXVL see figures. We excluded overnight recordings since they were too dark for being useful.
+\subsubsection{Assessing the drift type in real world data}
+While the drift is explicitly generated in artificial datasets, it is rather difficult to identify the drift type in real world data or whether drift is present at all. Therefore, authors usually
+assume that there is some drift contained in the common used datasets and simply perform their experiments. We propose in this section a method which is able to determine the present drift type in a 
+given dataset. To the best of our knowledge this has not been done so far in literature. Our two stage approach can distinguish between real, virtual or no drift at all. 
+In the first step we are able to conclude whether real drift is present. If that is not the case, we continue with the second step which detects virtual drift is contained. In the case of both
+being negative we infer that no drift is present at all. We heavily use sliding windows of various sizes for this analysis. The type of classifier is interchangeable, however, we used once again KNN.\\
+
+The idea for the first step is inspired by the observation that whenever real drift is present, sliding windows of smaller sizes often deliver higher accuracies than larger ones. This happens
+whenever outdated samples from former concepts are in conflict with samples of the current one. A window which contains less of the outdated samples, delivers therefore a better result. 
+We propose to test whether the accuracies achieved with sliding windows of different sizes are significantly higher than the one obtained without any size restriction. 
+To obtain multiplse samples of the accuracies we generate bootstrapped samples of the dataset maintaining the initial order. Afterwards, we perform a one sided hypothesis test with the traditional p-value of 5\%.
+The method is described exemplarly for one window size s1 in the following. XXVL PAC learning argument + refernce.\\
+Given a dataset X with n examples, we generate b bootstrap samples $\Psi=\hat{X}_1,\hat{X}_2...{X}_b$of the dataset and sort them such that the initial order in the dataset is preserved. 
+We train a classifier with window size $s_1$ and another one with $s_n$ using $\Psi$ and asses their accuracies $a_1,a_2,...a_b$ and $\tilde{a}_1,\tilde{a}_2,...\tilde{a}_b$ respectively.  
+The pth percentile of all accuracy differences $d_i = a_i - \tilde{a}_i$ is calculated. The null hypothesis, accuracy $a_i <= \tilde{a}_i$, is rejected if its value is smaller 0.\\
+In case of no real drift, we proceed with the second step and test for virtual drift. Here we permutate the dataset each time before generating the bootstrapped samples and compare
+the resulting accuracies with those obtained in the first stage using the same window size. The permutation mixes data of all concepts. If P(X) is changed over time an 
+algorithm with limited ressources should achieve higher accuracies, since it is easier to classify only one concept at a time instead of all of them together.\\
+Next to the real world data we also analyzed the drift type of artificial data as a proof of concept. We used 200 bootstrap samples per window size.
+Table \ref{tab:drifttype} shows the mean accuracies of the bootstrapped samples with corresponding standard deviations and the inferred drift type. Our approach classifies correctly
+the drift type of all artificial datasets. The drift in the real world data is generally less pronounced than in the artificial ones since the acurracy differences are significantly
+smaller there. Nonthelss, the datasets Elec and the vision based datasets Outdoor and Rialto clearly benefit from smaller window sizes. Covtype contains minor real drift, while weather
+incorporates only virtual drift (long dry periods in the summer).
+\begin{table*}
+\def\arraystretch{0.9}
+\footnotesize
+\centering
+\caption{Mean accuracies and corresponding standard deviations obtained from bootstrapped samples of the datasets with varying sliding window sizes.}
+\subfloat[Bootstrapped samples for detecting real drift.]{
+\label{tab:drifttype}
+\begin{tabular}{l|ccccccc}
+\textit{Dataset} & KNN\textsubscript{S-100}&KNN\textsubscript{S-500}&KNN\textsubscript{S-1000}&KNN\textsubscript{S-5000}&KNN\textsubscript{S-10000}&KNN&Concluded drift type\\\hline
+\rule{0pt}{8pt}
+Weather              &82.03(0.12)&84.05(0.24)&84.36(0.25)&84.95(0.18)&84.92(0.20)&84.86(0.16)&not real\\
+Elec                 &\textbf{89.08(0.18)}&\textbf{87.46(0.17)}&\textbf{86.61(0.16)}&\textbf{85.07(0.11)}&\textbf{84.22(0.14)}&83.43(0.13)&real\\
+CovType              &94.65(0.01)&96.15(0.01)&\textbf{97.11(0.01)}&\textbf{96.95(0.01)}&\textbf{96.92(0.01)}& 5&real\\
+Outdoor              &89.08(0.18)&87.46(0.17)&86.61(0.16)&85.07(0.11)&84.22(0.14)&83.43(0.13)&real\\
+Railto               &89.08(0.18)&87.46(0.17)&86.61(0.16)&85.07(0.11)&84.22(0.14)&83.43(0.13)&real\\\hline
+Chessboard i.i.d.    &63.23(0.07)&83.63(0.07)&88.47(0.06)&94.67(0.03)&96.15(0.04)&98.37(0.02)& not real\\
+Transient Chessboard &81.00(0.05)&88.56(0.04)&88.85(0.04)&94.81(0.02)&95.89(0.03)&98.36(0.03)& not real\\
+Moving Squares       &\textbf{97.73(0.02)}&\textbf{67.22(0.05)}&\textbf{63.30(0.05)}&56.87(0.11)&57.22(0.04)&57.12(0.10)& real\\
+Interchanging RBF    &97.73(0.02)&67.22(0.05)&63.30(0.05)&56.87(0.11)&57.22(0.04)&57.12(0.10)& real\\
+\end{tabular}
+\label{tab:stage1}
+}
+\par\vspace{5 pt}
+\subfloat[Permutated bootstrapped samples for detecting real drift.]{
+\begin{tabular}{l|ccccccc}
+\textit{Dataset} & KNN\textsubscript{S-100}&KNN\textsubscript{S-500}&KNN\textsubscript{S-1000}&KNN\textsubscript{S-5000}&KNN\textsubscript{S-10000}&KNN&Concluded drift type\\\hline
+\rule{0pt}{8pt}
+Weather              &\textbf{81.14(0.30)}&\textbf{83.20(0.23)}&83.89(0.28)&84.42(0.17)&84.77(0.19)&84.63(0.18)&virtual\\\hline
+Chessboard i.i.d.    &63.25(0.05)&83.63(0.06)&88.44(0.06)&94.71(0.04)&96.18(0.02)&98.36(0.01)&None\\
+Transient Chessboard &\textbf{63.30(0.09)}&\textbf{83.77(0.06)}&\textbf{88.48(0.05)}&94.77(0.03)&96.20(0.05)&98.38(0.02)&virtual\\
+\end{tabular}
+\label{tab:stage2}
+}
+
+\end{table*}
 
 \subsection{Results}
 We evaluated the algorithms in the standard online learning setting in which each incoming example is first classified and afterwards used for training. The error rates of all experiments are shown

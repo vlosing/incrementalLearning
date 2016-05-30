@@ -112,4 +112,4 @@ if __name__ == '__main__':
     #doExperiment({'dsName': 'chessIIDXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'chessFields', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
 
-    cProfile.run("doExperiment({'dsName': 'rbfAbruptXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)")
+    cProfile.run("doExperiment({'dsName': 'chessVirtualXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)")

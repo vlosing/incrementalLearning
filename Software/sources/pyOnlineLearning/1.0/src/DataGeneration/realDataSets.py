@@ -421,8 +421,8 @@ def getCBSinus():
     return trainSamples, trainLabels
 
 def getRBFAbruptXXL():
-    trainSamples = np.loadtxt(Paths.rbfAbruptXXLTrainSamplesPath(), skiprows=1)
-    trainLabels = np.loadtxt(Paths.rbfAbruptXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    trainSamples = np.loadtxt(Paths.rbfAbruptXXLTrainSamplesPath(), skiprows=1)[:20000, :]
+    trainLabels = np.loadtxt(Paths.rbfAbruptXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)[:20000]
     return trainSamples, trainLabels
 
 def getRBFAbruptSmall():
@@ -441,8 +441,8 @@ def getSquaresIncr():
     return trainSamples, trainLabels
 
 def getSquaresIncrXXL():
-    trainSamples = np.loadtxt(Paths.squaresIncrXXLTrainSamplesPath(), skiprows=1)
-    trainLabels = np.loadtxt(Paths.squaresIncrXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    trainSamples = np.loadtxt(Paths.squaresIncrXXLTrainSamplesPath(), skiprows=1)[:20000, :]
+    trainLabels = np.loadtxt(Paths.squaresIncrXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)[:20000]
     return trainSamples, trainLabels
 
 def getChessVirtual():
@@ -451,8 +451,8 @@ def getChessVirtual():
     return trainSamples, trainLabels
 
 def getChessVirtualXXL():
-    trainSamples = np.loadtxt(Paths.chessVirtualXXLTrainSamplesPath(), skiprows=1)
-    trainLabels = np.loadtxt(Paths.chessVirtualXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)
+    trainSamples = np.loadtxt(Paths.chessVirtualXXLTrainSamplesPath(), skiprows=1)[:20000, :]
+    trainLabels = np.loadtxt(Paths.chessVirtualXXLTrainLabelsPath(), skiprows=1, dtype=np.uint8)[:20000]
     return trainSamples, trainLabels
 
 def getChessIIDXXL():

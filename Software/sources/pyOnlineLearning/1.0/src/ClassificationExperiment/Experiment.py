@@ -285,6 +285,19 @@ class Experiment:
                 ax[3].set_ylim([-0.5, 2.5])
                 print 'corr STM ', classifier.STMCorrectCount, 'ltm', classifier.LTMCorrectCount,'both ', classifier.BothCorrectCount
                 print 'correct %d/%d' % (classifier.correctCount, classifier.possCorrect)
+
+
+                fig, ax = plt.subplots(1, 1)
+                ax.plot(np.arange(len(classifier.windowSizes)), classifier.windowSizes, c='r')
+                fig, ax = plt.subplots(1, 1)
+                ax.plot(np.arange(len(classifier.LTMSizes)), classifier.LTMSizes, c='r')
+                fig, ax = plt.subplots(1, 1)
+                ax.plot(np.arange(0, len(predictedTrainLabels), detailedStep), scoresDetailed)
+                fig, ax = plt.subplots(1, 1)
+                ax.plot(np.arange(len(classifier.classifierChoice)), classifier.classifierChoice)
+                ax.set_ylim([-0.5, 2.5])
+
+
                 #ax[2].plot(range(len(DriftDetection.currentSizeAccs)), DriftDetection.currentSizeAccs, c='r')
                 #ax[2].plot(range(len(DriftDetection.smallestSizeAccs)), DriftDetection.smallestSizeAccs, c='b')
                 #ax[2].plot(range(len(DriftDetection.largestSizeAccs)), DriftDetection.largestSizeAccs, c='g')

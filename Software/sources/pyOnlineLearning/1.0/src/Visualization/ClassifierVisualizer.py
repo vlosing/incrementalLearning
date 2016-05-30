@@ -6,7 +6,7 @@ import numpy as np
 import GLVQPlot
 
 class ClassifierVisualizer(ClassifierListener):
-    SKIP_TRAINSTEPS = 100
+    SKIP_TRAINSTEPS = 499
     DRAW_WINDOW_DATA = True
     DRAW_LTM_DATA = True
 
@@ -51,12 +51,13 @@ class ClassifierVisualizer(ClassifierListener):
         if self.DRAW_WINDOW_DATA:
             self.subplotWindowData.clear()
             self.classifierPlotter.plot(classifier, classifier.windowSamples[:,:], classifier.windowSamplesLabels[:], self.figWindowData,  self.subplotWindowData,
-                                        'Window-data', GLVQPlot.getDefColors(), XRange=[self.minX, self.maxX], YRange=[self.minY, self.maxY])
+                                        'STM', GLVQPlot.getDefColors(), XRange=[self.minX, self.maxX], YRange=[self.minY, self.maxY])
             self.figWindowData.canvas.draw()
+
         if self.DRAW_LTM_DATA:
             self.subplotLTMData.clear()
             self.classifierPlotter.plot(classifier, classifier.LTMSamples[:,:], classifier.LTMLabels[:], self.figLTMData,  self.subplotLTMData,
-                                        'LTM-data', GLVQPlot.getDefColors(), XRange=[self.minX, self.maxX], YRange=[self.minY, self.maxY])
+                                        'LTM', GLVQPlot.getDefColors(), XRange=[self.minX, self.maxX], YRange=[self.minY, self.maxY])
             self.figLTMData.canvas.draw()
 
         if self.DRAW_TRAINING_DATA:
@@ -74,6 +75,10 @@ class ClassifierVisualizer(ClassifierListener):
         if ClassifierVisualizer.DRAW_ON_TRAINSTEP and trainStep % (self.SKIP_TRAINSTEPS + 1) == 0:
             winLen = len(classifier.windowSamplesLabels)
             self.draw(classifier)
+            filename = '/homes/vlosing/STM%d.pdf' %(trainStep)
+            self.figWindowData.savefig(filename, bbox_inches='tight')
+            filename = '/homes/vlosing/LTM%d.pdf' %(trainStep)
+            self.figLTMData.savefig(filename, bbox_inches='tight')
             #time.sleep(0.5)
 
     def onNewPrototypes(self, classifier, protos, protoLabels):

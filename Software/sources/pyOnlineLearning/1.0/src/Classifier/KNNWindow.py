@@ -246,7 +246,6 @@ class KNNWindow(BaseClassifier):
                     correctBoth = np.sum(self.BothPredictions)
                     labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
                     classifierChoice = np.argmax([correctSTM, correctBoth, correctLTM])
-                    self.classifierChoice.append(classifierChoice)
                     predictedLabel = labels[classifierChoice]
                 else:
                     predictedLabel = predictedLabelSTM

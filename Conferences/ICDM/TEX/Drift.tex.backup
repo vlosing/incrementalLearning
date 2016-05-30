@@ -101,22 +101,24 @@ sure that the memory in the LTM is not conflicting.
 -adapt stm not every example but every n examples
 
 \section{Experiments}
-We compare our method with well-known state of the art methods for handling drifting streaming data.
-\\\textbf{Learn++.NSE with Classification and Regression Trees}\\
+We compare our method with well-known state of the art methods for handling drifting streaming data. Implementations of the original authors or those available in MOA \cite{bifet2010moa}
+have been used to conduct the experiments. The following algorithms are considered in the evaluation:\\
+\\\textbf{Learn++.NSE}\\
 Proposed in \cite{5975223}, this algorithm processes incoming samples in chunks with a predefined size. A base classifier is trained for each chunk and added to the ensemble. The loss on recent chunks is averaged with a sigmoidal function
 to compute the final weight of each base classifier. Similar to AdaBoost, instances are weighted such that misclassified inputs have a higher impact on the calculated loss.
-Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees (CART) XXVL reference.
-\\\textbf{Leveraging bagging with Hoeffding Trees}\\
-XXVL either describe Hoeffding Trees or make a reference!
-Bifet et al. propose in \cite{bifet2010leveraging}to increase the randomization of online bagging \cite{oza2005online} and thereby the diversity of the base classifier.
+Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees \cite{cart84}.
+\\\textbf{Leveraging Bagging}\\
+Bifet et al. propose in \cite{bifet2010leveraging} to increase the randomization of Online Bagging \cite{oza2005online} and thereby the diversity of the ensemble.
 This is done by a higher $\lambda$ value for the poisson distribution and the usage of output detection codes. Additionaly, they use ADWIN as change detector for every classifier within the ensemble such that whenever a change is detected 
-the worst classifier is replaced by a new one. As base classifier Hoeffding Trees with Gaussian Naive Bayes within the leaves are used.
-\\\textbf{Dynamic Adaption of Concept Changes with Hoeffding Trees}\\
-Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. New examples are only
-classified by the best classifier of the pool.
+the worst classifier is replaced by a new one. Hoeffding Trees\cite{domingos2000mining} with Gaussian Naive Bayes within the leaves are used as base classifier.
+XXVL maybe define Hoeffding trees.
+\\\textbf{Dynamic Adaption of Concept Changes}\\
+Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. 
+Newly generated classifier are excluded for a predefined time from the elimination process. Incoming examples are solely classified by the classifier within the pool which
+achieved the highest accuracy in the past. As in Leavarging Bagging, Hoeffding Trees were the base classifier within the pool.
 \\\textbf{kNN with Sliding Window}\\
 This classifier is a kNN with a fixed window size containing the most recent samples. The sliding window is a standard approach for drift handling, since the window contains usually the most relevant examples
-for the future predictions. However, the window can contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
+for the future predictions. However, since the size is static the window may contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
 \\\textbf{kNN with Probabilistic Adaptive Window and ADWIN}\\
 In contrast to the approach with the sliding window, examples are here removed randomly leading to a window which not only contains recent samples but also older ones. The window size is not bounded strictly
 and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN for change detection and clears the window accordingly. \\
@@ -147,7 +149,8 @@ we evaluated several sizes and report the best result. No further dataset specif
 We used own and well known artificial as well as real world datasets to compare our method with state of the art algorithms. 
 Links to all datasets as well as our own ones are available at \url{https://github.com/vlosing/Online-learning}. In the following we describe the data more detailed.\\
 
-For the artificial data either published benchmarks were taken or generated with MOA using common parametrization in the literature.
+Artificial datasets have the advantage that any desired drift behavior can be explicitly simulated to analyze certain properties of a given method. These are often 
+2-dimensional and to enable a straightforward visualization. We evaluated ready to use published benchmark datasets as well as MOA generated ones using common parametrization in the literature.
 We also added four new datasets allowing the evaluation of particular algorithm properties which are in our opinion not yet considered enough in the community. 
 Table \ref{tab:artDatasets} shows their main characteristics.
 \begin{table}
@@ -248,6 +251,7 @@ This contradicts the classical assumption for i.i.d datasets, backed up by the P
 However, streaming data is not i.i.d and more mistakes are done whenever outdated data from former concepts is in conflict with samples of the current one. 
 A window which contains less of the outdated samples, delivers therefore a better result. 
 
+XXVL mention online learning accuracy.
 We propose to test whether the accuracies achieved with sliding windows of different sizes are significantly higher than the one obtained without any size restriction. 
 To obtain multiple accuracies for a given window side we generate bootstrapped samples of the dataset maintaining the initial order. 
 Afterwards, we perform a one sided hypothesis test with the traditional p-value of 5\%.
@@ -342,12 +346,47 @@ However, it performs in all experiments worse, even in those containing only abr
 Our results confirm the fact that kNN is in general a very competitive algorithm in the streaming setting. It is quite surprising that the simple sliding window approach of fixed window size
 kNN\textsubscript{S} performs comparably well or even better than more sophisticated methods such as HTAdaptive or L++.NSE.
 
--Table with results
--Evaluation
 \subsection{Memory behaviour}
+In this section we illustrate the behavior of the STM and LTM during the experiments in a detailed way. 
+Figure \ref{XXVL} depicts the size adjustment of the STM in case of abrupt drift using the dataset XXVL. The algorithm shrinks the window reliably each time after an abrupt drift occurs.
+However, we can also observe that there is each time a certain delay until the memory is shrinked properly during which false predictions may occur. 
+This delay is due to two reasons. Firstly, a certain amount of examples of the new concept is required to be able to construct a reliable classifier for it. Secondly,
+the more examples were contained in the short term memory before the new concept, the more stable was the classifier and the more examples of the 
+new concept are required to deteriorate its accuracy until the the new classifier performs better. Therefore, the behavior illustrates a natural trade-off between adaption speed
+to new concepts and the robustness against noise, governed by the stability of the concepts.\\
+
+
+As already mentioned the Moving Squares dataset is constructed in such a way that the squares may start to overlap if more than one 120 samples are kept in the memory. Hence,
+for this dataset the best strategy is to use only the most recent examples for prediction and keep the memory as small as possible. 
+Figure \ref{XXVL} shows the behavior of the STM for this dataset. Most of the time the memory is kept between 50 and 100 samples, allowing a nearly perfect prediction. 
+The reason that the window is mostly shrinked around 100 examples is that the default parameter for the minimal size of the STM is set to 50.\\
+Figure \ref{XXVL} shows also that most of the time the STM alone is responsible for the prediction. The long term memory keeps the examples at the borders
+since these are touched only by one class.
+
+\begin{figure}
+\centering
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptSTM.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptResp.png}
+	}
+	\vspace{0 pt}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptSTM.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptResp.png}
+	}		
+\caption{}
+\label{Borders}
+\end{figure}
+
+
 -STM-Size behaviour for SquaresIncr, rbfAbrupt
--Check prior behaviour for experiments
 -Pictures of LTM for chess, rbfAbrupt
+-Check prior behaviour for experiments
+-weather prior, label
 
 
 \section{Conclusion}

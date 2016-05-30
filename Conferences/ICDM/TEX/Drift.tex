@@ -35,7 +35,7 @@ Heiko Wersing\IEEEauthorrefmark{2}}
 \maketitle
 
 
-
+\setcounter{figure}{0}
 \begin{abstract}
 Learning from non-stationary data streams is gaining more attention
 recently, especially in the context of Internet of Things and Big Data.
@@ -71,7 +71,7 @@ underline the robustness of our approach.
 Definition and examples
 \subsection{Types of Drift}
 -abrupt, incremental, gradual, reoccuring, virtual
-\section{Related Work}\label{relatedWork}
+\section{Related Work}
 -Survey by gamma eventuell Ditzler
 -Active drift detection work Gamma, Bifet ADWIN for abrupt to minimize delay
 -Passive drift handling with ensembles DACC, LPPNSE
@@ -81,8 +81,8 @@ Definition and examples
 -KNN for streaming like the ICDM paper
 
 
-\section{Architecture}\label{IncrementaLearningMethod}
-Our architecture is depicted in figure \ref{}. It consists of 4 different steps. The goal is to keep as much as possible of the current concept in the Short Term Memory(STM) and at the same
+\section{Architecture}
+Our architecture is depicted in figure \ref{XXVL}. It consists of 4 different steps. The goal is to keep as much as possible of the current concept in the Short Term Memory(STM) and at the same
 time preserve former knowledge in the Long Term Memory (LTM). We assume that the recent information is correct and reflects the current concept. Therefore, it is crucial to make
 sure that the memory in the LTM is not conflicting. 
 
@@ -101,22 +101,24 @@ sure that the memory in the LTM is not conflicting.
 -adapt stm not every example but every n examples
 
 \section{Experiments}
-We compare our method with well-known state of the art methods for handling drifting streaming data. All algorithms are
-\\\textbf{Learn++.NSE with Classification and Regression Trees}\\
+We compare our method with well-known state of the art methods for handling drifting streaming data. Implementations of the original authors or those available in MOA \cite{bifet2010moa}
+have been used to conduct the experiments. The following algorithms are considered in the evaluation:\\
+\\\textbf{Learn++.NSE}\\
 Proposed in \cite{5975223}, this algorithm processes incoming samples in chunks with a predefined size. A base classifier is trained for each chunk and added to the ensemble. The loss on recent chunks is averaged with a sigmoidal function
 to compute the final weight of each base classifier. Similar to AdaBoost, instances are weighted such that misclassified inputs have a higher impact on the calculated loss.
-Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees (CART) XXVL reference.
-\\\textbf{Leveraging bagging with Hoeffding Trees}\\
-XXVL either describe Hoeffding Trees or make a reference!
-Bifet et al. propose in \cite{bifet2010leveraging}to increase the randomization of online bagging \cite{oza2005online} and thereby the diversity of the base classifier.
+Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees \cite{cart84}.
+\\\textbf{Leveraging Bagging}\\
+Bifet et al. propose in \cite{bifet2010leveraging} to increase the randomization of Online Bagging \cite{oza2005online} and thereby the diversity of the ensemble.
 This is done by a higher $\lambda$ value for the poisson distribution and the usage of output detection codes. Additionaly, they use ADWIN as change detector for every classifier within the ensemble such that whenever a change is detected 
-the worst classifier is replaced by a new one. As base classifier Hoeffding Trees with Gaussian Naive Bayes within the leaves are used.
-\\\textbf{Dynamic Adaption of Concept Changes with Hoeffding Trees}\\
-Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. New examples are only
-classified by the best classifier of the pool.
+the worst classifier is replaced by a new one. Hoeffding Trees\cite{domingos2000mining} with Gaussian Naive Bayes within the leaves are used as base classifier.
+XXVL maybe define Hoeffding trees.
+\\\textbf{Dynamic Adaption of Concept Changes}\\
+Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. 
+Newly generated classifier are excluded for a predefined time from the elimination process. Incoming examples are solely classified by the classifier within the pool which
+achieved the highest accuracy in the past. As in Leavarging Bagging, Hoeffding Trees were the base classifier within the pool.
 \\\textbf{kNN with Sliding Window}\\
 This classifier is a kNN with a fixed window size containing the most recent samples. The sliding window is a standard approach for drift handling, since the window contains usually the most relevant examples
-for the future predictions. However, the window can contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
+for the future predictions. However, since the size is static the window may contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
 \\\textbf{kNN with Probabilistic Adaptive Window and ADWIN}\\
 In contrast to the approach with the sliding window, examples are here removed randomly leading to a window which not only contains recent samples but also older ones. The window size is not bounded strictly
 and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN for change detection and clears the window accordingly. \\
@@ -137,7 +139,6 @@ KNN\textsubscript{S} & KNN with sliding window & w=5000, k=5\\
 KNN\textsubscript{W\textsubscript{A}} & NN with PAW+ADWIN& w=5000, k=5\\
 KNN\textsubscript{M} &KNN with STM+LTM memory & w=5000, k=5\\
 \end{tabular}
-\label{tab:artDatasets}
 \end{table}
 A maximum of 5000 samples was allowed as size for the window based approaches. However,
 we limited it to at most 10\% of the whole dataset for those with rather few examples. LPPNSE demands a chunk size which is critical for its performance. To avoid any disadvantage 
@@ -147,15 +148,14 @@ we evaluated several sizes and report the best result. No further dataset specif
 We used own and well known artificial as well as real world datasets to compare our method with state of the art algorithms. 
 Links to all datasets as well as our own ones are available at \url{https://github.com/vlosing/Online-learning}. In the following we describe the data more detailed.\\
 
-For the artificial data either published benchmarks were taken or generated with MOA using common parametrization in the literature.
+Artificial datasets have the advantage that any desired drift behavior can be explicitly simulated to analyze certain properties of a given method. These are often 
+2-dimensional and to enable a straightforward visualization. We evaluated ready to use published benchmark datasets as well as MOA generated ones using common parametrization in the literature.
 We also added four new datasets allowing the evaluation of particular algorithm properties which are in our opinion not yet considered enough in the community. 
 Table \ref{tab:artDatasets} shows their main characteristics.
 \begin{table}
-\def\arraystretch{0.9}
-\footnotesize
-\centering
 \caption{Evaluated artificial datasets.}
-\label{tab:datasets}
+\label{tab:artDatasets}
+\centering
 \begin{tabular}{l|cccc}
 \textit{Dataset} & \#Samples&\#Feat.&\#Class&Drift type\\\hline
 SEA Concepts & 50K & 3 & 2 & abrupt\\
@@ -166,7 +166,6 @@ Moving Squares & 200K & 2 & 4 & incremental\\
 Transient Chessboard & 200K & 2 & 8 & virtual\\
 Mixed Drift & 600K & 2 & 8 & abr/incr/virt\\
 \end{tabular}
-\label{tab:artDatasets}
 \end{table}
 \\\textbf{SEA Concepts (SEA)}\\
 This two class dataset was proposed in \cite{Street:2001:SEA:502512.502568} and consists of 50000 samples with three attributes of which only two are relevant.
@@ -196,11 +195,9 @@ Therefore, incremental, abrupt and virtual drift are taking place at the same ti
 Unfortunately, only a few real world drift benchmarks are available, of which we used the largest ones. Additionaly, we contributed two challenging new datasets obtained from visual data.
 The main attributes of all considered real world datasets are given in Table \ref{tab:realDatasets}.
 \begin{table}
-\def\arraystretch{0.9}
-\footnotesize
-\centering
-\caption{Considered real world datasets. The given drift type was determined as described in \ref{}.}
+\caption{Considered real world datasets. The given drift type was determined as described in \ref{driftType}.}
 \label{tab:realDatasets}
+\centering
 \begin{tabular}{l|cccc}
 \textit{Dataset} & \#Samples&\#Feat.&\#Class&Drift type\\\hline
 \rule{0pt}{8pt}
@@ -210,7 +207,6 @@ CovType & 581012 & 54 & 784 & real\\
 Outdoor & 4000 & 21 & 40 & real\\
 Railto & 40000 & 27 & 10 & real\\
 \end{tabular}
-\label{tab:datasets}
 \end{table}
 \\\textbf{Weather}\\
 Elwell et al. introduced this dataset in \cite{5975223}. Using eight different features such as temperature, pressure wind speed etc. the target is to predict 
@@ -234,7 +230,7 @@ approaches of the same object XXVL pictures. The objects are encoded in a normal
 \textbf{Railto Bridge Timelapse}\\
 Ten of the colorful buildings next to the famous rialto bridge in Venice are encoded in a normalized 27-dimensional rgb histogram. 
 The images were obtained from timelapse videos of 10 consecutive days recorded in may 2016 by a webcam of XXVL. Continuously changing weather and lighting conditions affect the representation  XXVL see figures. We excluded overnight recordings since they were too dark for being useful.
-\subsubsection{Assessing the drift type in real world data}
+\subsubsection{Assessing the drift type in real world data}\label{driftType}
 While the drift is explicitly generated in artificial datasets, it is rather difficult to identify the drift type or whether drift is present at all in real world datas. Therefore, it is usually
 assumed in the comunity that there is some drift contained in the commonly evaluated datasets. We propose in this section a method which is able to determine the present drift type in a 
 given dataset. To the best of our knowledge this has not been done so far in literature. Our two staged approach can distinguish between real, virtual or no drift at all. 
@@ -248,6 +244,7 @@ This contradicts the classical assumption for i.i.d datasets, backed up by the P
 However, streaming data is not i.i.d and more mistakes are done whenever outdated data from former concepts is in conflict with samples of the current one. 
 A window which contains less of the outdated samples, delivers therefore a better result. 
 
+XXVL mention online learning accuracy.
 We propose to test whether the accuracies achieved with sliding windows of different sizes are significantly higher than the one obtained without any size restriction. 
 To obtain multiple accuracies for a given window side we generate bootstrapped samples of the dataset maintaining the initial order. 
 Afterwards, we perform a one sided hypothesis test with the traditional p-value of 5\%.
@@ -264,16 +261,13 @@ the drift type of all artificial datasets. In the case of the artificial dataset
 with / without real drift. This is generally less pronounced for real real world data. Nonthelss, the datasets Elec, Outdoor and Rialto clearly benefit from smaller window sizes. 
 Covtype contains little real drift, while the Weather task incorporates only virtual drift.
 \begin{table*}
-\def\arraystretch{0.9}
-\footnotesize
-\centering
 \caption{Mean accuracies and corresponding standard deviations obtained from bootstrapped samples of the datasets with varying sliding window sizes.}
+\label{tab:drifttype}
+\centering
 \subfloat[Bootstrapped samples for detecting real drift. Accuracies of size restricted windows which are significantly higer compared to the accuracy achieved without restriction are marked bold. 
 If this is the case at least for one window size it is inferred that the dataset contains real drift.]{
-\label{tab:drifttype}
 \begin{tabular}{l|ccccccc}
 \textit{Dataset} & KNN\textsubscript{S-100}&KNN\textsubscript{S-500}&KNN\textsubscript{S-1000}&KNN\textsubscript{S-5000}&KNN\textsubscript{S-10000}&KNN&Concluded drift type\\\hline
-\rule{0pt}{8pt}
 Weather              &82.03(0.12)&84.05(0.24)&84.36(0.25)&84.95(0.18)&84.92(0.20)&84.86(0.16)&not real\\
 Elec                 &\textbf{89.08(0.18)}&\textbf{87.46(0.17)}&\textbf{86.61(0.16)}&\textbf{85.07(0.11)}&\textbf{84.22(0.14)}&83.43(0.13)&real\\
 CovType              &94.65(0.01)&96.15(0.01)&\textbf{97.11(0.01)}&\textbf{96.95(0.01)}&\textbf{96.92(0.01)}& 5&real\\
@@ -284,7 +278,6 @@ Transient Chessboard &81.00(0.05)&88.56(0.04)&88.85(0.04)&94.81(0.02)&95.89(0.03
 Moving Squares       &\textbf{97.73(0.02)}&\textbf{67.22(0.05)}&\textbf{63.30(0.05)}&56.87(0.11)&57.22(0.04)&57.12(0.10)& real\\
 Interchanging RBF    &97.73(0.02)&67.22(0.05)&63.30(0.05)&56.87(0.11)&57.22(0.04)&57.12(0.10)& real\\
 \end{tabular}
-\label{tab:stage1}
 }
 \par\vspace{5 pt}
 \subfloat[Permutated bootstrapped samples for detecting real drift. Accuracies which are significantly higher compared to those achieved in a) 
@@ -296,7 +289,6 @@ Weather              &\textbf{81.14(0.30)}&\textbf{83.20(0.23)}&83.89(0.28)&84.4
 Chessboard i.i.d.    &63.25(0.05)&83.63(0.06)&88.44(0.06)&94.71(0.04)&96.18(0.02)&98.36(0.01)&None\\
 Transient Chessboard &\textbf{63.30(0.09)}&\textbf{83.77(0.06)}&\textbf{88.48(0.05)}&94.77(0.03)&96.20(0.05)&98.38(0.02)&virtual\\
 \end{tabular}
-\label{tab:stage2}
 }
 
 \end{table*}
@@ -305,11 +297,9 @@ Transient Chessboard &\textbf{63.30(0.09)}&\textbf{83.77(0.06)}&\textbf{88.48(0.
 We evaluated the algorithms in the standard online learning setting in which each incoming example is first classified and afterwards used for training. The error rates of all experiments are shown
 in Table \ref{tab:result}.\\
 \begin{table*}
-\def\arraystretch{0.9}
-\footnotesize
-\centering
 \caption{Error rates of all experiments evaluated with the Interleaved Test-Then-Train method.}
 \label{tab:result}
+\centering
 \begin{tabular}{l|ccccccc}
 Dataset & HT\textsubscript{A} & LPPNSE &DACC& LVGB & kNN\textsubscript{S} & kNN\textsubscript{W\textsubscript{A}}& kNN\textsubscript{M}\\\hline
 SEA & 13.8 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00\\
@@ -331,7 +321,6 @@ Real rank& 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00\\\hline
 total avg& 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00\\\hline
 total rank& 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00\\\hline
 \end{tabular}
-\label{tab:datasets}
 \end{table*}
 (XXVL name of algorithm) outperforms the other algorithms quite significantly by having nearly half the error rate in average compared to the second best method LVGB. 
 Even more important is in our eyes the fact that while all other methods are struggling at some datasets our aproach delivers very robust results without any hiccup. All drift types are handled
@@ -342,12 +331,84 @@ However, it performs in all experiments worse, even in those containing only abr
 Our results confirm the fact that kNN is in general a very competitive algorithm in the streaming setting. It is quite surprising that the simple sliding window approach of fixed window size
 kNN\textsubscript{S} performs comparably well or even better than more sophisticated methods such as HTAdaptive or L++.NSE.
 
--Table with results
--Evaluation
 \subsection{Memory behaviour}
--STM-Size behaviour for SquaresIncr, rbfAbrupt
--Check prior behaviour for experiments
--Pictures of LTM for chess, rbfAbrupt
+In this section we illustrate the behavior of the STM and LTM during the experiments in a detailed way. 
+Figure \ref{fig:abrupt} depicts the size adjustment of the STM in case of abrupt drift using the dataset XXVL. 
+\begin{figure}
+\centering
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptSTMSize.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptResp.png}
+	}
+	\vspace{0 pt}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptSTM.pdf}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/abruptLTM.pdf}
+	}
+\label{fig:abrupt}
+\caption{}
+\end{figure}
+The algorithm shrinks the window reliably each time after an abrupt drift occurs.
+However, we can also observe that there is each time a certain delay until the memory is shrinked properly during which false predictions may occur. 
+This delay is due to two reasons. Firstly, a certain amount of examples of the new concept is required to be able to construct a reliable classifier for it. Secondly,
+the more examples were contained in the short term memory before the new concept, the more stable was the classifier and the more examples of the 
+new concept are required to deteriorate its accuracy until the the new classifier performs better. Therefore, the behavior illustrates a natural trade-off between adaption speed
+to new concepts and the robustness against noise, governed by the stability of the concepts.\\
+The consolidation of the LTM is also visible in Figure \ref{fig:abrupt}. All samples interfering with the STM deleted, and therefore the feature space is empty there. 
+Whereas the samples around the empty spots do not conflict with the STM and kept in the memory.\\
+As already mentioned the Moving Squares dataset is constructed in such a way that the squares may start to overlap if more than one 120 samples are kept in the memory. Hence,
+for this dataset the best strategy is to use only the most recent examples for prediction and keep the memory as small as possible. 
+Figure \ref{fig:squares} shows the behavior of the STM for this dataset. 
+\begin{figure}
+\centering
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/squaresSTMSize.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/squaresResp.png}
+	}
+	\vspace{0 pt}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/squaresSTM.pdf}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/squaresLTM.pdf}
+	}
+\label{fig:squares}
+\caption{}
+\end{figure}
+Most of the time the memory is kept between 50 and 100 samples, allowing a nearly perfect prediction. 
+The reason that the window is mostly shrinked around 100 examples is that the default parameter for the minimal size of the STM is set to 50.\\
+The LTM keeps the examples at the borders since these are touched only by one class.\\
+The Transient Chessboard dataset uses virtual drift. Figure \ref{fig:chess} shows some plots for this dataset.
+\begin{figure}
+\centering
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/chessSTMSize.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/chessResp.png}
+	}
+	\vspace{0 pt}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/chessSTM.pdf}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/chessLTM.pdf}
+	}
+\label{fig:chess}
+\caption{}
+\end{figure}
+In contrast to the previous two datasets which basically do not require the LTM, we see here that it 
+is often used for the prediction. The STM is used alone whenever
+field by field is revealed, since the classification is easier and therefore the accuracy is higher. But as soon as the spray along all fields occurs, the LTM
+is heavily used since it contains beneficial information from the past. 
+
+-weather prior, label
 
 
 \section{Conclusion}

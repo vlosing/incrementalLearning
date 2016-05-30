@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.24)  30 MAY 2016 11:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.4)  30 MAY 2016 17:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **Drift.tex
 (./Drift.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (./IEEEtran.cls
 Document Class: IEEEtran 2012/11/21 V1.8c by Harald Hanche-Olsen and Anders Chr
 istensen
@@ -93,22 +93,22 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \c@IEEEbiography=\count90
 \@IEEEtranrubishbin=\box26
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks15
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -125,40 +125,40 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@width=\dimen118
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
+Package: amstext 2000/06/29 v2.01
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
+File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen119
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen120
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count92
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count93
 \leftroot@=\count94
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count95
 \DOTSCASE@=\count96
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box27
 \strutbox@=\box28
 \big@size=\dimen121
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count97
 \c@MaxMatrixCols=\count98
 \dotsspace@=\muskip10
@@ -179,8 +179,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \multlinegap=\skip45
 \multlinetaggap=\skip46
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -208,8 +208,8 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen130
 \captionmargin@=\dimen131
 \captionwidth=\dimen132
@@ -234,19 +234,7 @@ Package caption Info: Unknown document class (or package),
 \sf@top=\skip50
 \sf@bottom=\skip51
 )
-(/usr/share/texlive/texmf-dist/tex/latex/fragments/subscript.sty
-LaTeX Info: Redefining \textsubscript on input line 15.
-) (./Drift.aux
-
-LaTeX Warning: Label `tab:artDatasets' multiply defined.
-
-
-LaTeX Warning: Label `tab:datasets' multiply defined.
-
-
-LaTeX Warning: Label `tab:datasets' multiply defined.
-
-)
+(/usr/share/texlive/texmf-dist/tex/latex/fragments/subscript.sty) (./Drift.aux)
 \openout1 = `Drift.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
@@ -261,7 +249,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
 LaTeX Font Info:    ... okay on input line 20.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count112
 \scratchdimen=\dimen138
@@ -337,46 +325,206 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 35.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 
-LaTeX Warning: Reference `' on page 1 undefined on input line 85.
+LaTeX Warning: Reference `XXVL' on page 1 undefined on input line 85.
+
+
+Underfull \hbox (badness 3471) in paragraph at lines 104--146
+\OT1/ptm/m/n/10 been used to con-duct the ex-per-i-ments. The fol-low-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--146
+
+ []
+
+
+Underfull \hbox (badness 2302) in paragraph at lines 104--146
+\OT1/ptm/m/n/10 gen-er-ated clas-si-fier are ex-cluded for a pre-de-fined time
+ []
+
+
+Underfull \hbox (badness 1783) in paragraph at lines 104--146
+\OT1/ptm/m/n/10 ap-proach for drift han-dling, since the win-dow con-tains
+ []
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 147--149
+Underfull \hbox (badness 10000) in paragraph at lines 148--150
 
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 150--195
+Underfull \hbox (badness 1748) in paragraph at lines 151--194
 \OT1/ptm/b/n/10 Transient Chess-board (CHESS) \OT1/ptm/m/n/10 This dataset sim-
 u-lates
  []
 
 
-Underfull \hbox (badness 2326) in paragraph at lines 150--195
+Underfull \hbox (badness 2326) in paragraph at lines 151--194
 \OT1/ptm/m/n/10 sam-ples cov-er-ing all squares of the board are shown.
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 150--195
+Underfull \hbox (badness 1931) in paragraph at lines 151--194
 \OT1/ptm/m/n/10 chess-board datasets are sim-ply po-si-tioned next to each
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--195
+Underfull \hbox (badness 10000) in paragraph at lines 151--194
 
  []
-
-
-LaTeX Warning: Reference `' on page 2 undefined on input line 202.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 238--244
+Underfull \hbox (badness 10000) in paragraph at lines 234--240
 
  []
 
-[3] (./Drift.bbl [4])
+
+Underfull \vbox (badness 1281) has occurred while \output is active []
+
+ [3]
+Underfull \vbox (badness 4454) has occurred while \output is active []
+
+
+<images/abruptSTMSize.png, id=23, 586.8324pt x 442.2924pt>
+File: images/abruptSTMSize.png Graphic file (type png)
+
+<use images/abruptSTMSize.png>
+Package pdftex.def Info: images/abruptSTMSize.png used on input line 341.
+(pdftex.def)             Requested size: 125.7868pt x 94.80081pt.
+
+<images/abruptResp.png, id=25, 586.8324pt x 442.2924pt>
+File: images/abruptResp.png Graphic file (type png)
+
+<use images/abruptResp.png>
+Package pdftex.def Info: images/abruptResp.png used on input line 344.
+(pdftex.def)             Requested size: 125.7868pt x 94.80081pt.
+
+<images/abruptSTM.pdf, id=26, 371.30403pt x 504.48788pt>
+File: images/abruptSTM.pdf Graphic file (type pdf)
+
+<use images/abruptSTM.pdf>
+Package pdftex.def Info: images/abruptSTM.pdf used on input line 348.
+(pdftex.def)             Requested size: 125.7868pt x 170.90778pt.
+
+<images/abruptLTM.pdf, id=27, 371.30403pt x 504.48788pt>
+File: images/abruptLTM.pdf Graphic file (type pdf)
+
+<use images/abruptLTM.pdf>
+Package pdftex.def Info: images/abruptLTM.pdf used on input line 351.
+(pdftex.def)             Requested size: 125.7868pt x 170.90778pt.
+
+Overfull \hbox (5.52386pt too wide) in paragraph at lines 341--353
+ [][][] 
+ []
+
+
+Overfull \hbox (5.52386pt too wide) in paragraph at lines 341--353
+ [][][] 
+ []
+
+<images/squaresSTMSize.png, id=28, 586.8324pt x 442.2924pt>
+File: images/squaresSTMSize.png Graphic file (type png)
+
+<use images/squaresSTMSize.png>
+Package pdftex.def Info: images/squaresSTMSize.png used on input line 370.
+(pdftex.def)             Requested size: 125.7868pt x 94.80081pt.
+
+<images/squaresResp.png, id=29, 586.8324pt x 442.2924pt>
+File: images/squaresResp.png Graphic file (type png)
+
+<use images/squaresResp.png>
+Package pdftex.def Info: images/squaresResp.png used on input line 373.
+(pdftex.def)             Requested size: 125.7868pt x 94.80081pt.
+
+<images/squaresSTM.pdf, id=30, 469.52914pt x 57.66275pt>
+File: images/squaresSTM.pdf Graphic file (type pdf)
+
+<use images/squaresSTM.pdf>
+Package pdftex.def Info: images/squaresSTM.pdf used on input line 377.
+(pdftex.def)             Requested size: 125.7868pt x 15.44772pt.
+
+<images/squaresLTM.pdf, id=31, 469.52914pt x 57.66275pt>
+File: images/squaresLTM.pdf Graphic file (type pdf)
+
+<use images/squaresLTM.pdf>
+Package pdftex.def Info: images/squaresLTM.pdf used on input line 380.
+(pdftex.def)             Requested size: 125.7868pt x 15.44772pt.
+
+Overfull \hbox (5.52386pt too wide) in paragraph at lines 370--382
+ [][][] 
+ []
+
+
+Overfull \hbox (5.52386pt too wide) in paragraph at lines 370--382
+ [][][] 
+ []
+
+<images/chessSTMSize.png, id=32, 586.8324pt x 442.2924pt>
+File: images/chessSTMSize.png Graphic file (type png)
+
+<use images/chessSTMSize.png>
+Package pdftex.def Info: images/chessSTMSize.png used on input line 392.
+(pdftex.def)             Requested size: 125.7868pt x 94.80081pt.
+
+<images/chessResp.png, id=33, 586.8324pt x 442.2924pt>
+File: images/chessResp.png Graphic file (type png)
+
+<use images/chessResp.png>
+Package pdftex.def Info: images/chessResp.png used on input line 395.
+(pdftex.def)             Requested size: 125.7868pt x 94.80081pt.
+
+<images/chessSTM.pdf, id=34, 469.52914pt x 489.76466pt>
+File: images/chessSTM.pdf Graphic file (type pdf)
+
+<use images/chessSTM.pdf>
+Package pdftex.def Info: images/chessSTM.pdf used on input line 399.
+(pdftex.def)             Requested size: 125.7868pt x 131.20692pt.
+
+<images/chessLTM.pdf, id=35, 469.52914pt x 489.76466pt>
+File: images/chessLTM.pdf Graphic file (type pdf)
+
+<use images/chessLTM.pdf>
+Package pdftex.def Info: images/chessLTM.pdf used on input line 402.
+(pdftex.def)             Requested size: 125.7868pt x 131.20692pt.
+
+Overfull \hbox (5.52386pt too wide) in paragraph at lines 392--404
+ [][][] 
+ []
+
+
+Overfull \hbox (5.52386pt too wide) in paragraph at lines 392--404
+ [][][] 
+ []
+
+[4]
+Underfull \vbox (badness 1028) has occurred while \output is active []
+
+ [5 <./images/abruptSTMSize.png> <./images/abruptResp.png> <./images/abruptSTM.
+pdf> <./images/abruptLTM.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./images/abruptLTM.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./images/squaresSTMSize.png> <./images/squaresResp.png> <./images/squaresSTM
+.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./images/squaresSTM.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./images/squaresLTM.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./images/squaresLTM.pdf): PDF inclusion
+: multiple pdfs with page group included in a single page
+> <./images/chessSTMSize.png> <./images/chessResp.png> <./images/chessSTM.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./images/chessSTM.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+> <./images/chessLTM.pdf
+
+pdfTeX warning: /usr/bin/pdflatex (file ./images/chessLTM.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>] (./Drift.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -388,24 +536,21 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
+[6
 
 ] (./Drift.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 4018 strings out of 493029
- 60905 string characters out of 6136234
- 145487 words of memory out of 5000000
- 7488 multiletter control sequences out of 15000+600000
- 49963 words of font info for 104 fonts, out of 8000000 for 9000
- 1144 hyphenation exceptions out of 8191
- 38i,15n,49p,402b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 4068 strings out of 493304
+ 62115 string characters out of 6139872
+ 146488 words of memory out of 5000000
+ 7446 multiletter control sequences out of 15000+600000
+ 51099 words of font info for 105 fonts, out of 8000000 for 9000
+ 960 hyphenation exceptions out of 8191
+ 38i,15n,47p,402b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -417,10 +562,10 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on Drift.pdf (5 pages, 142572 bytes).
+Output written on Drift.pdf (6 pages, 489177 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 161 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

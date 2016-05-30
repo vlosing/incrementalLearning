@@ -9,7 +9,6 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: IEEEabrv.bib
 Database file #2: Drift.bib
-Warning--I didn't find a database entry for "cart93"
 -- IEEEtran.bst version 1.12 (2007/01/11) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -18,7 +17,7 @@ Warning--empty journal in harries1999splice
 Done.
 You've used 17 entries,
             4024 wiz_defined-function locations,
-            1314 strings with 18299 characters,
+            1313 strings with 18293 characters,
 and the built_in function-call counts, 14177 in all, are:
 = -- 1101
 > -- 316
@@ -57,4 +56,4 @@ warning$ -- 1
 while$ -- 72
 width$ -- 19
 write$ -- 183
-(There were 2 warnings)
+(There was 1 warning)

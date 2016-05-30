@@ -8,11 +8,9 @@
 \fi
 \usepackage[cmex10]{amsmath}
 \usepackage{amssymb}
-\usepackage{wrapfig}
 \usepackage{url}
 \usepackage[caption=false,font=footnotesize]{subfig}
 \hyphenation{op-tical net-works semi-conduc-tor}
-
 \usepackage{subscript}
 
 
@@ -240,8 +238,9 @@ The type of classifier is interchangeable, however, we used once again KNN.\\
 
 
 The idea for the first step is inspired by the observation that whenever real drift is present, sliding windows of smaller sizes tend to deliver higher accuracies than larger ones. 
-This contradicts the classical assumption for i.i.d datasets, backed up by the PAC theory(XXVL reference!), that the more data is stored in a model the less mistakes are done. 
-However, streaming data is not i.i.d and more mistakes are done whenever outdated data from former concepts is in conflict with samples of the current one. 
+This contradicts the classical assumption for stationary datasets as stated in the PAC model (XXVL reference!), that the error rate of a learning algorithm decreases
+with increasing number of examples. 
+However, streaming data containing real drift is not stationary and more mistakes are done whenever outdated data is in conflict with samples of the current concept. 
 A window which contains less of the outdated samples, delivers therefore a better result. 
 
 XXVL mention online learning accuracy.
@@ -333,7 +332,7 @@ kNN\textsubscript{S} performs comparably well or even better than more sophistic
 
 \subsection{Memory behaviour}
 In this section we illustrate the behavior of the STM and LTM during the experiments in a detailed way. 
-Figure \ref{fig:abrupt} depicts the size adjustment of the STM in case of abrupt drift using the dataset XXVL. 
+Figure \ref{fig:abrupt} depicts the size adjustment of the STM in case of abrupt drift using the dataset Interchanging RBF. 
 \begin{figure}
 \centering
 	\subfloat{%
@@ -349,8 +348,8 @@ Figure \ref{fig:abrupt} depicts the size adjustment of the STM in case of abrupt
 	\subfloat{%
 	\includegraphics[width=0.24\textwidth]{images/abruptLTM.pdf}
 	}
+\caption{Figures for Interchanging RBF}
 \label{fig:abrupt}
-\caption{}
 \end{figure}
 The algorithm shrinks the window reliably each time after an abrupt drift occurs.
 However, we can also observe that there is each time a certain delay until the memory is shrinked properly during which false predictions may occur. 
@@ -378,8 +377,8 @@ Figure \ref{fig:squares} shows the behavior of the STM for this dataset.
 	\subfloat{%
 	\includegraphics[width=0.24\textwidth]{images/squaresLTM.pdf}
 	}
+\caption{Figures for Moving Squares}
 \label{fig:squares}
-\caption{}
 \end{figure}
 Most of the time the memory is kept between 50 and 100 samples, allowing a nearly perfect prediction. 
 The reason that the window is mostly shrinked around 100 examples is that the default parameter for the minimal size of the STM is set to 50.\\
@@ -400,16 +399,26 @@ The Transient Chessboard dataset uses virtual drift. Figure \ref{fig:chess} show
 	\subfloat{%
 	\includegraphics[width=0.24\textwidth]{images/chessLTM.pdf}
 	}
+\caption{Figures for T}
 \label{fig:chess}
-\caption{}
 \end{figure}
 In contrast to the previous two datasets which basically do not require the LTM, we see here that it 
 is often used for the prediction. The STM is used alone whenever
 field by field is revealed, since the classification is easier and therefore the accuracy is higher. But as soon as the spray along all fields occurs, the LTM
-is heavily used since it contains beneficial information from the past. 
-
--weather prior, label
-
+is heavily used since it contains beneficial information from the past. The LTM content shows that the whole chessboard is maintained in a compressed fashion.\\
+A similar behavior can be observed for the real world data in Fig.\ref{fig:realResp}. While the LTM is heavily used in the virtual drift dataset Weather, it is mainly neglected in Rialto, containing
+real drift.
+\begin{figure}
+\centering
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/rialtoResp.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/weatherResp.png}
+	}
+\caption{Figures for T}
+\label{fig:realResp}
+\end{figure}
 
 \section{Conclusion}
 

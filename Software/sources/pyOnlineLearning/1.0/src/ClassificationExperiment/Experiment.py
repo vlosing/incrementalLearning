@@ -277,12 +277,13 @@ class Experiment:
                 #print np.sum(np.maximum(classifier.windowSizes - correctWindowSizes, 0))/float(len(correctWindowSizes))
                 import matplotlib.pyplot as plt
                 plt.ioff()
-                fig, ax = plt.subplots(4, 1)
+                fig, ax = plt.subplots(5, 1)
                 ax[0].plot(np.arange(len(classifier.windowSizes)), classifier.windowSizes, c='r')
                 ax[1].plot(np.arange(len(classifier.LTMSizes)), classifier.LTMSizes, c='r')
                 ax[2].plot(np.arange(0, len(predictedTrainLabels), detailedStep), scoresDetailed)
                 ax[3].plot(np.arange(len(classifier.classifierChoice)), classifier.classifierChoice)
                 ax[3].set_ylim([-0.5, 2.5])
+                ax[4].plot(np.arange(len(self.trainTestSplitsManager.TrainLabelsLst[0])), self.trainTestSplitsManager.TrainLabelsLst[0])
                 print 'corr STM ', classifier.STMCorrectCount, 'ltm', classifier.LTMCorrectCount,'both ', classifier.BothCorrectCount
                 print 'correct %d/%d' % (classifier.correctCount, classifier.possCorrect)
 
@@ -294,8 +295,13 @@ class Experiment:
                 fig, ax = plt.subplots(1, 1)
                 ax.plot(np.arange(0, len(predictedTrainLabels), detailedStep), scoresDetailed)
                 fig, ax = plt.subplots(1, 1)
-                ax.plot(np.arange(len(classifier.classifierChoice)), classifier.classifierChoice)
+                ax.scatter(np.arange(len(classifier.classifierChoice)), classifier.classifierChoice, s=0.1)
                 ax.set_ylim([-0.5, 2.5])
+                ax.set_xlim([0, len(self.trainTestSplitsManager.TrainLabelsLst[0])])
+                fig, ax = plt.subplots(1, 1)
+                ax.scatter(np.arange(len(self.trainTestSplitsManager.TrainLabelsLst[0])), self.trainTestSplitsManager.TrainLabelsLst[0], s=0.1)
+                ax.set_xlim([0, len(self.trainTestSplitsManager.TrainLabelsLst[0])])
+
 
 
                 #ax[2].plot(range(len(DriftDetection.currentSizeAccs)), DriftDetection.currentSizeAccs, c='r')

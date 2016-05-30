@@ -134,7 +134,7 @@ if __name__ == '__main__':
     #doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
     #doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=False)
+    #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=False)
 
     #doComparison('chessFields', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
 

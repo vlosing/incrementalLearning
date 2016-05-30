@@ -101,16 +101,16 @@ sure that the memory in the LTM is not conflicting.
 -adapt stm not every example but every n examples
 
 \section{Experiments}
-We compare our method with well-known state of the art methods for handling drifting streaming data.
+We compare our method with well-known state of the art methods for handling drifting streaming data. All algorithms are
 \\\textbf{Learn++.NSE with Classification and Regression Trees}\\
 Proposed in \cite{5975223}, this algorithm processes incoming samples in chunks with a predefined size. A base classifier is trained for each chunk and added to the ensemble. The loss on recent chunks is averaged with a sigmoidal function
 to compute the final weight of each base classifier. Similar to AdaBoost, instances are weighted such that misclassified inputs have a higher impact on the calculated loss.
 Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees (CART) XXVL reference.
 \\\textbf{Leveraging bagging with Hoeffding Trees}\\
 XXVL either describe Hoeffding Trees or make a reference!
-Proposed in \cite{bifet2010leveraging}, the authors suggest to increase the randomization of online bagging \cite{oza2005online} by a higher $\lambda$ value for the poisson distribution
-and the usage of output detection codes. Additionaly, they use ADWIN as change detector for every classifier within the ensemble such that whenever a change is detected 
-the worst classifier is replaced by a new one. As base classifier they use Hoeffding Trees with Gaussian Naive Bayes within the leaves. 
+Bifet et al. propose in \cite{bifet2010leveraging}to increase the randomization of online bagging \cite{oza2005online} and thereby the diversity of the base classifier.
+This is done by a higher $\lambda$ value for the poisson distribution and the usage of output detection codes. Additionaly, they use ADWIN as change detector for every classifier within the ensemble such that whenever a change is detected 
+the worst classifier is replaced by a new one. As base classifier Hoeffding Trees with Gaussian Naive Bayes within the leaves are used.
 \\\textbf{Dynamic Adaption of Concept Changes with Hoeffding Trees}\\
 Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. New examples are only
 classified by the best classifier of the pool.
@@ -119,7 +119,7 @@ This classifier is a kNN with a fixed window size containing the most recent sam
 for the future predictions. However, the window can contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
 \\\textbf{kNN with Probabilistic Adaptive Window and ADWIN}\\
 In contrast to the approach with the sliding window, examples are here removed randomly leading to a window which not only contains recent samples but also older ones. The window size is not bounded strictly
-and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN for change detection and clears the window accordingly.
+and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN for change detection and clears the window accordingly. \\
 Table \ref{tab:algorithms} gives an overview of the algorithms as well as the chosen hyperparameter. 
 \begin{table}
 \def\arraystretch{0.9}
@@ -140,9 +140,8 @@ KNN\textsubscript{M} &KNN with STM+LTM memory & w=5000, k=5\\
 \label{tab:artDatasets}
 \end{table}
 A maximum of 5000 samples was allowed as size for the window based approaches. However,
-we limited it to a maximum of 10\% of the whole dataset for those with only few examples. LPPNSE demands a chunk size which is critical for its performance. To avoid any disadvantage 
-we evalueated several chunksizes and report the best achieved result. No further dataset specific hyperparameter tuning was done, as we wanted to use as little prior knowledge as possible.
-
+we limited it to at most 10\% of the whole dataset for those with rather few examples. LPPNSE demands a chunk size which is critical for its performance. To avoid any disadvantage 
+we evaluated several sizes and report the best result. No further dataset specific hyperparameter tuning was done, as we wanted to use as little prior knowledge as possible.
 
 \subsection{Datasets}
 We used own and well known artificial as well as real world datasets to compare our method with state of the art algorithms. 
@@ -236,34 +235,41 @@ approaches of the same object XXVL pictures. The objects are encoded in a normal
 Ten of the colorful buildings next to the famous rialto bridge in Venice are encoded in a normalized 27-dimensional rgb histogram. 
 The images were obtained from timelapse videos of 10 consecutive days recorded in may 2016 by a webcam of XXVL. Continuously changing weather and lighting conditions affect the representation  XXVL see figures. We excluded overnight recordings since they were too dark for being useful.
 \subsubsection{Assessing the drift type in real world data}
-While the drift is explicitly generated in artificial datasets, it is rather difficult to identify the drift type in real world data or whether drift is present at all. Therefore, authors usually
-assume that there is some drift contained in the common used datasets and simply perform their experiments. We propose in this section a method which is able to determine the present drift type in a 
-given dataset. To the best of our knowledge this has not been done so far in literature. Our two stage approach can distinguish between real, virtual or no drift at all. 
-In the first step we are able to conclude whether real drift is present. If that is not the case, we continue with the second step which detects virtual drift is contained. In the case of both
-being negative we infer that no drift is present at all. We heavily use sliding windows of various sizes for this analysis. The type of classifier is interchangeable, however, we used once again KNN.\\
+While the drift is explicitly generated in artificial datasets, it is rather difficult to identify the drift type or whether drift is present at all in real world datas. Therefore, it is usually
+assumed in the comunity that there is some drift contained in the commonly evaluated datasets. We propose in this section a method which is able to determine the present drift type in a 
+given dataset. To the best of our knowledge this has not been done so far in literature. Our two staged approach can distinguish between real, virtual or no drift at all. 
+In the first step we are able to conclude whether real drift is present. If that is not the case, we continue with the second step which detects virtual drift. 
+Whenever both tests are negative we infer that no drift is present at all. We heavily use sliding windows of various sizes for this analysis. 
+The type of classifier is interchangeable, however, we used once again KNN.\\
 
-The idea for the first step is inspired by the observation that whenever real drift is present, sliding windows of smaller sizes often deliver higher accuracies than larger ones. This happens
-whenever outdated samples from former concepts are in conflict with samples of the current one. A window which contains less of the outdated samples, delivers therefore a better result. 
+
+The idea for the first step is inspired by the observation that whenever real drift is present, sliding windows of smaller sizes tend to deliver higher accuracies than larger ones. 
+This contradicts the classical assumption for i.i.d datasets, backed up by the PAC theory(XXVL reference!), that the more data is stored in a model the less mistakes are done. 
+However, streaming data is not i.i.d and more mistakes are done whenever outdated data from former concepts is in conflict with samples of the current one. 
+A window which contains less of the outdated samples, delivers therefore a better result. 
+
 We propose to test whether the accuracies achieved with sliding windows of different sizes are significantly higher than the one obtained without any size restriction. 
-To obtain multiplse samples of the accuracies we generate bootstrapped samples of the dataset maintaining the initial order. Afterwards, we perform a one sided hypothesis test with the traditional p-value of 5\%.
-The method is described exemplarly for one window size s1 in the following. XXVL PAC learning argument + refernce.\\
+To obtain multiple accuracies for a given window side we generate bootstrapped samples of the dataset maintaining the initial order. 
+Afterwards, we perform a one sided hypothesis test with the traditional p-value of 5\%.
+The method is described exemplarly for one window size s1 in the following.\\
 Given a dataset X with n examples, we generate b bootstrap samples $\Psi=\hat{X}_1,\hat{X}_2...{X}_b$of the dataset and sort them such that the initial order in the dataset is preserved. 
 We train a classifier with window size $s_1$ and another one with $s_n$ using $\Psi$ and asses their accuracies $a_1,a_2,...a_b$ and $\tilde{a}_1,\tilde{a}_2,...\tilde{a}_b$ respectively.  
 The pth percentile of all accuracy differences $d_i = a_i - \tilde{a}_i$ is calculated. The null hypothesis, accuracy $a_i <= \tilde{a}_i$, is rejected if its value is smaller 0.\\
 In case of no real drift, we proceed with the second step and test for virtual drift. Here we permutate the dataset each time before generating the bootstrapped samples and compare
 the resulting accuracies with those obtained in the first stage using the same window size. The permutation mixes data of all concepts. If P(X) is changed over time an 
-algorithm with limited ressources should achieve higher accuracies, since it is easier to classify only one concept at a time instead of all of them together.\\
+algorithm should achieve higher accuracies, since it is easier to classify only one concept at a time instead of all of them together.\\
 Next to the real world data we also analyzed the drift type of artificial data as a proof of concept. We used 200 bootstrap samples per window size.
 Table \ref{tab:drifttype} shows the mean accuracies of the bootstrapped samples with corresponding standard deviations and the inferred drift type. Our approach classifies correctly
-the drift type of all artificial datasets. The drift in the real world data is generally less pronounced than in the artificial ones since the acurracy differences are significantly
-smaller there. Nonthelss, the datasets Elec and the vision based datasets Outdoor and Rialto clearly benefit from smaller window sizes. Covtype contains minor real drift, while weather
-incorporates only virtual drift (long dry periods in the summer).
+the drift type of all artificial datasets. In the case of the artificial datasets the increase/decrease of performance with shrinking window sizes is quite significant for datasets
+with / without real drift. This is generally less pronounced for real real world data. Nonthelss, the datasets Elec, Outdoor and Rialto clearly benefit from smaller window sizes. 
+Covtype contains little real drift, while the Weather task incorporates only virtual drift.
 \begin{table*}
 \def\arraystretch{0.9}
 \footnotesize
 \centering
 \caption{Mean accuracies and corresponding standard deviations obtained from bootstrapped samples of the datasets with varying sliding window sizes.}
-\subfloat[Bootstrapped samples for detecting real drift.]{
+\subfloat[Bootstrapped samples for detecting real drift. Accuracies of size restricted windows which are significantly higer compared to the accuracy achieved without restriction are marked bold. 
+If this is the case at least for one window size it is inferred that the dataset contains real drift.]{
 \label{tab:drifttype}
 \begin{tabular}{l|ccccccc}
 \textit{Dataset} & KNN\textsubscript{S-100}&KNN\textsubscript{S-500}&KNN\textsubscript{S-1000}&KNN\textsubscript{S-5000}&KNN\textsubscript{S-10000}&KNN&Concluded drift type\\\hline
@@ -281,7 +287,8 @@ Interchanging RBF    &97.73(0.02)&67.22(0.05)&63.30(0.05)&56.87(0.11)&57.22(0.04
 \label{tab:stage1}
 }
 \par\vspace{5 pt}
-\subfloat[Permutated bootstrapped samples for detecting real drift.]{
+\subfloat[Permutated bootstrapped samples for detecting real drift. Accuracies which are significantly higher compared to those achieved in a) 
+with the same window size are marked bold and it is assumed that the corresponding dataset incorporates virtual drift]{
 \begin{tabular}{l|ccccccc}
 \textit{Dataset} & KNN\textsubscript{S-100}&KNN\textsubscript{S-500}&KNN\textsubscript{S-1000}&KNN\textsubscript{S-5000}&KNN\textsubscript{S-10000}&KNN&Concluded drift type\\\hline
 \rule{0pt}{8pt}
@@ -296,7 +303,7 @@ Transient Chessboard &\textbf{63.30(0.09)}&\textbf{83.77(0.06)}&\textbf{88.48(0.
 
 \subsection{Results}
 We evaluated the algorithms in the standard online learning setting in which each incoming example is first classified and afterwards used for training. The error rates of all experiments are shown
-in \ref{tab:result}.\\
+in Table \ref{tab:result}.\\
 \begin{table*}
 \def\arraystretch{0.9}
 \footnotesize
@@ -326,14 +333,14 @@ total rank& 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00 & 10.00\\\hline
 \end{tabular}
 \label{tab:datasets}
 \end{table*}
-Our approach outperforms the other methods quite significantly by having nearly half the error rate in average compared to the second best method LVGB. 
-Even more important is in our eyes the fact that while all other methods are struggling at some datasets our method delivers very robust results without any hiccup. All drift types are handled
+(XXVL name of algorithm) outperforms the other algorithms quite significantly by having nearly half the error rate in average compared to the second best method LVGB. 
+Even more important is in our eyes the fact that while all other methods are struggling at some datasets our aproach delivers very robust results without any hiccup. All drift types are handled
 better or at least competitive compared to the other algorithms. This is particularly clarified in the large accuracy gap achieved with the MIX dataset, which contains incremental, 
 abrupt and virtual drift at the same time. \\
-The methodically most similar method to ours is kNN\textsubscript{W\textsubscript{A}}, since it uses also kNN as classifier and actively manages its window by sampling the input stream or clearing it in case of detected abrupt drift.
+The methodically most similar method to ours is kNN\textsubscript{W\textsubscript{A}}, since it uses also kNN as classifier and actively manages its window.
 However, it performs in all experiments worse, even in those containing only abrupt drift.\\
-Our results confirm the fact that kNN is in general a very competitive algorithm in the streaming setting. It is quite surprising that the simple sliding window approach of fixed window size 
-performs comparably well or even better than more sophisticated methods such as HTAdaptive or L++.NSE.
+Our results confirm the fact that kNN is in general a very competitive algorithm in the streaming setting. It is quite surprising that the simple sliding window approach of fixed window size
+kNN\textsubscript{S} performs comparably well or even better than more sophisticated methods such as HTAdaptive or L++.NSE.
 
 -Table with results
 -Evaluation

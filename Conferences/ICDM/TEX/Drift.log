@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.24)  29 MAY 2016 17:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.24)  30 MAY 2016 11:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -343,36 +343,36 @@ LaTeX Warning: Reference `' on page 1 undefined on input line 85.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 148--150
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
 
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 151--196
+Underfull \hbox (badness 1748) in paragraph at lines 150--195
 \OT1/ptm/b/n/10 Transient Chess-board (CHESS) \OT1/ptm/m/n/10 This dataset sim-
 u-lates
  []
 
 
-Underfull \hbox (badness 2326) in paragraph at lines 151--196
+Underfull \hbox (badness 2326) in paragraph at lines 150--195
 \OT1/ptm/m/n/10 sam-ples cov-er-ing all squares of the board are shown.
  []
 
 
-Underfull \hbox (badness 1931) in paragraph at lines 151--196
+Underfull \hbox (badness 1931) in paragraph at lines 150--195
 \OT1/ptm/m/n/10 chess-board datasets are sim-ply po-si-tioned next to each
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--196
+Underfull \hbox (badness 10000) in paragraph at lines 150--195
 
  []
 
 
-LaTeX Warning: Reference `' on page 2 undefined on input line 203.
+LaTeX Warning: Reference `' on page 2 undefined on input line 202.
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 239--244
+Underfull \hbox (badness 10000) in paragraph at lines 238--244
 
  []
 
@@ -401,11 +401,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  4018 strings out of 493029
  60905 string characters out of 6136234
- 143492 words of memory out of 5000000
+ 145487 words of memory out of 5000000
  7488 multiletter control sequences out of 15000+600000
  49963 words of font info for 104 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 38i,15n,49p,344b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,15n,49p,402b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
@@ -417,7 +417,7 @@ sfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on Drift.pdf (5 pages, 142145 bytes).
+Output written on Drift.pdf (5 pages, 142572 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream

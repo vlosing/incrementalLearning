@@ -11,7 +11,7 @@ def getDefaultHyperParams(classifierName):
     params['LVGB'] = {'splitConfidence': 0.0000001, 'tieThresh': 0.05, 'gracePeriod': 200, 'numClassifier': 10}
     params['HoeffAdwin'] = {'splitConfidence': 0.0000001, 'tieThresh': 0.05, 'gracePeriod': 200}
     params['KNNPaw'] = {'windowSize': 5000}
-    params['KNNWindow'] = {'windowSize': 5000, 'nNeighbours': 5, 'weights': 'distance', 'driftStrategy': None}
+    params['KNNWindow'] = {'windowSize': 5000, 'nNeighbours': 5, 'weights': 'distance', 'driftStrategy': 'maxACC8'}
     params['ILVQ'] = {'classifierType': 'LVQ', 'netType': 'GMLVQ', 'activFct': 'logistic', 'retrainFreq': 0,
          'learnRatePerProto': True, 'learnRateInitial': 1, 'learnRateAnnealingSteps': 5000,
          'metricLearnRate': 0.01,

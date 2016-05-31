@@ -71,8 +71,8 @@ def doComparison(dataSetName, classifierNames, iterations, criterionName, criter
             for classifierName in classifierNames:
                 classifierParams = hyperParams[classifierName]
                 if classifierName in ['ILVQ', 'ISVM', 'KNNPaw', 'KNNWindow']:
-                    classifierParams['windowSize'] = 10000
-                    #classifierParams['windowSize'] = min(5000, int(0.1 * len(trainLabels)))
+                    #classifierParams['windowSize'] = 10000
+                    classifierParams['windowSize'] = min(5000, int(0.1 * len(trainLabels)))
                     #classifierParams['insertionTimingThresh'] = 10
                 if criterionName == 'complexity':
                     if classifierName == 'LVQ':
@@ -84,7 +84,7 @@ def doComparison(dataSetName, classifierNames, iterations, criterionName, criter
                 classifierEvaluations = updateClassifierEvaluations(classifierEvaluations, classifierName, trainLabels, trainTestSplitsManager.TestLabelsLst[0], allPredictedTestLabels, allPredictedTrainLabels, complexities, complexityNumParameterMetric, chunkSize, critierion, streamSetting)
     json.encoder.FLOAT_REPR = lambda o: format(o, '.5f')
     json.dump(classifierEvaluations, open(evalDstDirectory + evalFilePrefix + 'evaluations.json', 'w'))
-    dataToCSV(dataSetName)
+    #dataToCSV(dataSetName)
 
 if __name__ == '__main__':
     logging.basicConfig(format='%(message)s', level=logging.INFO)
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     #
     #criteria = [50, 100, 250, 500, 1000]
     #criteria = [100, 500, 1000]
-    criteria = [10000]
+    criteria = [100000]
 
 
     #classifierNames = ['LVGB', 'ILVQ', 'ORF', 'LPP', 'LPPNSE', 'SGD', 'IELM', 'GNB', 'ISVM']
@@ -117,26 +117,28 @@ if __name__ == '__main__':
 
     classifierNames = ['KNNWindow']
     #classifierNames = ['KNNPaw', 'LVGB']
-    iterations = 10
+    iterations = 1
     scaleData = False
+    bootStrapSampling=False
+    permutate=False
 
 
-    #doComparison('weather', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
-    #doComparison('elec', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
-    #doComparison('covType', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
-    #doComparison('outdoorStream', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
-    #doComparison('rialto', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    #doComparison('weather', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
+    #doComparison('elec', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
+    #doComparison('covType', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
+    #doComparison('outdoorStream', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
+    #doComparison('rialto', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
 
     #doComparison('sea', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('rbfSlowXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('hypSlowXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('squaresIncrXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True)
+    #doComparison('squaresIncrXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
     #doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
-    #doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
-    #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=False)
+    #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
+    doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
 
-    #doComparison('chessFields', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=True, permutate=True)
+    #doComparison('chessFields', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
 
 
     #doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)

@@ -80,7 +80,7 @@ if __name__ == '__main__':
     KNNWindowCfg['indiv']['driftStrategy'] = None
     #KNNWindowCfg['indiv']['driftStrategy'] = 'adwin'
     #KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC7'
-    KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC8'
+    #KNNWindowCfg['indiv']['driftStrategy'] = 'maxACC8'
     #KNNWindowCfg['indiv']['driftStrategy'] = 'both'
 
     #WAVGCfg = copy.deepcopy(defaultCfg)
@@ -94,7 +94,7 @@ if __name__ == '__main__':
     #doExperiment({'dsName': 'squaresIncrXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'squaresIncr', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'rbfAbruptXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
-    #doExperiment({'dsName': 'rbfAbruptSmall', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
+    doExperiment({'dsName': 'rbfAbruptSmall', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'chessVirtual', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'chessVirtualXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
 
@@ -104,7 +104,7 @@ if __name__ == '__main__':
     #doExperiment({'dsName': 'allDrift', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'allDriftXXL', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
 
-    doExperiment({'dsName': 'weather', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
+    #doExperiment({'dsName': 'weather', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'elec', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'covType', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)
     #doExperiment({'dsName': 'outdoorStream', 'splitType': 'simple', 'folds': 3, 'trainOrder': 'original', 'stratified': False, 'shuffle': False, 'chunkSize': 1, 'trainSetSize': 1}, expCfg, cfgs)

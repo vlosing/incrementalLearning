@@ -168,63 +168,7 @@ def getChessRandomVirtual(nSamplesPerField, numValidationSamples, nTiles=8, repe
             allSamples = np.vstack([allSamples, samples])
             allLabels = np.append(allLabels, labels)
     return allSamples, allLabels
-'''
 
-def rectGradual(numRects, numSamplesPerRect, numConcepts, distBetween = 0, numDimensions=2, sampleRange=[0, 1]):
-    canvasWidth = sampleRange[1] - sampleRange[0]
-    squareLength = canvasWidth * 0.1
-
-    allSamples = np.empty(shape=(0, numDimensions))
-    allLabels = np.empty(shape=(0, 1))
-
-    squarePos = np.zeros(shape=(numRects, numDimensions))
-    distBetweenSquares = squareLength * distBetween
-    for i in range(numRects):
-        squarePos[i, 0] = sampleRange[0] + (numRects-1-i) * (squareLength + distBetweenSquares)
-
-    for i in range(numConcepts):
-        newSquarePos = squarePos[::-1]
-        conceptSamples = np.empty(shape=(0, numDimensions))
-        conceptLabels = np.empty(shape=(0, 1))
-        for trans in np.arange(0, 1.0, 0.1):
-            concept1Samples = np.empty(shape=(0, numDimensions))
-            concept1Labels = np.empty(shape=(0, 1))
-            concept2Samples = np.empty(shape=(0, numDimensions))
-            concept2Labels = np.empty(shape=(0, 1))
-
-            numSamplesConcept2 = int(np.floor(numSamplesPerRect * trans))
-            numSamplesConcept1 = int(numSamplesPerRect - numSamplesConcept2)
-
-            for idx in range(numRects):
-                #samples = createNormDistData(numSamplesPerConceptPerCentroid, mean=(X[idx], Y[idx]), var=[[varX[idx], varX2[idx]], [varX2[idx], varY2[idx]]])
-
-                if numSamplesConcept2 > 0:
-                    samples = newSquarePos[idx, :] + np.random.rand(numSamplesConcept2, numDimensions) * squareLength
-                    labels = idx * np.ones(shape=numSamplesConcept2)
-                    concept2Samples = np.vstack([concept2Samples, samples])
-                    concept2Labels = np.append(concept2Labels, labels)
-
-                if numSamplesConcept1 > 0:
-                    samples = squarePos[idx, :] + np.random.rand(numSamplesConcept1, numDimensions) * squareLength
-                    labels = idx * np.ones(shape=numSamplesConcept1)
-                    concept1Samples = np.vstack([concept1Samples, samples])
-                    concept1Labels = np.append(concept1Labels, labels)
-            permIndices = np.random.permutation(len(concept1Labels))
-            concept1Samples = concept1Samples[permIndices, :]
-            concept1Labels = concept1Labels[permIndices]
-            permIndices = np.random.permutation(len(concept2Labels))
-            concept2Samples = concept2Samples[permIndices, :]
-            concept2Labels = concept2Labels[permIndices]
-
-            conceptSamples = np.vstack([conceptSamples, concept1Samples])
-            conceptSamples = np.vstack([conceptSamples, concept2Samples])
-            conceptLabels = np.append(conceptLabels, concept1Labels)
-            conceptLabels = np.append(conceptLabels, concept2Labels)
-
-        allSamples = np.vstack([allSamples, conceptSamples])
-        allLabels = np.append(allLabels, conceptLabels)
-        squarePos = newSquarePos
-    return allSamples, allLabels
 
 def rbfGradual(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid, numConcepts, numDimensions=2, sampleRange=[0, 1]):
     cov = []
@@ -344,7 +288,7 @@ def rbfAbruptIncreased(numClasses, numCentroidsPerClass, numSamplesPerConceptPer
             X[:changedCentroids, :] = np.random.rand(changedCentroids, numDimensions) * (sampleRange[1] - sampleRange[0]) + sampleRange[0]
     return allSamples, allLabels
 
-
+'''
 def rbfAbrupt2(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid, numConcepts, numDimensions=2, sampleRange=[0, 1]):
     cov = []
     numCentroids = numClasses * numCentroidsPerClass
@@ -388,12 +332,14 @@ def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPe
     allLabels = np.empty(shape=(0, 1))
 
     X = np.random.rand(numCentroids, numDimensions) * (sampleRange[1] - sampleRange[0]) + sampleRange[0]
+    oldPermIndices = np.arange(numConcepts)
     for i in range(numConcepts):
         conceptSamples = np.empty(shape=(0, numDimensions))
         conceptLabels = np.empty(shape=(0, 1))
         for cls in range(numClasses):
             for centroid in range(numCentroidsPerClass):
                 idx = cls * numCentroidsPerClass + centroid
+                print X.shape, len(cov)
                 samples = createNormDistData(numSamplesPerConceptPerCentroid, mean=X[idx, :], var=cov[idx])
                 labels = cls * np.ones(shape=(numSamplesPerConceptPerCentroid))
                 conceptSamples = np.vstack([conceptSamples, samples])
@@ -405,11 +351,14 @@ def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPe
         allSamples = np.vstack([allSamples, conceptSamples])
         allLabels = np.append(allLabels, conceptLabels)
 
-
         if i != numConcepts-1:
-            permIndices = np.random.permutation(int(numCentroids/float(numConcepts) * (i+2)))
+            permutatedLength = int(numCentroids/float(numConcepts) * (i+2))
+            permIndices = np.random.permutation(permutatedLength)
+            while np.sum(permIndices[:permutatedLength] == oldPermIndices[:permutatedLength]) > 0:
+                permIndices = np.random.permutation(permutatedLength)
+                permIndices = np.append(permIndices, np.arange(i+2, numCentroids))
+            oldPermIndices = permIndices.copy()
             print permIndices
-            permIndices = np.append(permIndices, np.arange(i+2, numCentroids))
             X = X[permIndices, :]
     return allSamples, allLabels
 

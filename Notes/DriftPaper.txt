@@ -24,6 +24,5 @@ RectIncr																			91.1			52.5	80.0		95.2 13
 -finish real dataset Drift evaluation 
 -Name for algorithm/memory model
 -Maybe add one more comparison algorithm
--picture abrupt drift window behaviour, natural tradeoff, the more stable current concept the more samples needed to shrink window, also picture for squaresIncr and chessVirtual
--responsibility analysis, squaresIncr, search in weather dataset for only samples of sun, there should be a change between STM to LTM/Both, same for ChessVirtual, maybe test for chessIID and see weather both are asked all time.
+-responsibility analysis maybe test for chessIID and see weather both are asked all time.
 

@@ -99,12 +99,12 @@ sure that the memory in the LTM is not conflicting.
 -adapt stm not every example but every n examples
 
 \section{Experiments}
-We compare our method with well-known state of the art methods for handling drifting streaming data. Implementations of the original authors or those available in MOA \cite{bifet2010moa}
-have been used to conduct the experiments. The following algorithms are considered in the evaluation:\\
+We compare our method with well-known state of the art algorithms for handling drift in streaming data. Implementations of the original authors or those available in MOA \cite{bifet2010moa}
+have been used to conduct the experiments. The following algorithms are considered:\\
 \\\textbf{Learn++.NSE}\\
 Proposed in \cite{5975223}, this algorithm processes incoming samples in chunks with a predefined size. A base classifier is trained for each chunk and added to the ensemble. The loss on recent chunks is averaged with a sigmoidal function
 to compute the final weight of each base classifier. Similar to AdaBoost, instances are weighted such that misclassified inputs have a higher impact on the calculated loss.
-Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees \cite{cart84}.
+Chunk-wise trained models have by design an adaption delay depending on the chunk size (XXVL chunksize very crucial). The base classifier are in our case Classification and Regression Trees \cite{cart84}.
 \\\textbf{Leveraging Bagging}\\
 Bifet et al. propose in \cite{bifet2010leveraging} to increase the randomization of Online Bagging \cite{oza2005online} and thereby the diversity of the ensemble.
 This is done by a higher $\lambda$ value for the poisson distribution and the usage of output detection codes. Additionaly, they use ADWIN as change detector for every classifier within the ensemble such that whenever a change is detected 
@@ -112,14 +112,16 @@ the worst classifier is replaced by a new one. Hoeffding Trees\cite{domingos2000
 XXVL maybe define Hoeffding trees.
 \\\textbf{Dynamic Adaption of Concept Changes}\\
 Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. 
-Newly generated classifier are excluded for a predefined time from the elimination process. Incoming examples are solely classified by the classifier within the pool which
-achieved the highest accuracy in the past. As in Leavarging Bagging, Hoeffding Trees were the base classifier within the pool.
-\\\textbf{kNN with Sliding Window}\\
-This classifier is a kNN with a fixed window size containing the most recent samples. The sliding window is a standard approach for drift handling, since the window contains usually the most relevant examples
-for the future predictions. However, since the size is static the window may contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
+Newly generated classifier are excluded for a predefined time from the elimination process. Predictions for incoming examples are solely done by the classifier within the pool which
+achieved the highest accuracy in the past. As in Leavarging Bagging, Hoeffding Trees are chosen as base classifier.
+\\\textbf{kNN sliding window}\\
+A distance weighted kNN classifier is combined with a fixed window size containing the most recent samples. 
+This so called sliding window approach is a common way for drift handling, since the window contains usually the most relevant examples
+for the future predictions. However, the choice of the static size is crucial and usually has to be chosen according to the given problem. A too small window hinders the classifier to gain a low error rate,
+whereas a too large window may be very slow in adapting to new concepts. 
 \\\textbf{kNN with Probabilistic Adaptive Window and ADWIN}\\
-In contrast to the approach with the sliding window, examples are here removed randomly leading to a window which not only contains recent samples but also older ones. The window size is not bounded strictly
-and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN for change detection and clears the window accordingly. \\
+In contrast to the approach FIFO principle of the sliding window approach, examples here are removed randomly leading to a mix of recent and older samples in the window. The window size is not strictly bounded 
+and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN as change detector and clears the window (XXVL gegebenenfalls) accordingly. \\
 Table \ref{tab:algorithms} gives an overview of the algorithms as well as the chosen hyperparameter. 
 \begin{table}
 \def\arraystretch{0.9}
@@ -140,14 +142,15 @@ KNN\textsubscript{M} &KNN with STM+LTM memory & w=5000, k=5\\
 \end{table}
 A maximum of 5000 samples was allowed as size for the window based approaches. However,
 we limited it to at most 10\% of the whole dataset for those with rather few examples. LPPNSE demands a chunk size which is critical for its performance. To avoid any disadvantage 
-we evaluated several sizes and report the best result. No further dataset specific hyperparameter tuning was done, as we wanted to use as little prior knowledge as possible.
+we evaluated several sizes and report the best result. No further dataset specific hyperparameter tuning was done, since we wanted to use(XXVL reinstecken)as little prior knowledge as possible.
 
 \subsection{Datasets}
-We used own and well known artificial as well as real world datasets to compare our method with state of the art algorithms. 
-Links to all datasets as well as our own ones are available at \url{https://github.com/vlosing/Online-learning}. In the following we describe the data more detailed.\\
+We used own and well known artificial as well as real world datasets for the experiments.
+Links to all datasets and algorithms are available at \url{https://github.com/vlosing/Online-learning}. 
+In the following we describe the data more detailed.\\
 
-Artificial datasets have the advantage that any desired drift behavior can be explicitly simulated to analyze certain properties of a given method. These are often 
-2-dimensional and to enable a straightforward visualization. We evaluated ready to use published benchmark datasets as well as MOA generated ones using common parametrization in the literature.
+Artificial datasets have the advantage that any desired drift behavior can be explicitly simulated. They are often 
+2-dimensional to enable a straightforward visualization. We evaluated ready to use published benchmark datasets as well as MOA generated ones using common parametrization in the literature.
 We also added four new datasets allowing the evaluation of particular algorithm properties which are in our opinion not yet considered enough in the community. 
 Table \ref{tab:artDatasets} shows their main characteristics.
 \begin{table}
@@ -165,27 +168,32 @@ Transient Chessboard & 200K & 2 & 8 & virtual\\
 Mixed Drift & 600K & 2 & 8 & abr/incr/virt\\
 \end{tabular}
 \end{table}
-\\\textbf{SEA Concepts (SEA)}\\
-This two class dataset was proposed in \cite{Street:2001:SEA:502512.502568} and consists of 50000 samples with three attributes of which only two are relevant.
-Abrupt drift is simulated with four different concepts, changing every 12500 samples, by using different thresholds $\theta_i$ such that $f_1 + f_2 > \theta_i$.
-This dataset includes 10\% of noise.\\
-\textbf{Rotating Hyperplane (HYP)}\\
+\\\textbf{SEA Concepts}\\
+This dataset was proposed in \cite{Street:2001:SEA:502512.502568} and consists of 50000 samples with three attributes of which only two are relevant.
+The two class decision boundary is given by $f_1 + f_2 = \theta$, where $f_1$ and $f_2$ are the two relevant features and $\theta$ a predefined threshold.
+Abrupt drift is simulated with four different concepts, by changing the value of $\theta$ every 12500 samples.
+This dataset includes also 10\% of noise.\\
+\textbf{Rotating Hyperplane}\\
 A hyperplane in d-dimensional space is defined by the set of points $x$ that satisfy $\sum_{i=1}^{d}w_ix_i=w_0$. The position and orientation of the hyperplane
 are changed incrementally by continuously adding a term $\delta$ to the weights $w_i=w_i+\delta$. 
-We used the generator in MOA with the same parameters as in \cite{Bifet:2013:EDS:2480362.2480516} (10 dimensions, 2 classes, $\delta$=0.001).\\ 
-\textbf{Moving RBF (MRBF)}\\
-Gaussian distributions with random initial positions, weight and standard deviations are moved with constant speed $v$ in d-dimensional speed. 
+We used the Random Hyperplane generator in MOA with the same parameters as in \cite{Bifet:2013:EDS:2480362.2480516} (10 dimensions, 2 classes, $\delta$=0.001).\\ 
+\textbf{Moving RBF}\\
+Gaussian distributions with random initial positions, weights and standard deviations are moved with constant speed $v$ in d-dimensional speed. 
 The weight controls the partitioning of all samples among the Gaussians.
-We used the generator in MOA with the same parameters as in \cite{Bifet:2013:EDS:2480362.2480516} (10 dimensions, 50 Gaussians, 5 classes, $v$=0.001).\\ 
-\textbf{Interchanging RBF (IRBF)}\\
+We used the Random RBF generator in MOA with the same parameters as in \cite{Bifet:2013:EDS:2480362.2480516} (10 dimensions, 50 Gaussians, 5 classes, $v$=0.001).\\ 
+\textbf{Interchanging RBF}\\
 Ten Gaussians with random covariance matrix are exchanging positions every $2000$ samples and generate thereby a total of 100 abrupt drifts.\\ 
-\textbf{Moving Squares (SQR)}\\
-Four equidistantly seperated squares, representing different classes, are moving in horizontal direction with constant speed. The direction is inverted whenever the leading squares reaches a predefined boundary.
-The nice property of this dataset is that the upper bound of stored recent examples such that old samples do not overlap current ones can be easily calculated (120) and  
+\textbf{Moving Squares}\\
+Four equidistantly seperated squared uniform distributions are moving in horizontal direction with constant speed. The direction is inverted whenever the leading squares reaches a predefined boundary.
+Each square is representing a different class. 
+The nice property of this dataset is that the upper bound of stored recent examples before old samples may start to  overlap current ones can be easily calculated (120) and  
 facilitates the analysation of algorithms, especially those using a sliding window approach, for incremental drift.\\
-\textbf{Transient Chessboard (CHESS)}
-This dataset simulates virtual drift by succesively revealing random squares of a chessboard. Each time after four squares have been revealed, samples covering all squares of the board are shown.
-facilitating the classification for algorithms which preserve as much information as possible.\\ 
+\textbf{Transient Chessboard}
+This dataset simulates virtual drift by succesively revealing square by square of a chessboard. 
+Each time after four squares have been revealed, samples covering all squares of the board are shown.
+facilitating the classification for algorithms which preserve as much information as possible. To reduce the impact of random correct classification we used eight instead of two classes.
+
+\\ 
 \textbf{Mixed Drift (MIX)} \\
 The datasets interchanging RBF, moving squares and transient chessboard datasets are simply positioned next to each other and samples belonging to one of these are introduced alternately.
 Therefore, incremental, abrupt and virtual drift are taking place at the same time, requiring local adaptation to different drift types.\\

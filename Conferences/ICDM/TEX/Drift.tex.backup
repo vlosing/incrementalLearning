@@ -8,11 +8,9 @@
 \fi
 \usepackage[cmex10]{amsmath}
 \usepackage{amssymb}
-\usepackage{wrapfig}
 \usepackage{url}
 \usepackage[caption=false,font=footnotesize]{subfig}
 \hyphenation{op-tical net-works semi-conduc-tor}
-
 \usepackage{subscript}
 
 
@@ -101,12 +99,12 @@ sure that the memory in the LTM is not conflicting.
 -adapt stm not every example but every n examples
 
 \section{Experiments}
-We compare our method with well-known state of the art methods for handling drifting streaming data. Implementations of the original authors or those available in MOA \cite{bifet2010moa}
-have been used to conduct the experiments. The following algorithms are considered in the evaluation:\\
+We compare our method with well-known state of the art algorithms for handling drift in streaming data. Implementations of the original authors or those available in MOA \cite{bifet2010moa}
+have been used to conduct the experiments. The following algorithms are considered:\\
 \\\textbf{Learn++.NSE}\\
 Proposed in \cite{5975223}, this algorithm processes incoming samples in chunks with a predefined size. A base classifier is trained for each chunk and added to the ensemble. The loss on recent chunks is averaged with a sigmoidal function
 to compute the final weight of each base classifier. Similar to AdaBoost, instances are weighted such that misclassified inputs have a higher impact on the calculated loss.
-Chunk-wise trained models have by design an adaption delay depending on the chunk size. The base classifier are in our case Classification and Regression Trees \cite{cart84}.
+Chunk-wise trained models have by design an adaption delay depending on the chunk size (XXVL chunksize very crucial). The base classifier are in our case Classification and Regression Trees \cite{cart84}.
 \\\textbf{Leveraging Bagging}\\
 Bifet et al. propose in \cite{bifet2010leveraging} to increase the randomization of Online Bagging \cite{oza2005online} and thereby the diversity of the ensemble.
 This is done by a higher $\lambda$ value for the poisson distribution and the usage of output detection codes. Additionaly, they use ADWIN as change detector for every classifier within the ensemble such that whenever a change is detected 
@@ -114,14 +112,16 @@ the worst classifier is replaced by a new one. Hoeffding Trees\cite{domingos2000
 XXVL maybe define Hoeffding trees.
 \\\textbf{Dynamic Adaption of Concept Changes}\\
 Within this ensemble algorithm \cite{jaber2013online} a classifier of the worst half of the pool is removed randomly after a predefined number of examples and replaced by a new one. 
-Newly generated classifier are excluded for a predefined time from the elimination process. Incoming examples are solely classified by the classifier within the pool which
-achieved the highest accuracy in the past. As in Leavarging Bagging, Hoeffding Trees were the base classifier within the pool.
-\\\textbf{kNN with Sliding Window}\\
-This classifier is a kNN with a fixed window size containing the most recent samples. The sliding window is a standard approach for drift handling, since the window contains usually the most relevant examples
-for the future predictions. However, since the size is static the window may contain outdated examples interfering with the current concept leading to a deterioration of the prediction accuracy. 
+Newly generated classifier are excluded for a predefined time from the elimination process. Predictions for incoming examples are solely done by the classifier within the pool which
+achieved the highest accuracy in the past. As in Leavarging Bagging, Hoeffding Trees are chosen as base classifier.
+\\\textbf{kNN sliding window}\\
+A distance weighted kNN classifier is combined with a fixed window size containing the most recent samples. 
+This so called sliding window approach is a common way for drift handling, since the window contains usually the most relevant examples
+for the future predictions. However, the choice of the static size is crucial and usually has to be chosen according to the given problem. A too small window hinders the classifier to gain a low error rate,
+whereas a too large window may be very slow in adapting to new concepts. 
 \\\textbf{kNN with Probabilistic Adaptive Window and ADWIN}\\
-In contrast to the approach with the sliding window, examples are here removed randomly leading to a window which not only contains recent samples but also older ones. The window size is not bounded strictly
-and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN for change detection and clears the window accordingly. \\
+In contrast to the approach FIFO principle of the sliding window approach, examples here are removed randomly leading to a mix of recent and older samples in the window. The window size is not strictly bounded 
+and varies around a target size (see \cite{Bifet:2013:EDS:2480362.2480516}). This approach also uses ADWIN as change detector and clears the window (XXVL gegebenenfalls) accordingly. \\
 Table \ref{tab:algorithms} gives an overview of the algorithms as well as the chosen hyperparameter. 
 \begin{table}
 \def\arraystretch{0.9}
@@ -142,14 +142,15 @@ KNN\textsubscript{M} &KNN with STM+LTM memory & w=5000, k=5\\
 \end{table}
 A maximum of 5000 samples was allowed as size for the window based approaches. However,
 we limited it to at most 10\% of the whole dataset for those with rather few examples. LPPNSE demands a chunk size which is critical for its performance. To avoid any disadvantage 
-we evaluated several sizes and report the best result. No further dataset specific hyperparameter tuning was done, as we wanted to use as little prior knowledge as possible.
+we evaluated several sizes and report the best result. No further dataset specific hyperparameter tuning was done, since we wanted to use(XXVL reinstecken)as little prior knowledge as possible.
 
 \subsection{Datasets}
-We used own and well known artificial as well as real world datasets to compare our method with state of the art algorithms. 
-Links to all datasets as well as our own ones are available at \url{https://github.com/vlosing/Online-learning}. In the following we describe the data more detailed.\\
+We used own and well known artificial as well as real world datasets for the experiments.
+Links to all datasets and algorithms are available at \url{https://github.com/vlosing/Online-learning}. 
+In the following we describe the data more detailed.\\
 
-Artificial datasets have the advantage that any desired drift behavior can be explicitly simulated to analyze certain properties of a given method. These are often 
-2-dimensional and to enable a straightforward visualization. We evaluated ready to use published benchmark datasets as well as MOA generated ones using common parametrization in the literature.
+Artificial datasets have the advantage that any desired drift behavior can be explicitly simulated. They are often 
+2-dimensional to enable a straightforward visualization. We evaluated ready to use published benchmark datasets as well as MOA generated ones using common parametrization in the literature.
 We also added four new datasets allowing the evaluation of particular algorithm properties which are in our opinion not yet considered enough in the community. 
 Table \ref{tab:artDatasets} shows their main characteristics.
 \begin{table}
@@ -168,8 +169,9 @@ Mixed Drift & 600K & 2 & 8 & abr/incr/virt\\
 \end{tabular}
 \end{table}
 \\\textbf{SEA Concepts (SEA)}\\
-This two class dataset was proposed in \cite{Street:2001:SEA:502512.502568} and consists of 50000 samples with three attributes of which only two are relevant.
-Abrupt drift is simulated with four different concepts, changing every 12500 samples, by using different thresholds $\theta_i$ such that $f_1 + f_2 > \theta_i$.
+This dataset was proposed in \cite{Street:2001:SEA:502512.502568} and consists of 50000 samples with three attributes of which only two are relevant.
+The two class decision boundary is given by $f_1 + f_2 = theta$, where $f_1$ and $f_2$ are the two relevant features.
+Abrupt drift is simulated with four different concepts, changing every 12500 samples, by using different thresholds $\theta_i$.
 This dataset includes 10\% of noise.\\
 \textbf{Rotating Hyperplane (HYP)}\\
 A hyperplane in d-dimensional space is defined by the set of points $x$ that satisfy $\sum_{i=1}^{d}w_ix_i=w_0$. The position and orientation of the hyperplane
@@ -240,8 +242,9 @@ The type of classifier is interchangeable, however, we used once again KNN.\\
 
 
 The idea for the first step is inspired by the observation that whenever real drift is present, sliding windows of smaller sizes tend to deliver higher accuracies than larger ones. 
-This contradicts the classical assumption for i.i.d datasets, backed up by the PAC theory(XXVL reference!), that the more data is stored in a model the less mistakes are done. 
-However, streaming data is not i.i.d and more mistakes are done whenever outdated data from former concepts is in conflict with samples of the current one. 
+This contradicts the classical assumption for stationary datasets as stated in the PAC model (XXVL reference!), that the error rate of a learning algorithm decreases
+with increasing number of examples. 
+However, streaming data containing real drift is not stationary and more mistakes are done whenever outdated data is in conflict with samples of the current concept. 
 A window which contains less of the outdated samples, delivers therefore a better result. 
 
 XXVL mention online learning accuracy.
@@ -333,7 +336,7 @@ kNN\textsubscript{S} performs comparably well or even better than more sophistic
 
 \subsection{Memory behaviour}
 In this section we illustrate the behavior of the STM and LTM during the experiments in a detailed way. 
-Figure \ref{abrupt} depicts the size adjustment of the STM in case of abrupt drift using the dataset XXVL. 
+Figure \ref{fig:abrupt} depicts the size adjustment of the STM in case of abrupt drift using the dataset Interchanging RBF. 
 \begin{figure}
 \centering
 	\subfloat{%
@@ -349,8 +352,8 @@ Figure \ref{abrupt} depicts the size adjustment of the STM in case of abrupt dri
 	\subfloat{%
 	\includegraphics[width=0.24\textwidth]{images/abruptLTM.pdf}
 	}
-\label{abrupt}
-\caption{}
+\caption{Figures for Interchanging RBF}
+\label{fig:abrupt}
 \end{figure}
 The algorithm shrinks the window reliably each time after an abrupt drift occurs.
 However, we can also observe that there is each time a certain delay until the memory is shrinked properly during which false predictions may occur. 
@@ -378,8 +381,8 @@ Figure \ref{fig:squares} shows the behavior of the STM for this dataset.
 	\subfloat{%
 	\includegraphics[width=0.24\textwidth]{images/squaresLTM.pdf}
 	}
+\caption{Figures for Moving Squares}
 \label{fig:squares}
-\caption{}
 \end{figure}
 Most of the time the memory is kept between 50 and 100 samples, allowing a nearly perfect prediction. 
 The reason that the window is mostly shrinked around 100 examples is that the default parameter for the minimal size of the STM is set to 50.\\
@@ -400,16 +403,26 @@ The Transient Chessboard dataset uses virtual drift. Figure \ref{fig:chess} show
 	\subfloat{%
 	\includegraphics[width=0.24\textwidth]{images/chessLTM.pdf}
 	}
+\caption{Figures for T}
 \label{fig:chess}
-\caption{}
 \end{figure}
 In contrast to the previous two datasets which basically do not require the LTM, we see here that it 
 is often used for the prediction. The STM is used alone whenever
 field by field is revealed, since the classification is easier and therefore the accuracy is higher. But as soon as the spray along all fields occurs, the LTM
-is heavily used since it contains beneficial information from the past. 
-
--weather prior, label
-
+is heavily used since it contains beneficial information from the past. The LTM content shows that the whole chessboard is maintained in a compressed fashion.\\
+A similar behavior can be observed for the real world data in Fig.\ref{fig:realResp}. While the LTM is heavily used in the virtual drift dataset Weather, it is mainly neglected in Rialto, containing
+real drift.
+\begin{figure}
+\centering
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/rialtoResp.png}
+	}
+	\subfloat{%
+	\includegraphics[width=0.24\textwidth]{images/weatherResp.png}
+	}
+\caption{Figures for T}
+\label{fig:realResp}
+\end{figure}
 
 \section{Conclusion}
 

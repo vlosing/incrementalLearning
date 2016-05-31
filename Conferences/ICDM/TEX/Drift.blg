@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: Drift.aux
 The style file: IEEEtran.bst
@@ -17,7 +17,7 @@ Warning--empty journal in harries1999splice
 Done.
 You've used 17 entries,
             4024 wiz_defined-function locations,
-            1313 strings with 18293 characters,
+            1440 strings with 20935 characters,
 and the built_in function-call counts, 14177 in all, are:
 = -- 1101
 > -- 316

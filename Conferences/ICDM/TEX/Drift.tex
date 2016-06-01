@@ -12,7 +12,7 @@
 \usepackage[caption=false,font=footnotesize]{subfig}
 \hyphenation{op-tical net-works semi-conduc-tor}
 \usepackage{subscript}
-
+\usepackage{dsfont}
 
 
 \begin{document}
@@ -86,23 +86,34 @@ In contrast to various other methods that only adapt the size of the sliding win
 our approach preserves knowledge of former concepts which may still be valid. This is especially useful in the case of virtual or reoccuring drift.
 Thereby we use two different type of memories the Short Term Memory (STM) and the Long Term Memory(LTM). The STM is a sliding window of dynamic size, adjusted such that the
 estimated generalization error is minimized and therefore contains the current concept.
-The LTM preserves all knowledge of former concepts which is not in conflict with the current one. We assume that the recent information is correct. 
-Therefore, it is crucial to ensure that the information in the LTM is not contradicting those in the STM. Incoming examples are predicted
+The LTM preserves all knowledge of former concepts which is not in conflict with the current one. We share the common assumption of the most recent examples
+being the closest to new examples. Therefore, it is crucial to ensure that the information in the LTM is not contradicting those in the STM. Incoming examples are predicted
 by using either one memory alone or both combined, depending on the demands of the current concept. In the following we describe the architecture in detail.
-\subsection{Short Term Memory}
-This sliding window is adjusted in size such that the generalization error is minimized. 
-Each time after a new sample $x_i$ arrives, the label is predicted and it is added to the STM.
-The STM of size n, m partitions $K ={k_1, k_2...k_m} $ are generated where $|k_1| = n$ and $|k_i| = 2*|k_{i+1}|$ and $|k_m| > minsize$.  
--Usage of Interleaved test-train error. Advandage is each example is used for training and testing, more robust then train test since the splits can cause strong variance etc.
-efficiency reasons.
--Mention SVM thing but name difference such as defined splitting, not an aproximation of leave one out, usable for all algorithms. 
-\subsection{Validation of Long Term Memory}
+XXVL general description of the algorithm
+\subsection{Size adaption of the Short Term Memory}
+Given a classification task of $C$ classes, an incremental algorithm generates for a dataset $X= \{ (\mathbf{x}_i,y_i) \in \mathbb{R}^n \times \{1,...,C\}\}_{i=1}^m$
+a set of models $H(X)=\{h_0,..,h_{m}\}$ XXVL anmerkung zu $h_0$. The interleaved test-train error of $H$ on $X$ is 
+\begin{equation*}
+E(X, H) = \frac{1}{m}\sum_{i=0}^m \mathds{1} (h_{i-1}(x_i)\neq y_i).
+\end{equation*}
+The STM is a sliding window of size $m_1$ and for a given time $t$ defined as 
+$S_1= \{ (\mathbf{x}_i,y_i) \in \mathbb{R}^n \times \{1,...,C\}\}_{i=t-m_1}^{t}$, $t, m_1<=m$.
+We generate recursively a set $\Psi$, 
+\begin{equation*}
+\Psi=\{S_i|S_i=\{(x_{t-m_1/2^{i-1}},y_{t-m_1/2^{i-1}}),...,(\mathbf{x}_t,y_t)\}\}_{i=1}^k,
+\end{equation*}
+of $k$ STMs by bisection until a minimum size $l$ is reached, such that $|S_k|>=l$.
+The $S_i$ minimizing the error the most is used as new STM :
+\begin{equation*}
+STM = arg\,min_{S_i}\,E(S_i, H(S_i)).
+\end{equation*}
+The Interleaved test-train error has various advantages over the commonly used test error, estimated on a seperate set. Firstly, each example is used for both testing and 
+it is quite stable since the value does not depend on random splits. It is the natural choice for streaming data and can be incrementally calculated, boosting the efficiency see \ref{efficiency}.\\
+Our way to adapt the size of the STM has similarities with \cite{klinkenberg2000detecting}. However, they use estimates of the leave one out error, only applicable for the Support Vector Machine
+and do not specify how to choose the compared window sizes. Whereas we present an approach directly determining the interleaved test-train error on recursively bisected windows which is applicable for arbitrary models. 
+\subsection{Transfer of obsolete STM points into LTM}
 
-\subsection{Long Term Memory}
-- Compressing when necessary
-
-\subsection{Compressed information in Long Term Memory}
-
+\subsection{Compression in the Long Term Memory}
 -STM, partitioning, O(log n) tests, maximizing generalization accuracy, write down in fancy formal way
 -LTM, keep not compromising
 -Transfer
@@ -110,7 +121,11 @@ efficiency reasons.
 -Clustering
 -Size management
 
-\subsection{Efficiency}
+\subsection{Prediction responsibility}
+
+
+
+\subsection{Efficiency}\label{efficiency}
 -distances have to be calculated anyways once, can be stored and afterwards need only to be sorted. Splits are given by kleiner Gauss.
 -For the Interleaved Test Train error results of the previous iteration can be used and have just to be extended. Distances, have to be calculated anyways for NN,
 therefore O(log n) for the check of shrinking, which is the most complex step.
@@ -493,3 +508,20 @@ ToDo:
 -add in pictures of transient chessboard phases of partially revealed and full revealed, for STM and Resp Plot
 -add in pictures of abrupt drift, the times when drift occurs to highlight the delay
 -find different snapshot for transient Chessboard, highlighting the compression more
+
+
+\begin{equation*}
+m_i = m_{i_1}/2
+STM_i=\{x_t,...x_{t-m_i}| x_i \in \mathbb{R}^n\}.
+\end{equation*}
+
+$\Psi=\{STM_1...STM_k|STM_i=STM_{i-1}[:|STM_{i-1}|/2]\}$ of k .
+
+$\Psi=\{STM_1...STM_k|STM_i=\{x_t,...x_{t-m_i} | mi$ of k 
+
+\begin{equation*}
+K = \{k_1, k_2...k_m | |k_1|=n, |k_i| = 2*|k_{i+1}| \forall i \in \{1..m-1\}\}
+\end{equation*}
+\begin{equation*}
+\Psi=\{STM_1...STM_k|STM_i=\{x_t,...x_{t-m_i}|m_i = \frac{m_{i-1}}{2}\},
+\end{equation*}

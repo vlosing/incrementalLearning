@@ -85,7 +85,7 @@ def getDataSet(name, streams=[]):
         samples, labels = realDataSets.getRBFAbruptXXL()
     elif name == 'rbfAbruptSmall':
         #samples, labels = realDataSets.getRBFAbruptSmall()
-        samples, labels = toyDataSets.rbfAbrupt2Increased(10, 1, 200, 10)
+        samples, labels = toyDataSets.rbfAbrupt2Increased(25, 1, 100, 80, numDimensions=2)
     #elif name == 'rbfGradual':
     #    samples, labels = toyDataSets.rbfGradual(2, 1, 200, 3, 2)
     elif name == 'squaresIncr':

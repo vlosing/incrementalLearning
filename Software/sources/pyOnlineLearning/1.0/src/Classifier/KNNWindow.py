@@ -561,8 +561,15 @@ class DriftDetection(object):
             v = np.var(windowValues)
             for n0 in np.arange(minSubWindowLength, width-minSubWindowLength, stepSize):
                 n1 = width - n0
-                u0 = np.sum(windowValues[n1:])
-                u1 = np.sum(windowValues[:n1])
+                u1 = 0
+                for i in range(n1):
+                    u1 += windowValues[i]
+                u0 = 0
+                for i in range(n1, len(windowValues)):
+                    u0 += windowValues[i]
+
+                #u0 = np.sum(windowValues[n1:])
+                #u1 = np.sum(windowValues[:n1])
                 absValue = np.abs(u0/float(n0) - u1/float(n1))
                 dd = math.log(2 * math.log(width) / delta)
                 m = ( 1. / (n0 - minSubWindowLength + 1)) + (1. / (n1 - minSubWindowLength + 1))

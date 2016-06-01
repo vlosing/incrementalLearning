@@ -115,8 +115,8 @@ if __name__ == '__main__':
     #classifierNames = ['KNNPaw', 'HoeffAdwin', 'LVGB']
     #classifierNames = ['KNNPaw', 'HoeffAdwin', 'LVGB', 'DACC']
 
-    classifierNames = ['KNNWindow']
-    #classifierNames = ['KNNPaw', 'LVGB']
+    #classifierNames = ['KNNWindow']
+    classifierNames = ['KNNPaw', 'LVGB', 'DACC']
     iterations = 1
     scaleData = False
     bootStrapSampling=False
@@ -135,10 +135,11 @@ if __name__ == '__main__':
     #doComparison('squaresIncrXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
     #doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
-    doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
 
     #doComparison('chessFields', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
+    doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
 
 
     #doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)

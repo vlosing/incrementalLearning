@@ -321,7 +321,7 @@ def rbfAbrupt2(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid
         X = X[permIndices, :]
     return allSamples, allLabels
 
-def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid, numConcepts, numDimensions=2, sampleRange=[0, 1]):
+def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid, numConcepts, numDimensions=2, sampleRange=[0, 1], minDist = 0.01):
     cov = []
     numCentroids = numClasses * numCentroidsPerClass
     for i in range(numCentroids):
@@ -330,8 +330,19 @@ def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPe
 
     allSamples = np.empty(shape=(0, numDimensions))
     allLabels = np.empty(shape=(0, 1))
+    import libNNPythonIntf
 
-    X = np.random.rand(numCentroids, numDimensions) * (sampleRange[1] - sampleRange[0]) + sampleRange[0]
+    valid = False
+    while not valid:
+        valid = True
+        X = np.random.rand(numCentroids, numDimensions) * (sampleRange[1] - sampleRange[0]) + sampleRange[0]
+        distances = libNNPythonIntf.getNToNDistances(X, X)
+        for i in range(numCentroids):
+            tmpDistances = np.sort(distances[i, :])
+            if tmpDistances[1] < minDist:
+                valid = False
+
+
     oldPermIndices = np.arange(numConcepts)
     for i in range(numConcepts):
         conceptSamples = np.empty(shape=(0, numDimensions))
@@ -339,7 +350,6 @@ def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPe
         for cls in range(numClasses):
             for centroid in range(numCentroidsPerClass):
                 idx = cls * numCentroidsPerClass + centroid
-                print X.shape, len(cov)
                 samples = createNormDistData(numSamplesPerConceptPerCentroid, mean=X[idx, :], var=cov[idx])
                 labels = cls * np.ones(shape=(numSamplesPerConceptPerCentroid))
                 conceptSamples = np.vstack([conceptSamples, samples])
@@ -352,13 +362,13 @@ def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPe
         allLabels = np.append(allLabels, conceptLabels)
 
         if i != numConcepts-1:
-            permutatedLength = int(numCentroids/float(numConcepts) * (i+2))
+            permutatedLength = min(int(max(numCentroids/float(numConcepts), 1) * (i+2)), numCentroids)
             permIndices = np.random.permutation(permutatedLength)
             while np.sum(permIndices[:permutatedLength] == oldPermIndices[:permutatedLength]) > 0:
                 permIndices = np.random.permutation(permutatedLength)
-                permIndices = np.append(permIndices, np.arange(i+2, numCentroids))
+            permIndices = np.append(permIndices, np.arange(i+2, numCentroids))
             oldPermIndices = permIndices.copy()
-            print permIndices
+            #print permIndices, permutatedLength, np.arange(i+2, numCentroids)
             X = X[permIndices, :]
     return allSamples, allLabels
 

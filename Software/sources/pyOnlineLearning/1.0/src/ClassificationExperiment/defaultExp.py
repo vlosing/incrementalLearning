@@ -29,15 +29,15 @@ if __name__ == '__main__':
 
     expCfg = {'iterations': 1, 'trainOfflineSVM': False, 'statisticsLevel': 0, 'statisticsRecordIntervall': 50,
               'saveDatasetFigure': False, 'saveFinalNet': False, 'saveInitialNet': False, 'saveNetIntervall': 0,
-              'saveProtoHistogram': False, 'visualizeTraining': False, 'dstDirectory': Paths.StatisticsClassificationDir(),
+              'saveProtoHistogram': False, 'visualizeTraining': True, 'dstDirectory': Paths.StatisticsClassificationDir(),
               'exportToOFRFormat': False, 'epochs': 1, 'expName': ''}
 
 
     netIndivDef = {}
 
     defaultCfg = {'classifierName': 'ILVQ', 'indiv': netIndivDef}
-    randomState = 0
-    np.random.seed(randomState)
+    #randomState = 0
+    #np.random.seed(randomState)
 
     '''ILVQCfg = copy.deepcopy(defaultCfg)
     ILVQCfg['indiv']['name'] = 'standard'
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     KNNWindowCfg = copy.deepcopy(defaultCfg)
     KNNWindowCfg['classifierName'] = 'KNNWindow'
     KNNWindowCfg['indiv']['name'] = 'KNNWindow'
-    KNNWindowCfg['indiv']['windowSize'] = 5000
+    KNNWindowCfg['indiv']['windowSize'] = 2500
     #KNNWindowCfg['indiv']['windowSize'] = 1815
     #KNNWindowCfg['indiv']['weights'] = 'uniform'
     KNNWindowCfg['indiv']['weights'] = 'distance'

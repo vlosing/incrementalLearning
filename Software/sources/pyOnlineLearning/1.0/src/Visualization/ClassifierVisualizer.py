@@ -6,7 +6,7 @@ import numpy as np
 import GLVQPlot
 
 class ClassifierVisualizer(ClassifierListener):
-    SKIP_TRAINSTEPS = 499
+    SKIP_TRAINSTEPS = 2500
     DRAW_WINDOW_DATA = True
     DRAW_LTM_DATA = True
 
@@ -75,10 +75,10 @@ class ClassifierVisualizer(ClassifierListener):
         if ClassifierVisualizer.DRAW_ON_TRAINSTEP and trainStep % (self.SKIP_TRAINSTEPS + 1) == 0:
             winLen = len(classifier.windowSamplesLabels)
             self.draw(classifier)
-            filename = '/homes/vlosing/STM%d.pdf' %(trainStep)
-            self.figWindowData.savefig(filename, bbox_inches='tight')
-            filename = '/homes/vlosing/LTM%d.pdf' %(trainStep)
-            self.figLTMData.savefig(filename, bbox_inches='tight')
+            #filename = '/homes/vlosing/STM%d.pdf' %(trainStep)
+            #self.figWindowData.savefig(filename, bbox_inches='tight')
+            #filename = '/homes/vlosing/LTM%d.pdf' %(trainStep)
+            #self.figLTMData.savefig(filename, bbox_inches='tight')
             #time.sleep(0.5)
 
     def onNewPrototypes(self, classifier, protos, protoLabels):

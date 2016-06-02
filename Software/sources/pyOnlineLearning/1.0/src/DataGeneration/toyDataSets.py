@@ -321,7 +321,7 @@ def rbfAbrupt2(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid
         X = X[permIndices, :]
     return allSamples, allLabels
 
-def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid, numConcepts, numDimensions=2, sampleRange=[0, 1], minDist = 0.01):
+def rbfAbrupt2Increased(numClasses, numCentroidsPerClass, numSamplesPerConceptPerCentroid, numConcepts, numDimensions=2, sampleRange=[0, 1], minDist = 0.03):
     cov = []
     numCentroids = numClasses * numCentroidsPerClass
     for i in range(numCentroids):

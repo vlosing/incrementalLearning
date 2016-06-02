@@ -133,13 +133,13 @@ if __name__ == '__main__':
     #doComparison('rbfSlowXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('hypSlowXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('squaresIncrXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling)
-    #doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    doComparison('rbfAbruptXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessVirtualXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
     #doComparison('allDriftXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
     #doComparison('chessIIDXXL', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
 
     #doComparison('chessFields', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData, bootStrapSampling=bootStrapSampling, permutate=permutate)
-    doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
+    #doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)
 
 
     #doComparison('rbfAbruptSmall', classifierNames, iterations, criterionName, criteria, hyperParamTuning=False, scaleData=scaleData)

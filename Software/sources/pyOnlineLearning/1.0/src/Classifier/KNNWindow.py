@@ -28,6 +28,11 @@ class KNNWindow(BaseClassifier):
             self.getLabelsFct = KNNWindow.getLinearWeightedLabels
         elif weights == 'uniform':
             self.getLabelsFct = KNNWindow.getMajLabels
+        if driftStrategy in ['maxACC7', 'maxACC8']:
+            self.predictFct = self.predictSampleAdaptive
+        else:
+            self.predictFct = self.predictSampleSTM
+
         self.maxSTMSize = windowSize - self.maxLTMSize
         self.driftStrategy = driftStrategy
         self.dataDimensions = None
@@ -101,7 +106,7 @@ class KNNWindow(BaseClassifier):
                 self._LTMSamples, self._LTMLabels = self.clusterDown(self._LTMSamples, self._LTMLabels)
             else:
                 while currSTMSize + len(self._LTMLabels) > maxTotalSize:
-                    sample, label = self.validateSamples(self._windowSamples[:currSTMSize-1, :], self._windowSamplesLabels[:currSTMSize-1], np.array([self._windowSamples[currSTMSize-1, :]]), np.array([self._windowSamplesLabels[currSTMSize-1]]))
+                    sample, label = self.validateSamples(self._windowSamples[1:currSTMSize, :], self._windowSamplesLabels[1:currSTMSize], np.array([self._windowSamples[0, :]]), np.array([self._windowSamplesLabels[0]]))
                     self._LTMSamples = np.vstack([self._LTMSamples, sample])
                     self._LTMLabels = np.append(self._LTMLabels, label)
                     if len(self._LTMLabels) > maxLTMSize:
@@ -112,7 +117,6 @@ class KNNWindow(BaseClassifier):
                     self.LTMPredictions.popleft()
                     self.STMPredictions.popleft()
                     self.BothPredictions.popleft()
-
                     currSTMSize = len(self._windowSamplesLabels)
 
     def doSizeCheck3(self, totalSize, maxLTMSize, currSTMSize, currLTMSize):
@@ -122,7 +126,7 @@ class KNNWindow(BaseClassifier):
                 self._LTMLabels.popleft()
             else:
                 while currSTMSize + len(self._LTMLabels) > totalSize:
-                    sample, label = self.validateSamples(self._windowSamples[:currSTMSize-1, :], self._windowSamplesLabels[:currSTMSize-1], np.array([self._windowSamples[currSTMSize-1, :]]), np.array([self._windowSamplesLabels[currSTMSize-1]]))
+                    sample, label = self.validateSamples(self._windowSamples[1:currSTMSize, :], self._windowSamplesLabels[1:currSTMSize], np.array([self._windowSamples[0, :]]), np.array([self._windowSamplesLabels[0]]))
                     self._LTMSamples = np.vstack([self._LTMSamples, sample])
                     self._LTMLabels = np.append(self._LTMLabels, label)
                     if len(self._LTMLabels) > maxLTMSize:
@@ -260,192 +264,13 @@ class KNNWindow(BaseClassifier):
         self.correctCount += predictedLabel == label
         return predictedLabel
 
-    '''def predictSampleAdaptiveLocal(self, sample, label):
-        predictedLabelLTM = 0
-        predictedLabelSTM = 0
-        predictedLabelBoth = 0
-        classifierChoice = 0
-        if len(self._windowSamplesLabels) == 0:
-            predictedLabel = predictedLabelSTM
-        else:
-            if len(self._windowSamplesLabels) < self.n_neighbors:
-                distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
-                predictedLabelSTM = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, len(self._windowSamplesLabels))[0]
-                predictedLabel = predictedLabelSTM
-            else:
-                distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
-                distancesLTM = KNNWindow.getDistances(sample, self._LTMSamples)
-                predictedLabelSTM = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, self.n_neighbors)[0]
-                predictedLabelBoth = self.getLabelsFct(np.append(distancesSTM, distancesLTM), np.append(self._windowSamplesLabels, self._LTMLabels), self.n_neighbors)[0]
-                localClassifierChoice = self.getLabelsFct(distancesSTM, self.classifierCorrect[:len(self._windowSamplesLabels)], self.n_neighbors)[0]
-
-                if len(self._LTMLabels) >= self.n_neighbors:
-                    predictedLabelLTM = self.getLabelsFct(distancesLTM, self._LTMLabels, self.n_neighbors)[0]
-                    if localClassifierChoice == 3:
-                        classifierChoice = np.random.randint(3)
-                    else:
-                        classifierChoice = localClassifierChoice
-                    labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
-                    predictedLabel = labels[classifierChoice]
-                else:
-                    predictedLabel = predictedLabelSTM
-                    if localClassifierChoice == 3:
-                        classifierChoice = np.random.randint(2)
-                    else:
-                        classifierChoice = localClassifierChoice
-
-        self.classifierChoice.append(classifierChoice)
-        self.BothPredictions = np.append(predictedLabelBoth == label, self.BothPredictions)
-        if predictedLabelBoth == label:
-            self.BothCorrectCount += 1
-        self.STMPredictions = np.append(predictedLabelSTM == label, self.STMPredictions)
-        if predictedLabelSTM == label:
-            self.STMCorrectCount += 1
-        self.LTMPredictions = np.append(predictedLabelLTM == label, self.LTMPredictions)
-        if predictedLabelLTM == label:
-            self.LTMCorrectCount += 1
-        labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
-        if label in labels:
-            self.possCorrect += 1
-        if predictedLabel == label:
-            self.correctCount += 1
-
-        correctClassifierIndices = np.arange(3)[labels == label]
-        if len(correctClassifierIndices) == 0:
-            self.classifierCorrect = np.append(3, self.classifierCorrect)
-        else:
-            self.classifierCorrect = np.append(correctClassifierIndices[np.random.randint(len(correctClassifierIndices))], self.classifierCorrect)
-        #print labels, correctClassifierIndices, self.classifierCorrect[0]
+    def predictSampleSTM(self, sample, label):
+        predictedLabel = 0
+        currLen = len(self._windowSamplesLabels)
+        if currLen > 0:
+            distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
+            predictedLabel = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, min(self.n_neighbors, currLen))[0]
         return predictedLabel
-
-    def predictSampleAdaptiveLocal2(self, sample, label):
-        predictedLabelLTM = 0
-        predictedLabelSTM = 0
-        predictedLabelBoth = 0
-        classifierChoice = 0
-        correctLTM = np.sum(self.LTMPredictions[:len(self._windowSamplesLabels)])
-        correctSTM = np.sum(self.STMPredictions[:len(self._windowSamplesLabels)])
-        correctBoth = np.sum(self.BothPredictions[:len(self._windowSamplesLabels)])
-        classifierPriorChoice = np.argmax([correctSTM, correctBoth, correctLTM])
-        if len(self._windowSamplesLabels) == 0:
-            predictedLabel = predictedLabelSTM
-        else:
-            if len(self._windowSamplesLabels) < self.n_neighbors:
-                distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
-                predictedLabelSTM = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, len(self._windowSamplesLabels))[0]
-                predictedLabel = predictedLabelSTM
-            else:
-                distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
-                distancesLTM = KNNWindow.getDistances(sample, self._LTMSamples)
-                predictedLabelSTM = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, self.n_neighbors)[0]
-                predictedLabelBoth = self.getLabelsFct(np.append(distancesSTM, distancesLTM), np.append(self._windowSamplesLabels, self._LTMLabels), self.n_neighbors)[0]
-                localClassifierChoice = self.getLabelsFct(distancesSTM, self.classifierCorrect[:len(self._windowSamplesLabels)], self.n_neighbors)[0]
-
-                if len(self._LTMLabels) >= self.n_neighbors:
-                    predictedLabelLTM = self.getLabelsFct(distancesLTM, self._LTMLabels, self.n_neighbors)[0]
-                    if localClassifierChoice == 3:
-                        classifierChoice = classifierPriorChoice
-                    else:
-                        classifierChoice = localClassifierChoice
-                    labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
-                    predictedLabel = labels[classifierChoice]
-                else:
-                    predictedLabel = predictedLabelSTM
-                    if localClassifierChoice == 3:
-                        classifierChoice = np.argmax([correctSTM, correctBoth])
-                    else:
-                        classifierChoice = localClassifierChoice
-
-        self.classifierChoice.append(classifierChoice)
-        self.BothPredictions = np.append(predictedLabelBoth == label, self.BothPredictions)
-        if predictedLabelBoth == label:
-            self.BothCorrectCount += 1
-        self.STMPredictions = np.append(predictedLabelSTM == label, self.STMPredictions)
-        if predictedLabelSTM == label:
-            self.STMCorrectCount += 1
-        self.LTMPredictions = np.append(predictedLabelLTM == label, self.LTMPredictions)
-        if predictedLabelLTM == label:
-            self.LTMCorrectCount += 1
-        labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
-        if label in labels:
-            self.possCorrect += 1
-        if predictedLabel == label:
-            self.correctCount += 1
-
-        correctClassifierIndices = np.arange(3)[labels == label]
-        if len(correctClassifierIndices) == 0:
-            self.classifierCorrect = np.append(3, self.classifierCorrect)
-        else:
-            self.classifierCorrect = np.append(correctClassifierIndices[np.random.randint(len(correctClassifierIndices))], self.classifierCorrect)
-        #print labels, correctClassifierIndices, self.classifierCorrect[0]
-        return predictedLabel
-
-    def predictSampleAdaptiveLocal3(self, sample, label):
-        predictedLabelLTM = 0
-        predictedLabelSTM = 0
-        predictedLabelBoth = 0
-        classifierChoice = 0
-        correctLTM = np.sum(self.LTMPredictions[:len(self._windowSamplesLabels)])
-        correctSTM = np.sum(self.STMPredictions[:len(self._windowSamplesLabels)])
-        correctBoth = np.sum(self.BothPredictions[:len(self._windowSamplesLabels)])
-        classifierPriorChoice = np.argsort([correctSTM, correctBoth, correctLTM])[::-1]
-        if len(self._windowSamplesLabels) == 0:
-            predictedLabel = predictedLabelSTM
-        else:
-            if len(self._windowSamplesLabels) < self.n_neighbors:
-                distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
-                predictedLabelSTM = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, len(self._windowSamplesLabels))[0]
-                predictedLabel = predictedLabelSTM
-            else:
-                distancesSTM = KNNWindow.getDistances(sample, self._windowSamples)
-                distancesLTM = KNNWindow.getDistances(sample, self._LTMSamples)
-                predictedLabelSTM = self.getLabelsFct(distancesSTM, self._windowSamplesLabels, self.n_neighbors)[0]
-                predictedLabelBoth = self.getLabelsFct(np.append(distancesSTM, distancesLTM), np.append(self._windowSamplesLabels, self._LTMLabels), self.n_neighbors)[0]
-                localClassifierChoice = self.getLabelsFct(distancesSTM, self.classifierCorrect[:len(self._windowSamplesLabels)], self.n_neighbors)[0]
-
-                if len(self._LTMLabels) >= self.n_neighbors:
-                    predictedLabelLTM = self.getLabelsFct(distancesLTM, self._LTMLabels, self.n_neighbors)[0]
-                    if localClassifierChoice == 3:
-                        classifierChoice = classifierPriorChoice[0]
-                    else:
-                        classifierChoice = localClassifierChoice
-                    labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
-                    predictedLabel = labels[classifierChoice]
-                else:
-                    predictedLabel = predictedLabelSTM
-                    if localClassifierChoice == 3:
-                        classifierChoice = np.argmax([correctSTM, correctBoth])
-                    else:
-                        classifierChoice = localClassifierChoice
-
-        self.classifierChoice.append(classifierChoice)
-        self.BothPredictions = np.append(predictedLabelBoth == label, self.BothPredictions)
-        if predictedLabelBoth == label:
-            self.BothCorrectCount += 1
-        self.STMPredictions = np.append(predictedLabelSTM == label, self.STMPredictions)
-        if predictedLabelSTM == label:
-            self.STMCorrectCount += 1
-        self.LTMPredictions = np.append(predictedLabelLTM == label, self.LTMPredictions)
-        if predictedLabelLTM == label:
-            self.LTMCorrectCount += 1
-        labels = [predictedLabelSTM, predictedLabelBoth, predictedLabelLTM]
-        if label in labels:
-            self.possCorrect += 1
-        if predictedLabel == label:
-            self.correctCount += 1
-
-        correctClassifierIndices = np.arange(3)[labels == label]
-        if len(correctClassifierIndices) == 0:
-            self.classifierCorrect = np.append(3, self.classifierCorrect)
-        else:
-            if classifierPriorChoice[0] in correctClassifierIndices:
-                self.classifierCorrect = np.append(classifierPriorChoice[0], self.classifierCorrect)
-            elif classifierPriorChoice[1] in correctClassifierIndices:
-                self.classifierCorrect = np.append(classifierPriorChoice[1], self.classifierCorrect)
-            else:
-                self.classifierCorrect = np.append(classifierPriorChoice[2], self.classifierCorrect)
-        #print labels, correctClassifierIndices, self.classifierCorrect[0]
-        return predictedLabel'''
 
     def partial_fit(self, samples, labels, classes):
         if self.dataDimensions is None:
@@ -466,11 +291,7 @@ class KNNWindow(BaseClassifier):
             self._LTMSamples = np.empty(shape=(0, self.dataDimensions))
         predictedTrainLabels = []
         for i in range(len(samples)):
-            predLabel = self.predictSampleAdaptive(samples[i,:], labels[i])
-            #predLabel = self.predictSampleAdaptiveLocal(samples[i,:], labels[i])
-            #predLabel = self.predictSampleAdaptiveLocal2(samples[i,:], labels[i])
-            #predLabel = self.predictSampleAdaptiveLocal3(samples[i,:], labels[i])
-
+            predLabel = self.predictFct(samples[i,:], labels[i])
             self.trainInc(samples[i,:], labels[i], predLabel)
             predictedTrainLabels.append(predLabel)
         return predictedTrainLabels

@@ -6,7 +6,7 @@ import numpy as np
 import GLVQPlot
 
 class ClassifierVisualizer(ClassifierListener):
-    SKIP_TRAINSTEPS = 2500
+    SKIP_TRAINSTEPS = 100
     DRAW_WINDOW_DATA = True
     DRAW_LTM_DATA = True
 

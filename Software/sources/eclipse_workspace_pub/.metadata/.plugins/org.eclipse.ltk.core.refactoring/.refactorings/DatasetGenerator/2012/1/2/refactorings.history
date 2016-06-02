@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;DatasetGenerator/src/main.py&apos; to &apos;createDataset.py&apos;" description="Rename resource &apos;main.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main.py" name="createDataset.py" stamp="1326370431212" updateReferences="true"/>
-</session>

@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;DatasetGenerator/libpythoninterface.so&apos;" deleteContents="false" description="Delete resource &apos;DatasetGenerator/libpythoninterface.so&apos;" element1="/DatasetGenerator/libpythoninterface.so" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1329237324667"/>
-</session>

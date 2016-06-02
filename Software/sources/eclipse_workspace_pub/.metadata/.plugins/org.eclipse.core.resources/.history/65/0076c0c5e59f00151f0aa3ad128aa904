@@ -1,8 +1,0 @@
-################################################################################
-# Automatically-generated file. Do not edit!
-################################################################################
-
-USER_OBJS :=
-
-LIBS := -lpthread -l/home/viktor/svn/viktlosi/Software/sources/eclipse_workspace_pub/lib/orf.so
-

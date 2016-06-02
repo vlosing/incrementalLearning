@@ -1,5 +1,0 @@
-what,kind,bundleId,bundleVersion,description,time
-activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281907414
-activated,editor,org.python.pydev,2.0.0.2011040403,"org.python.pydev.editor.PythonEditor",1324281992391
-started,bundle,org.eclipse.epp.usagedata.ui,1.1.0.R200906100410,"org.eclipse.epp.usagedata.ui",1324281992430
-deactivated,workbench,org.eclipse.ui.workbench,3.5.2.M20100113-0800,"",1324281994986

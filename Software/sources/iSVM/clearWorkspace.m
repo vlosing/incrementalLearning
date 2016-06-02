@@ -1,4 +1,0 @@
-function clearWorkspace()
-clear;
-end
-

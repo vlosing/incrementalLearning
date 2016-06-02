@@ -1,8 +1,0 @@
-refactoring
---This line, and those below, will be ignored--
-
-A    src/ClassifierComparison/LVGB.py
-M    src/ClassifierComparison/auxiliaryFunctions.py
-M    src/DataGeneration/DataSetFactory.py
-M    src/DataGeneration/hyperParamsScaled.py
-M    src/DataGeneration/hyperParamsUnscaled.py

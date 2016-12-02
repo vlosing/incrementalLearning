@@ -17,14 +17,6 @@ Stationary datasets:
 - [Pendigits] (https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html)
 - [Sector]    (https://www.csie.ntu.edu.tw/~cjlin/libsvmtools/datasets/multiclass.html)
 
-Non-stationary datasets:
-- [SEA]       (http://www.liaad.up.pt/kdus/downloads/sea-concepts-dataset)
-- [Checkers]  (http://users.rowan.edu/~polikar/research/NSE/)
-- [Weather]   (http://users.rowan.edu/~polikar/research/NSE/)
-- [Elec2]     (https://github.com/vlosing/Online-learning/tree/master/datasets/elec2)
-- [Spam]      (http://www.liaad.up.pt/kdus/products/datasets-for-concept-drift)
-
-
 Algorithms:
 - [Incremental Support Vector Machine (ISVM)] (https://github.com/diehl/Incremental-SVM-Learning-in-MATLAB)
 - [On-line Random Forest (ORF)]               (https://github.com/amirsaffari/online-multiclass-lpboost)

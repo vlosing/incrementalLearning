@@ -1,4 +1,4 @@
-# Online-learning
+# Incremental Learning
 Datasets and algorithms for incremental/on-line learning
 
 Stationary datasets:

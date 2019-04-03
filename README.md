@@ -20,7 +20,7 @@ Stationary datasets:
 Algorithms:
 - [Incremental Support Vector Machine (ISVM)](https://github.com/diehl/Incremental-SVM-Learning-in-MATLAB)
 - [On-line Random Forest (ORF)](https://github.com/amirsaffari/online-multiclass-lpboost)
-- [Incremental Learning Vector Quantization (ILVQ)] TODO
+- [Incremental Learning Vector Quantization (ILVQ)](https://github.com/vlosing/ILVQ)
 - [Learn++ (LPP)](https://github.com/gditzler/IncrementalLearning)
 - [Learn++.NSE (LPPNSE)](https://github.com/gditzler/IncrementalLearning)
 - [Incremental Extreme Learning Machine (IELM)](http://www3.ntu.edu.sg/home/egbhuang/elm_codes.html)
